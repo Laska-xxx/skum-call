@@ -5,48 +5,70 @@ using UnityEngine.UI;
 
 public class Worker : MonoBehaviour
 {
-    [SerializeField] private int workTime = 1;
+    [SerializeField] private float workTime = 1;
     [SerializeField] private float coinsPerSecond = 1;
     [SerializeField] private int cost;
     [SerializeField] private Button buyWorkerButton;
-    private bool isBuy = false;
-    [SerializeField] private float curWorkTime;
+    [SerializeField] private Slider workTimeSlider;
+    [SerializeField] private int num;
+    [SerializeField] private int levl;
+    public bool isBuy { get; private set; }
+    [SerializeField] public float curWorkTime;
     [SerializeField] private Coins coins;
+    [SerializeField] private ReduceTime reduceTime;
 
     private void Start()
     {
+        curWorkTime = 0;
+        isBuy = false;
         buyWorkerButton.onClick.AddListener(BuyWorker);
-        curWorkTime = workTime;
     }
     private void Update()
     {
-        if (isBuy)
+        if (!isBuy && cost > coins.coins)
         {
-            curWorkTime -= Time.deltaTime;
-            if(curWorkTime<= 0 )
-            {
-                coins.AddCoins(coinsPerSecond);
-                curWorkTime = workTime;
-            }
+            buyWorkerButton.interactable = false;
         }
+        else
+        {
+            buyWorkerButton.interactable = true;
+        }
+        PassiveIncome();
     }
 
     public void BuyWorker()
     {
         if (isBuy)
         {
-            curWorkTime -= 1f;
+            reduceTime.ReduceTimeOnClik();
         }
 
-        else
+        if (!isBuy && cost <= coins.coins)
         {
-            if (cost <= coins.coins)
+            Debug.Log("buyWorker" + num);
+            coins.TakeCoins(cost);
+            isBuy = true;
+        }
+    }
+    private void PassiveIncome()
+    {
+        if (isBuy)
+        {
+            workTimeSlider.value = curWorkTime/workTime;
+            curWorkTime += Time.deltaTime;
+            if (curWorkTime >= workTime)
             {
-                Debug.Log("click");
-                coins.TakeCoins(cost);
-                isBuy = true;
-
+                coins.AddCoins(coinsPerSecond);
+                curWorkTime = 0;
+                workTimeSlider.value = 0;
             }
         }
     }
+
+    public void LevelUp()
+    {
+        levl++;
+        coinsPerSecond += levl;
+    }
+
 }
