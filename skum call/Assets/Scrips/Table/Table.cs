@@ -11,6 +11,7 @@ public class Table : MonoBehaviour
     [SerializeField] private TextMeshProUGUI lvlText;
     [SerializeField] private GameObject tableObj;
     [SerializeField] private GameObject workerObj;
+    [SerializeField] private Image tableImage;
     [SerializeField] public int num;
     private bool isBuy = false;
     public int level { get; private set; }
@@ -28,9 +29,30 @@ public class Table : MonoBehaviour
     public void LvlUp()
     {
         level++;
-        workTime -= level;
-        timeForClick += level;
+        workTime -= 1;
+        timeForClick += 1;
         lvlText.text = $"lvl: {level}";
+        if (level == 1)
+        {
+            tableImage.color = new Color32(255, 210, 210, 255);
+        }
+        else if (level == 2)
+        {
+            tableImage.color = new Color32(255, 185, 185, 255);
+        }
+        else if (level == 3)
+        {
+            tableImage.color = new Color32(255, 160, 160, 255);
+        }
+        else if (level == 4)
+        {
+            tableImage.color = new Color32(255, 135, 135, 255);
+        }
+        if (level >= 5)
+        {
+            lvlText.text = "Max lvl";
+            tableImage.color = new Color32(255, 110, 110, 255);
+        }
     }
 
     public void Buy()

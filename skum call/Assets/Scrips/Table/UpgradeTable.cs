@@ -7,9 +7,10 @@ using UnityEngine.UI;
 public class UpgradeTable : MonoBehaviour
 {
     [SerializeField] private Button upgradeButton;
-    [SerializeField] private Button panelUgradeButton;
-    [SerializeField] private GameObject upgradeObj;
-    [SerializeField] private GameObject panelUpgrade;
+    [SerializeField] private Button ugradeMenuButton;
+    [SerializeField] private GameObject upgradeButtonObj;
+    [SerializeField] private GameObject upgradeMenu;
+    [SerializeField] private GameObject panelUpgradeObj;
     [SerializeField] private TextMeshProUGUI infoText;
     [SerializeField] private TextMeshProUGUI costText;
     [SerializeField] private Worker worker;
@@ -20,17 +21,17 @@ public class UpgradeTable : MonoBehaviour
 
     private void Start()
     {
-        panelUgradeButton.onClick.AddListener(OpenUpgradePanel);
+        ugradeMenuButton.onClick.AddListener(OpenUpgradePanel);
         upgradeButton.onClick.AddListener(Upgrade);
     }
 
     private void Update()
     {
-        if (cost > coins.coins)
+        if (cost > coins.coins && level <= 5)
         {
             upgradeButton.interactable = false;
         }
-        else
+        else if (cost <= coins.coins && level <= 5)
         {
             upgradeButton.interactable = true;
         }
@@ -38,20 +39,24 @@ public class UpgradeTable : MonoBehaviour
 
     private void OpenUpgradePanel()
     {
-        if (panelUpgrade.activeInHierarchy)
+        if (upgradeMenu.activeInHierarchy)
         {
-            panelUpgrade.SetActive(false);
+            upgradeMenu.SetActive(false);
         }
         else
         {
-            panelUpgrade.SetActive(true);
+            upgradeMenu.SetActive(true);
             UpdateUI();
         }
     }
 
     private void Upgrade()
     {
-        if (cost <= coins.coins)
+        if (level > 5)
+        {
+            UpdateUI();
+        }
+        else if (cost <= coins.coins)
         {
             level++;
             coins.TakeCoins(cost);
@@ -64,7 +69,15 @@ public class UpgradeTable : MonoBehaviour
 
     private void UpdateUI()
     {
-        infoText.text = $"Lvl: {table.level + 1}\nBuff: -{table.timeForClick} time";
-        costText.text = $"Cost: {cost}";
+        if (level > 5)
+        {
+            infoText.text = $"Lvl: Max lvl";
+            Destroy(upgradeButtonObj);
+        }
+        else
+        {
+            infoText.text = $"Lvl: {table.level + 1}\nBuff: -{table.timeForClick} time";
+            costText.text = $"Cost: {cost}";
+        }
     }
 }

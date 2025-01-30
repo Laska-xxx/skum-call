@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Worker : MonoBehaviour
 {
     [SerializeField] public float coinsPerSecond {  get; private set; }
-    [SerializeField] private int cost;
     [SerializeField] private TextMeshProUGUI lvlText;
     [SerializeField] private Button buyWorkerButton;
     [SerializeField] private Slider workTimeSlider;
@@ -17,6 +16,7 @@ public class Worker : MonoBehaviour
     [SerializeField] public float curWorkTime;
     [SerializeField] private Coins coins;
     [SerializeField] private Table table;
+    [SerializeField] private Image image;
     [SerializeField] private ReduceTime reduceTime;
 
     private void Start()
@@ -30,14 +30,6 @@ public class Worker : MonoBehaviour
     }
     private void Update()
     {
-        if (!isBuy && cost > coins.coins)
-        {
-            buyWorkerButton.interactable = false;
-        }
-        else
-        {
-            buyWorkerButton.interactable = true;
-        }
         PassiveIncome();
     }
 
@@ -69,6 +61,27 @@ public class Worker : MonoBehaviour
         level++;
         coinsPerSecond += level;
         lvlText.text = $"Lvl: {level}";
+        if (level == 1)
+        {
+            image.color = new Color32(218, 255, 213, 255);
+        }
+        else if (level == 2)
+        {
+            image.color = new Color32(195, 255, 195, 255);
+        }
+        else if (level == 3)
+        {
+            image.color = new Color32(170, 255, 170, 255);
+        }
+        else if (level == 4)
+        {
+            image.color = new Color32(140, 255, 140, 255);
+        }
+        else if (level >= 5)
+        {
+            image.color = new Color32(110, 255, 110, 255);
+            lvlText.text = "Max lvl";
+        }
     }
 
     public void Buy()

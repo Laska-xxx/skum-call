@@ -52,6 +52,7 @@ public class BuyTable : MonoBehaviour
         if (cost <= coins.coins)
         {
             coins.TakeCoins(cost);
+            coins.AddSpecialCoins(1);
             tableObj.SetActive(true);
             buyWorkerObj.SetActive(true);
             table.Buy();

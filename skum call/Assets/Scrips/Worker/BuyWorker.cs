@@ -7,16 +7,17 @@ using UnityEngine.UI;
 public class BuyWorker : MonoBehaviour
 {
     [SerializeField] private Worker worker;
-    [SerializeField] private Button buyButton;
-    [SerializeField] private GameObject workerObj;
+    [SerializeField] private Button buyWorkerButton;
+    [SerializeField] private GameObject buyWorkerButtonObj;
+    [SerializeField] private GameObject workerUpgeadeObj;
     [SerializeField] private TextMeshProUGUI costText;
     [SerializeField] private Coins coins;
     [SerializeField] private int cost;
 
     private void Start()
     {
-        workerObj.SetActive(false);
-        buyButton.onClick.AddListener(Buy);
+        workerUpgeadeObj.SetActive(false);
+        buyWorkerButton.onClick.AddListener(Buy);
         if (worker.num <= 0)
         {
             cost = 0;
@@ -32,11 +33,11 @@ public class BuyWorker : MonoBehaviour
     {
         if (cost > coins.coins)
         {
-            buyButton.interactable = false;
+            buyWorkerButton.interactable = false;
         }
         else
         {
-            buyButton.interactable = true;
+            buyWorkerButton.interactable = true;
         }
     }
 
@@ -44,10 +45,11 @@ public class BuyWorker : MonoBehaviour
     {
         if (cost <= coins.coins)
         {
-            workerObj?.SetActive(true);
+            workerUpgeadeObj?.SetActive(true);
             coins.TakeCoins(cost);
+            coins.AddSpecialCoins(1);
             worker.Buy();
-            Destroy(buyButton);
+            Destroy(buyWorkerButtonObj);
         }
     }
 }
