@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UpgradeWorker : MonoBehaviour
 {
     [SerializeField] private Button upgradeButton;
+    [SerializeField] private Button panelUgradeButton;
     [SerializeField] private GameObject upgradeObj;
+    [SerializeField] private GameObject panelUpgrade;
+    [SerializeField] private TextMeshProUGUI infoText;
+    [SerializeField] private TextMeshProUGUI costText;
     [SerializeField] private Worker worker;
     [SerializeField] private int cost = 10;
     [SerializeField] private int level = 1;
@@ -14,19 +19,12 @@ public class UpgradeWorker : MonoBehaviour
 
     private void Start()
     {
+        panelUgradeButton.onClick.AddListener(OpenUpgradePanel);
         upgradeButton.onClick.AddListener(Upgrade);
     }
 
     private void Update()
     {
-        if (!worker.isBuy)
-        {
-            upgradeObj.SetActive(false);
-        }
-        else
-        {
-            upgradeObj.SetActive(true);
-        }
         if (cost > coins.coins)
         {
             upgradeButton.interactable = false;
@@ -37,14 +35,35 @@ public class UpgradeWorker : MonoBehaviour
         }
     }
 
+    private void OpenUpgradePanel()
+    {
+        if (panelUpgrade.activeInHierarchy)
+        {
+            panelUpgrade.SetActive(false);
+        }
+        else
+        {
+            panelUpgrade.SetActive(true);
+            UpdateUI();
+        }
+    }
+
     private void Upgrade()
     {
         if(cost <= coins.coins)
         {
             level++;
             coins.TakeCoins(cost);
+            coins.AddSpecialCoins(1);
             worker.LevelUp();
             cost *= level;
+            UpdateUI();
         }
+    }
+
+    private void UpdateUI()
+    {
+        infoText.text = $"Lvl: {worker.level + 1}\nBuff: +{worker.level + worker.coinsPerSecond}$";
+        costText.text = $"Cost: {cost}";
     }
 }

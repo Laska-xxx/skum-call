@@ -7,6 +7,7 @@ public class ReduceTime : MonoBehaviour
 {
     [SerializeField] private Worker[] workers;
     [SerializeField] private Button Button;
+    [SerializeField] private Table[] tables;
 
     private void Start()
     {
@@ -25,7 +26,7 @@ public class ReduceTime : MonoBehaviour
     {
         if (worker.isBuy)
         {
-            worker.curWorkTime += 1;
+            worker.curWorkTime += tables[worker.num].timeForClick;
         }
     }
 }

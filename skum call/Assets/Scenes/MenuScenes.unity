@@ -676,8 +676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc7bf76004a9bf40ae9c353aef798fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playButton: {fileID: 1045084089}
-  sceneNum: 1
+  PlayButton: {fileID: 1045084089}
 --- !u!4 &1737569602
 Transform:
   m_ObjectHideFlags: 0

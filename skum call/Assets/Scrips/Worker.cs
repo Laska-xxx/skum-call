@@ -1,27 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Worker : MonoBehaviour
 {
-    [SerializeField] private float workTime = 1;
-    [SerializeField] private float coinsPerSecond = 1;
+    [SerializeField] public float coinsPerSecond {  get; private set; }
     [SerializeField] private int cost;
+    [SerializeField] private TextMeshProUGUI lvlText;
     [SerializeField] private Button buyWorkerButton;
     [SerializeField] private Slider workTimeSlider;
-    [SerializeField] private int num;
-    [SerializeField] private int levl;
+    [SerializeField] public int num;
+    [SerializeField] public int level {  get; private set; }
     public bool isBuy { get; private set; }
     [SerializeField] public float curWorkTime;
     [SerializeField] private Coins coins;
+    [SerializeField] private Table table;
     [SerializeField] private ReduceTime reduceTime;
 
     private void Start()
     {
         curWorkTime = 0;
+        coinsPerSecond = 1;
+        level = 0;
         isBuy = false;
-        buyWorkerButton.onClick.AddListener(BuyWorker);
+        buyWorkerButton.onClick.AddListener(StartWork);
+        lvlText.text = $"Lvl: {level}";
     }
     private void Update()
     {
@@ -36,27 +41,21 @@ public class Worker : MonoBehaviour
         PassiveIncome();
     }
 
-    public void BuyWorker()
+    public void StartWork()
     {
         if (isBuy)
         {
             reduceTime.ReduceTimeOnClik();
-        }
-
-        if (!isBuy && cost <= coins.coins)
-        {
-            Debug.Log("buyWorker" + num);
-            coins.TakeCoins(cost);
-            isBuy = true;
+            
         }
     }
     private void PassiveIncome()
     {
         if (isBuy)
         {
-            workTimeSlider.value = curWorkTime/workTime;
+            workTimeSlider.value = curWorkTime/table.workTime;
             curWorkTime += Time.deltaTime;
-            if (curWorkTime >= workTime)
+            if (curWorkTime >= table.workTime)
             {
                 coins.AddCoins(coinsPerSecond);
                 curWorkTime = 0;
@@ -67,8 +66,14 @@ public class Worker : MonoBehaviour
 
     public void LevelUp()
     {
-        levl++;
-        coinsPerSecond += levl;
+        level++;
+        coinsPerSecond += level;
+        lvlText.text = $"Lvl: {level}";
+    }
+
+    public void Buy()
+    {
+        isBuy = true;
     }
 
 }

@@ -1,51 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Table : MonoBehaviour
 {
-    [SerializeField] private int num;
-    [SerializeField] private GameObject[] workers;
-    [SerializeField] private int cost;
-    [SerializeField] private Button buyTableButton;
+    [SerializeField] public float workTime { get; private set; }
+    [SerializeField] public float timeForClick { get; private set; }
+    [SerializeField] private TextMeshProUGUI lvlText;
+    [SerializeField] private GameObject tableObj;
+    [SerializeField] private GameObject workerObj;
+    [SerializeField] public int num;
     private bool isBuy = false;
-    [SerializeField] private Coins coins;
+    public int level { get; private set; }
 
     private void Start()
     {
-        buyTableButton.onClick.AddListener(BuyTable);
-        if (!isBuy)
-        {
-            foreach (var worker in workers)
-            {
-                worker.SetActive(false);
-            }
-        }
+        tableObj.SetActive(false);
+        workerObj.SetActive(false);
+        workTime = 15;
+        timeForClick = 1;
+        level = 0;
+        lvlText.text = $"lvl: {level}";
     }
 
-    private void Update()
+    public void LvlUp()
     {
-        if (!isBuy && cost > coins.coins)
-        {
-            buyTableButton.interactable = false;
-        }
-        else
-        {
-            buyTableButton.interactable = true;
-        }
+        level++;
+        workTime -= level;
+        timeForClick += level;
+        lvlText.text = $"lvl: {level}";
     }
 
-    private void BuyTable()
+    public void Buy()
     {
-        if (!isBuy && cost <= coins.coins)
-        {
-            coins.TakeCoins(cost);
-            isBuy = true;
-            foreach (var worker in workers)
-            {
-                worker.SetActive(true);
-            }
-        }
+        isBuy = true;
+        tableObj.SetActive(true);
+        workerObj.SetActive(true);
     }
 }

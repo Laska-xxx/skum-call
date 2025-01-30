@@ -6,30 +6,14 @@ using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour
 {
-    [SerializeField] private Button changeButton;
-    [SerializeField] private Button openUpgradebutton;
-    [SerializeField] private Button closeUpgradebutton;
-    [SerializeField] private GameObject upgradePanel;
-    [SerializeField] private int sceneNum;
+    [SerializeField] private Button PlayButton;
     void Start()
     {
-        changeButton.onClick.AddListener(SceneChange);
-        openUpgradebutton.onClick.AddListener(OpenUpgradePanel);
-        closeUpgradebutton.onClick.AddListener(CloseUpgradePanel);
+        PlayButton.onClick.AddListener(Play);
     }
 
-    private void SceneChange()
+    private void Play()
     {
-        SceneManager.LoadScene(sceneNum);
-    }
-
-    private void OpenUpgradePanel()
-    {
-        upgradePanel.SetActive(true);
-    }
-
-    private void CloseUpgradePanel()
-    {
-        upgradePanel?.SetActive(false);
+        SceneManager.LoadScene(1);
     }
 }
