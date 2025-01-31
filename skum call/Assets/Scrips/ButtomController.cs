@@ -11,6 +11,7 @@ public class ButtonController : MonoBehaviour
 
     [SerializeField] private Button closeSettingsButton;
     [SerializeField] private GameObject settingsPanel;
+
     void Start()
     {
         playButton.onClick.AddListener(Play);

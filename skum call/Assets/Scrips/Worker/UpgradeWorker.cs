@@ -7,10 +7,8 @@ using UnityEngine.UI;
 public class UpgradeWorker : MonoBehaviour
 {
     [SerializeField] private Button upgradeButton;
-    [SerializeField] private Button ugradeMenuButton;
-    [SerializeField] private GameObject upgradeButtonObj;
+    [SerializeField] private Button openUgradeMenuButton;
     [SerializeField] private GameObject upgradeMenu;
-    [SerializeField] private GameObject panelUpgradeObj;
     [SerializeField] private TextMeshProUGUI infoText;
     [SerializeField] private TextMeshProUGUI costText;
     [SerializeField] private Worker worker;
@@ -20,7 +18,7 @@ public class UpgradeWorker : MonoBehaviour
 
     private void Start()
     {
-        ugradeMenuButton.onClick.AddListener(OpenUpgradePanel);
+        openUgradeMenuButton.onClick.AddListener(OpenUpgradePanel);
         upgradeButton.onClick.AddListener(Upgrade);
     }
 
@@ -53,6 +51,7 @@ public class UpgradeWorker : MonoBehaviour
     {
         if (level > 5)
         {
+            
             UpdateUI();
         }
         else if(cost <= coins.coins)
@@ -63,6 +62,7 @@ public class UpgradeWorker : MonoBehaviour
             worker.LevelUp();
             cost *= level;
             UpdateUI();
+            openUgradeMenuButton.GetComponent<Image>().sprite = worker.GetComponent<Image>().sprite;
         }
     }
 
@@ -71,7 +71,7 @@ public class UpgradeWorker : MonoBehaviour
         if ( level > 5)
         {
             infoText.text = $"Lvl: Max lvl";
-            Destroy(upgradeButtonObj);
+            upgradeButton.gameObject.SetActive(false);
         }
         else
         {

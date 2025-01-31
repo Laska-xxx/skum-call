@@ -8,7 +8,7 @@ public class Worker : MonoBehaviour
 {
     [SerializeField] public float coinsPerSecond {  get; private set; }
     [SerializeField] private TextMeshProUGUI lvlText;
-    [SerializeField] private Button buyWorkerButton;
+    [SerializeField] private Button workerButton;
     [SerializeField] private Slider workTimeSlider;
     [SerializeField] public int num;
     [SerializeField] public int level {  get; private set; }
@@ -16,16 +16,17 @@ public class Worker : MonoBehaviour
     [SerializeField] public float curWorkTime;
     [SerializeField] private Coins coins;
     [SerializeField] private Table table;
-    [SerializeField] private Image image;
     [SerializeField] private ReduceTime reduceTime;
+    [SerializeField] public Sprite[] lvlUpSprits;
 
     private void Start()
     {
+        GetComponent<Image>().sprite = lvlUpSprits[0];
         curWorkTime = 0;
         coinsPerSecond = 1;
         level = 0;
         isBuy = false;
-        buyWorkerButton.onClick.AddListener(StartWork);
+        workerButton.onClick.AddListener(ReduceTime);
         lvlText.text = $"Lvl: {level}";
     }
     private void Update()
@@ -33,7 +34,7 @@ public class Worker : MonoBehaviour
         PassiveIncome();
     }
 
-    public void StartWork()
+    public void ReduceTime()
     {
         if (isBuy)
         {
@@ -61,25 +62,9 @@ public class Worker : MonoBehaviour
         level++;
         coinsPerSecond += level;
         lvlText.text = $"Lvl: {level}";
-        if (level == 1)
+        if (level >= 5)
         {
-            image.color = new Color32(218, 255, 213, 255);
-        }
-        else if (level == 2)
-        {
-            image.color = new Color32(195, 255, 195, 255);
-        }
-        else if (level == 3)
-        {
-            image.color = new Color32(170, 255, 170, 255);
-        }
-        else if (level == 4)
-        {
-            image.color = new Color32(140, 255, 140, 255);
-        }
-        else if (level >= 5)
-        {
-            image.color = new Color32(110, 255, 110, 255);
+            GetComponent<Image>().sprite = lvlUpSprits[1];
             lvlText.text = "Max lvl";
         }
     }
