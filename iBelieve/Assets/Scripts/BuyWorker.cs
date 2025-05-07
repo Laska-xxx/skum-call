@@ -49,9 +49,8 @@ public class BuyWorker : MonoBehaviour
     public void Buy(Workers worker)
     {
         coins.coins -= cost;
-        Instantiate(workerPrefab, spawnPos.transform);
         workerPrefab.GetComponent<Worker>().workerData = worker;
-        Debug.Log($"2{workerPrefab.GetComponent<Worker>().workerData}");
-        gameObject.SetActive(false);
+        Instantiate(workerPrefab, spawnPos.transform);
+        Destroy(gameObject);
     }
 }

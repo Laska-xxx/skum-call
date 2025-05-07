@@ -12,7 +12,6 @@ public class Worker : MonoBehaviour
     private GameObject buyWorker;
     void Start()
     {
-        Debug.Log($"3{workerData}");
         sprite = gameObject.transform.Find("Pers").gameObject;
         sprite.GetComponent<SpriteRenderer>().sprite = workerData.Sprite;
         persName = workerData.PersName;
