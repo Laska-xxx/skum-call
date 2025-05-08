@@ -7,10 +7,11 @@ using UnityEngine;
 public class BuyWorker : MonoBehaviour
 {
     [SerializeField] private GameObject workerPrefab;
-    [SerializeField] private int num;
+    [SerializeField] public int num;
     [SerializeField] private int cost;
     [SerializeField] private TextMeshProUGUI costText;
     [SerializeField] private GameObject choouseWorkerObj;
+    private CreateBuyWorker createWorker;
     private GameObject spawnPos;
     private SpriteRenderer spriteRenderer;
     private ShowUpgradeMenu upgradeMenu;
@@ -20,6 +21,7 @@ public class BuyWorker : MonoBehaviour
     public Workers workerData;
     void Start()
     {
+        createWorker = FindObjectOfType<CreateBuyWorker>();
         gameUIController = FindObjectOfType<GameUIController>();
         reduceTime = FindObjectOfType<ReduceTime>();
         spawnPos = gameObject.transform.parent.gameObject;
@@ -61,6 +63,7 @@ public class BuyWorker : MonoBehaviour
         workerPrefab.GetComponent<Worker>().workerData = worker;
         Instantiate(workerPrefab, spawnPos.transform);
         reduceTime.FindWorkers();
+        createWorker.CreateNewBuyWorker();
         Destroy(gameObject);
     }
 }

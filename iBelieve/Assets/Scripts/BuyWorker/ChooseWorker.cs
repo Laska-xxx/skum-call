@@ -8,12 +8,13 @@ using UnityEngine.UI;
 public class ChooseWorker : MonoBehaviour
 {
     public Workers workerData;
-    [SerializeField] private Button button;
+    private Button button;
     private GameObject iconImage;
     private GameObject levelText;
     private BuyWorker ded;
     void Start()
     {
+        button = gameObject.GetComponent<Button>();
         ded = gameObject.GetComponentInParent<BuyWorker>();
         iconImage = gameObject.transform.Find("IconImage").gameObject;
         iconImage.GetComponent<Image>().sprite = workerData.Icon;
