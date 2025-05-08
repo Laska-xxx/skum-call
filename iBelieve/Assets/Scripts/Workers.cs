@@ -11,4 +11,5 @@ public class Workers : ScriptableObject
     [SerializeField] public int Level;
     [SerializeField] public int Tilent;
     [SerializeField] public bool IsBuy;
+    [SerializeField] public string SpeshalText;
 }

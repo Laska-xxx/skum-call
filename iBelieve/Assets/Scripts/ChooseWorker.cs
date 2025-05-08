@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ChooseWorker : MonoBehaviour
 {
-    [SerializeField] private Workers workerData;
+    public Workers workerData;
     [SerializeField] private Button button;
     private GameObject iconImage;
     private GameObject levelText;
@@ -24,6 +24,7 @@ public class ChooseWorker : MonoBehaviour
 
     private void StartBuy()
     {
+        workerData.IsBuy = true;
         ded.Buy(workerData);
     }
 }

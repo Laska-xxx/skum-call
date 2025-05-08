@@ -15,9 +15,13 @@ public class BuyWorker : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private ShowUpgradeMenu upgradeMenu;
     private Coins coins;
+    private ReduceTime reduceTime;
+    private GameUIController gameUIController;
     public Workers workerData;
     void Start()
     {
+        gameUIController = FindObjectOfType<GameUIController>();
+        reduceTime = FindObjectOfType<ReduceTime>();
         spawnPos = gameObject.transform.parent.gameObject;
         coins = FindObjectOfType<Coins>();
         upgradeMenu = FindObjectOfType<ShowUpgradeMenu>();
@@ -32,25 +36,31 @@ public class BuyWorker : MonoBehaviour
         {
             spriteRenderer.color = Color.white;
         }
-        if (!upgradeMenu.UpgradeMenuOpen)
-        {
-            choouseWorkerObj.SetActive(false);
-        }
     }
 
     private void OnMouseDown()
     {
-        if (coins.coins >= cost & upgradeMenu.UpgradeMenuOpen)
+        if (coins.coins >= cost && upgradeMenu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && !choouseWorkerObj.activeInHierarchy)
         {
             choouseWorkerObj.SetActive(true);
         }
+        else
+        {
+            Close();    
+        }
+    }
+    public void Close()
+    {
+        choouseWorkerObj.SetActive(false);
     }
 
     public void Buy(Workers worker)
     {
-        coins.coins -= cost;
+        coins.TakeCoins(cost);
+        worker.IsBuy = true;
         workerPrefab.GetComponent<Worker>().workerData = worker;
         Instantiate(workerPrefab, spawnPos.transform);
+        reduceTime.FindWorkers();
         Destroy(gameObject);
     }
 }
