@@ -13,9 +13,24 @@ public class ShowBabls : MonoBehaviour
         babls[5].GetComponentInChildren<TextMeshProUGUI>().text = $"{workerData.SpeshalText}";
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Chat()
     {
+        if (Random.Range(1,20) == 1)
+        {
+            babls[5].SetActive(true);
+        }
+        else
+        {
+            babls[Random.Range(0, babls.Length-1)].SetActive(true);
+        }
+        Invoke("Close",1);
         
+    }
+    private void Close()
+    {
+        foreach (var item in babls)
+        {
+            item.gameObject.SetActive(false);
+        }
     }
 }

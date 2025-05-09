@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,12 +18,14 @@ public class Worker : MonoBehaviour
     private int tilent;
     private GameObject buyWorker;
     private ShowUpgradeMenu menu;
+    private ShowBabls showBabls;
     void Start()
     {
+        showBabls = gameObject.GetComponentInChildren<ShowBabls>();
         menu = FindObjectOfType<ShowUpgradeMenu>();
         coins = FindObjectOfType<Coins>();
         sprite = gameObject.transform.Find("Pers").gameObject;
-        sprite.GetComponent<SpriteRenderer>().sprite = workerData.Sprite;
+        Instantiate(workerData.Sprite, sprite.gameObject.transform);
         persName = workerData.PersName;
         level = workerData.Level;
         tilent = workerData.Tilent;
@@ -52,6 +55,10 @@ public class Worker : MonoBehaviour
             coins.AddCoins(sallary);
             curWorkTime = 0;
             timeSlider.value = 0;
+            if (Random.Range(1, 4) == 1)
+            {
+                showBabls.Chat();
+            }
         }
     }
 }

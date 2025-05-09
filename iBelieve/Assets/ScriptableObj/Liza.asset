@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Liza
   m_EditorClassIdentifier: 
   PersName: Liza
-  Sprite: {fileID: -1147402141, guid: 8ada49b4b18d601489397d9ddfd31e3a, type: 3}
+  Sprite: {fileID: 7845988235472344810, guid: 9157845716d29294d8ed2ae3db3f9a8a, type: 3}
   Icon: {fileID: -263622649, guid: 5dce10d629dd174479b8d963721973c9, type: 3}
   Level: 1
   Tilent: 3

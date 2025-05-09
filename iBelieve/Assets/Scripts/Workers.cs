@@ -6,7 +6,7 @@ using UnityEngine;
 public class Workers : ScriptableObject
 {
     [SerializeField] public string PersName; 
-    [SerializeField] public Sprite Sprite;
+    [SerializeField] public GameObject Sprite;
     [SerializeField] public Sprite Icon;
     [SerializeField] public int Level;
     [SerializeField] public int Tilent;
