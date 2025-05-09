@@ -10,6 +10,7 @@ public class ShowWorkerInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI labelText;
     [SerializeField] private TextMeshProUGUI infoText;
     private Worker worker;
+    private Desk desk;
     private ShowUpgradeMenu menu;
     private GameUIController gameUIController;
     void Start()
@@ -17,15 +18,16 @@ public class ShowWorkerInfo : MonoBehaviour
         menu = FindObjectOfType<ShowUpgradeMenu>();
         gameUIController = FindObjectOfType<GameUIController>();
         worker = gameObject.GetComponentInParent<Worker>();
+        desk = gameObject.GetComponentInParent<Desk>();
         infoPanel.SetActive(false);
-        labelText.GetComponent<TextMeshProUGUI>().text = $"{worker.persName}";
+        labelText.GetComponent<TextMeshProUGUI>().text = $"{worker.PersName}";
     }
 
     private void OnMouseOver()
     {
         if (!menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen) 
         {
-            infoText.GetComponent<TextMeshProUGUI>().text = $"Level: {worker.level}\r\nSallary: 5 coins\r\nCooldown: 15 sec";
+            infoText.GetComponent<TextMeshProUGUI>().text = $"Sallary:{worker.Sallary} coins\r\nCooldown: {desk.Cooldown} sec";
             infoPanel.SetActive(true);
         }
     }

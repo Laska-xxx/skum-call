@@ -7,10 +7,10 @@ using UnityEngine;
 public class BuyWorker : MonoBehaviour
 {
     [SerializeField] private GameObject workerPrefab;
-    [SerializeField] public int num;
-    [SerializeField] private int cost;
+    [SerializeField] private float cost;
     [SerializeField] private TextMeshProUGUI costText;
     [SerializeField] private GameObject choouseWorkerObj;
+    public int Num;
     private CreateBuyWorker createWorker;
     private GameObject spawnPos;
     private SpriteRenderer spriteRenderer;
@@ -30,6 +30,9 @@ public class BuyWorker : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         choouseWorkerObj.SetActive(false);
         spriteRenderer.color = Color.grey;
+
+        cost = Mathf.Round(10*(Mathf.Pow(10, Num)));
+        costText.text = cost.ToString();
     }
 
     void Update()

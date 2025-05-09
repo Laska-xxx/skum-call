@@ -9,7 +9,7 @@ public class Workers : ScriptableObject
     [SerializeField] public GameObject Sprite;
     [SerializeField] public Sprite Icon;
     [SerializeField] public int Level;
-    [SerializeField] public int Tilent;
+    [SerializeField] public float Tilent = 0.4f;
     [SerializeField] public bool IsBuy;
     [SerializeField] public string SpeshalText;
 }

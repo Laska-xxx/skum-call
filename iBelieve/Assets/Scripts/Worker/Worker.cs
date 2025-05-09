@@ -7,28 +7,34 @@ using UnityEngine.UI;
 public class Worker : MonoBehaviour
 {
     [SerializeField] private Slider timeSlider;
-    [SerializeField] private float sallary = 5;
-    [SerializeField] private float workTime = 15;
+    [SerializeField] private int cost = 15;
+    public float Sallary { get; private set; }
+    public string PersName { get; private set; }
+    public int Level { get; private set; }
+    public float CostUpgrade { get; private set; }
+    private float tilent = 0.4f;
     private float curWorkTime = 0;
-    public Workers workerData;
     private GameObject sprite;
-    public string persName {  get; private set; }
-    public int level { get; private set; }
-    private Coins coins;
-    private int tilent;
     private GameObject buyWorker;
     private ShowUpgradeMenu menu;
     private ShowBabls showBabls;
+
+    public Workers workerData;
+    private Desk desk;
+    private Coins coins;
     void Start()
     {
+        desk = gameObject.GetComponentInChildren<Desk>();
         showBabls = gameObject.GetComponentInChildren<ShowBabls>();
         menu = FindObjectOfType<ShowUpgradeMenu>();
         coins = FindObjectOfType<Coins>();
         sprite = gameObject.transform.Find("Pers").gameObject;
         Instantiate(workerData.Sprite, sprite.gameObject.transform);
-        persName = workerData.PersName;
-        level = workerData.Level;
+        PersName = workerData.PersName;
+        Level = workerData.Level;
         tilent = workerData.Tilent;
+        Sallary = Mathf.Round((float)(tilent * 15 * (Mathf.Pow(1.1f, Level))));
+        CostUpgrade = cost;
     }
 
 
@@ -39,7 +45,9 @@ public class Worker : MonoBehaviour
 
     public void LevelUp()
     {
-        level++;
+        Level++;
+        Sallary = FutireSallary(Level);
+        CostUpgrade = Mathf.Round(cost*(Mathf.Pow(1.1f,Level)));
     }
 
     public void ReduceTimer()
@@ -48,11 +56,11 @@ public class Worker : MonoBehaviour
     }
     private void PassiveIncome()
     {
-        timeSlider.value = curWorkTime / workTime;
+        timeSlider.value = curWorkTime /desk.Cooldown;
         curWorkTime += Time.deltaTime;
-        if (curWorkTime >= workTime)
+        if (curWorkTime >= desk.Cooldown)
         {
-            coins.AddCoins(sallary);
+            coins.AddCoins(Sallary);
             curWorkTime = 0;
             timeSlider.value = 0;
             if (Random.Range(1, 4) == 1)
@@ -60,5 +68,10 @@ public class Worker : MonoBehaviour
                 showBabls.Chat();
             }
         }
+    }
+
+    public float FutireSallary(int level)
+    {
+        return Mathf.Round((float)(tilent * 15 * (Mathf.Pow(1.1f, level))));
     }
 }

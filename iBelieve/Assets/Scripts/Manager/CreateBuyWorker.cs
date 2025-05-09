@@ -19,7 +19,7 @@ public class CreateBuyWorker : MonoBehaviour
         {
             if (i == num)
             {
-                buyWorkerPrefab.GetComponent<BuyWorker>().num = i;
+                buyWorkerPrefab.GetComponent<BuyWorker>().Num = i;
                 Instantiate(buyWorkerPrefab, spawns[i].gameObject.transform);
             }
         }

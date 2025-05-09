@@ -9,7 +9,7 @@ public class Coins : MonoBehaviour
 
     private void Start()
     {
-        coins = 0;
+        coins = 10;
         specialCoins = 0;
     }
 

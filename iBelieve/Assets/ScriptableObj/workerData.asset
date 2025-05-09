@@ -15,7 +15,7 @@ MonoBehaviour:
   PersName: Worker3
   Sprite: {fileID: 5734522771958882299, guid: 718e112247af39941920c6b5d2588872, type: 3}
   Icon: {fileID: 599558081, guid: aad66d8975dfc08418c68d25001f9cd0, type: 3}
-  Level: 0
-  Tilent: 0
+  Level: 1
+  Tilent: 0.3
   IsBuy: 1
   SpeshalText: super fraza

@@ -16,6 +16,6 @@ MonoBehaviour:
   Sprite: {fileID: 7845988235472344810, guid: 9157845716d29294d8ed2ae3db3f9a8a, type: 3}
   Icon: {fileID: -263622649, guid: 5dce10d629dd174479b8d963721973c9, type: 3}
   Level: 1
-  Tilent: 3
-  IsBuy: 1
+  Tilent: 0.45
+  IsBuy: 0
   SpeshalText: "..\u041B\u0438\u0437\u0430 \u0441\u0438\u0433\u043C\u0430 \u0434\u0435\u0432\u043A\u0430.."

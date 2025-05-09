@@ -4,14 +4,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuyUpgradeWorker : MonoBehaviour
+public class BuyUpgradeDesk : MonoBehaviour
 {
-    public bool IsOpen { get; private set; } = false;
+    public bool IsOpen {  get; private set; } = false;
     [SerializeField] private GameObject upgradePanel;
     [SerializeField] private TextMeshProUGUI labelText;
     [SerializeField] private TextMeshProUGUI infoText;
     [SerializeField] private Button buyButton;
-    private Worker worker;
+    private Desk desk;
     private ShowUpgradeMenu menu;
     private GameUIController gameUIController;
     private Coins coins;
@@ -20,9 +20,9 @@ public class BuyUpgradeWorker : MonoBehaviour
         coins = FindObjectOfType<Coins>();
         menu = FindObjectOfType<ShowUpgradeMenu>();
         gameUIController = FindObjectOfType<GameUIController>();
-        worker = gameObject.GetComponentInParent<Worker>();
+        desk = gameObject.GetComponentInParent<Desk>();
         upgradePanel.SetActive(false);
-        labelText.GetComponent<TextMeshProUGUI>().text = $"{worker.PersName}";
+        labelText.GetComponent<TextMeshProUGUI>().text = $"Стол";
         buyButton.onClick.AddListener(BuyUpgrade);
     }
 
@@ -46,17 +46,16 @@ public class BuyUpgradeWorker : MonoBehaviour
     }
     private void BuyUpgrade()
     {
-        if (coins.coins >= worker.CostUpgrade)
+        if (coins.coins >= desk.UpgradeCost)
         {
-            coins.TakeCoins(worker.CostUpgrade);
-            worker.LevelUp();
+            coins.TakeCoins(desk.UpgradeCost);
+            desk.LevelUp();
             DrowInfo();
         }
     }
 
     private void DrowInfo()
     {
-        infoText.GetComponent<TextMeshProUGUI>().text = $"Уровень: {worker.Level}->{worker.Level + 1}\r\nЗаработок: {worker.Sallary}->{worker.FutireSallary(worker.Level + 1)} монет\r\nСтоимость: {worker.CostUpgrade}";
+        infoText.GetComponent<TextMeshProUGUI>().text = $"Уровень: {desk.Level}->{desk.Level + 1}\r\nКулдаун: {desk.Cooldown}->{desk.FutureCooldown(desk.Level+1)} сек\r\nСтоимость: {desk.UpgradeCost}";
     }
-
 }
