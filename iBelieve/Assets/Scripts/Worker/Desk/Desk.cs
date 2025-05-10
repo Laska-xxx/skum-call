@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Desk : MonoBehaviour
 {
+    [SerializeField] private GameObject updradePos;
     [SerializeField] private GameObject[] upgrads;
     [SerializeField] private int startCooldown = 25;
      public int Cooldown { get; private set; }
@@ -16,6 +17,7 @@ public class Desk : MonoBehaviour
     
     void Start()
     {
+        Instantiate(upgrads[0], updradePos.transform);
         worker = gameObject.GetComponentInParent<Worker>();
         Cooldown = startCooldown;
         UpgradeCost = cost;
@@ -29,11 +31,8 @@ public class Desk : MonoBehaviour
         UpgradeCost = Mathf.Round(cost * (Mathf.Pow(1.45f, Level)));
         if (Level % 5 == 0 && Level <= 20)
         {
-            foreach (GameObject obj in gameObject.GetComponentsInChildren<GameObject>())
-            {
-                Destroy(obj);
-            }
-            /*Instantiate(upgrads[lvl/5], gameObject.transform);*/
+            Destroy(updradePos.transform.GetChild(0).gameObject);
+            Instantiate(upgrads[Level / 5], updradePos.transform);
         }
     }
     public int FutureCooldown(int lvl)
