@@ -22,6 +22,7 @@ public class Worker : MonoBehaviour
     public Workers workerData;
     private Desk desk;
     private Coins coins;
+    private Shop shop;
     void Start()
     {
         desk = gameObject.GetComponentInChildren<Desk>();
@@ -34,6 +35,7 @@ public class Worker : MonoBehaviour
         Level = workerData.Level;
         tilent = workerData.Tilent;
         Sallary = Mathf.Round((float)(tilent * 15 * (Mathf.Pow(1.1f, Level))));
+        shop = FindObjectOfType<Shop>();
         CostUpgrade = cost;
     }
 
@@ -57,10 +59,10 @@ public class Worker : MonoBehaviour
     private void PassiveIncome()
     {
         timeSlider.value = curWorkTime /desk.Cooldown;
-        curWorkTime += Time.deltaTime;
+        curWorkTime += Time.fixedDeltaTime;
         if (curWorkTime >= desk.Cooldown)
         {
-            coins.AddCoins(Sallary);
+            coins.AddCoins(Sallary * (shop.IsDobleSallary ? 2 : 1));
             curWorkTime = 0;
             timeSlider.value = 0;
             if (Random.Range(1, 4) == 1)

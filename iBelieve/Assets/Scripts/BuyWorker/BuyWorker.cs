@@ -62,6 +62,7 @@ public class BuyWorker : MonoBehaviour
     public void Buy(Workers worker)
     {
         coins.TakeCoins(cost);
+        coins.AddSpecialCoins();
         worker.IsBuy = true;
         workerPrefab.GetComponent<Worker>().workerData = worker;
         Instantiate(workerPrefab, spawnPos.transform);

@@ -10,7 +10,7 @@ public class Coins : MonoBehaviour
     private void Start()
     {
         coins = 10;
-        specialCoins = 0;
+        specialCoins = 10;
     }
 
     public void AddCoins(float amount)
@@ -23,7 +23,7 @@ public class Coins : MonoBehaviour
         coins -= amount;
     }
 
-    public void AddSpecialCoins(float amount)
+    public void AddSpecialCoins(float amount = 1)
     {
         specialCoins += amount;
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "workerData", menuName = "Worker")]
 public class Workers : ScriptableObject
 {
-    [SerializeField] public string PersName; 
+    [SerializeField] public string PersName;
     [SerializeField] public GameObject Sprite;
     [SerializeField] public Sprite Icon;
     [SerializeField] public int Level;

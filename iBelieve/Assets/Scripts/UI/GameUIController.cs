@@ -14,6 +14,7 @@ public class GameUIController : MonoBehaviour
     [Header("Shop")]
     [SerializeField] private Button closeShopButton;
     [SerializeField] private GameObject shopPanel;
+    [SerializeField] private TextMeshProUGUI speshalCoinsText;
     [Header("Settings")]
     [SerializeField] private Button closeSettingsButton;
     [SerializeField] private Button resetGameButton;
@@ -38,6 +39,7 @@ public class GameUIController : MonoBehaviour
     void Update()
     {
         coinsText.text = coins.coins.ToString();
+        speshalCoinsText.text = coins.specialCoins.ToString();
     }
 
     private void ShowShop()

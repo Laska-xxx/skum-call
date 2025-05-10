@@ -49,6 +49,7 @@ public class BuyUpgradeWorker : MonoBehaviour
         if (coins.coins >= worker.CostUpgrade)
         {
             coins.TakeCoins(worker.CostUpgrade);
+            coins.AddSpecialCoins();
             worker.LevelUp();
             DrowInfo();
         }

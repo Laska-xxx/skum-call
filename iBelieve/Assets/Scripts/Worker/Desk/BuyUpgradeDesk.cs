@@ -49,6 +49,7 @@ public class BuyUpgradeDesk : MonoBehaviour
         if (coins.coins >= desk.UpgradeCost)
         {
             coins.TakeCoins(desk.UpgradeCost);
+            coins.AddSpecialCoins();
             desk.LevelUp();
             DrowInfo();
         }
