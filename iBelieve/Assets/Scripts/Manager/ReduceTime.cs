@@ -19,6 +19,7 @@ public class ReduceTime : MonoBehaviour
             foreach (Worker worker in workers)
             {
                 worker.ReduceTimer();
+                worker.GetComponentInChildren<AnimController>().ClickAnim();
             }
         }
     }

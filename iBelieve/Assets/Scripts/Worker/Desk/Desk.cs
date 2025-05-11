@@ -13,12 +13,15 @@ public class Desk : MonoBehaviour
     public float UpgradeCost { get; private set; }
     public int Level { get; private set; } = 1;
     private Worker worker;
-    
+    private PhoneInHand phoneInHand;
+    private AnimController animController;
     
     void Start()
     {
         Instantiate(upgrads[0], updradePos.transform);
-        worker = gameObject.GetComponentInParent<Worker>();
+        worker = GetComponent<Worker>();
+        phoneInHand = GetComponentInChildren<PhoneInHand>();
+        animController = GetComponentInChildren<AnimController>();
         Cooldown = startCooldown;
         UpgradeCost = cost;
     }
@@ -33,6 +36,15 @@ public class Desk : MonoBehaviour
         {
             Destroy(updradePos.transform.GetChild(0).gameObject);
             Instantiate(upgrads[Level / 5], updradePos.transform);
+            if (Level / 5 == 1)
+            {
+                phoneInHand.ChangePhone();
+            }
+            if (Level / 5 == 2)
+            {
+                phoneInHand.DelPhone();
+                animController.ChangeAnim();
+            }
         }
     }
     public int FutureCooldown(int lvl)
