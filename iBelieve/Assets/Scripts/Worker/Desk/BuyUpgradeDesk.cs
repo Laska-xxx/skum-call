@@ -14,6 +14,7 @@ public class BuyUpgradeDesk : MonoBehaviour
     private Desk desk;
     private ShowUpgradeMenu menu;
     private GameUIController gameUIController;
+    private BuyUpgradeController upgradeController;
     private Coins coins;
     void Start()
     {
@@ -21,6 +22,7 @@ public class BuyUpgradeDesk : MonoBehaviour
         menu = FindObjectOfType<ShowUpgradeMenu>();
         gameUIController = FindObjectOfType<GameUIController>();
         desk = gameObject.GetComponentInParent<Desk>();
+        upgradeController = FindObjectOfType<BuyUpgradeController>();
         upgradePanel.SetActive(false);
         labelText.GetComponent<TextMeshProUGUI>().text = $"Стол";
         buyButton.onClick.AddListener(BuyUpgrade);
@@ -30,6 +32,7 @@ public class BuyUpgradeDesk : MonoBehaviour
     {
         if (menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && !upgradePanel.activeInHierarchy)
         {
+            upgradeController.CloseAllPanels();
             DrowInfo();
             upgradePanel.SetActive(true);
             IsOpen = true;

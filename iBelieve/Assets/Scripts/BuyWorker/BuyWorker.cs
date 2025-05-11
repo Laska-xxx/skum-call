@@ -18,6 +18,7 @@ public class BuyWorker : MonoBehaviour
     private Coins coins;
     private ReduceTime reduceTime;
     private GameUIController gameUIController;
+    private BuyUpgradeController upgradeController;
     public Workers workerData;
     void Start()
     {
@@ -27,6 +28,7 @@ public class BuyWorker : MonoBehaviour
         spawnPos = gameObject.transform.parent.gameObject;
         coins = FindObjectOfType<Coins>();
         upgradeMenu = FindObjectOfType<ShowUpgradeMenu>();
+        upgradeController = FindObjectOfType<BuyUpgradeController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         choouseWorkerObj.SetActive(false);
         spriteRenderer.color = Color.grey;
@@ -47,6 +49,7 @@ public class BuyWorker : MonoBehaviour
     {
         if (coins.coins >= cost && upgradeMenu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && !choouseWorkerObj.activeInHierarchy)
         {
+            upgradeController.CloseAllPanels();
             choouseWorkerObj.SetActive(true);
         }
         else

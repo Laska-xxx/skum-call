@@ -14,6 +14,7 @@ public class BuyUpgradeWorker : MonoBehaviour
     private Worker worker;
     private ShowUpgradeMenu menu;
     private GameUIController gameUIController;
+    private BuyUpgradeController upgradeController;
     private Coins coins;
     void Start()
     {
@@ -21,6 +22,7 @@ public class BuyUpgradeWorker : MonoBehaviour
         menu = FindObjectOfType<ShowUpgradeMenu>();
         gameUIController = FindObjectOfType<GameUIController>();
         worker = gameObject.GetComponentInParent<Worker>();
+        upgradeController = FindObjectOfType<BuyUpgradeController>();
         upgradePanel.SetActive(false);
         labelText.GetComponent<TextMeshProUGUI>().text = $"{worker.PersName}";
         buyButton.onClick.AddListener(BuyUpgrade);
@@ -30,6 +32,7 @@ public class BuyUpgradeWorker : MonoBehaviour
     {
         if (menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && !upgradePanel.activeInHierarchy)
         {
+            upgradeController.CloseAllPanels();
             DrowInfo();
             upgradePanel.SetActive(true);
             IsOpen = true;

@@ -6,15 +6,16 @@ public class ReduceTime : MonoBehaviour
 {
     public Worker[] workers;
     private ShowUpgradeMenu menu;
+    private GameUIController gameUIController;
     void Start()
     {
-        workers = FindObjectsOfType<Worker>();
         menu = FindObjectOfType<ShowUpgradeMenu>();
+        gameUIController = FindObjectOfType<GameUIController>();
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !menu.UpgradeMenuOpen)
+        if (Input.GetMouseButtonDown(0) && !menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen)
         {
             foreach (Worker worker in workers)
             {

@@ -7249,6 +7249,7 @@ GameObject:
   - component: {fileID: 1538954082}
   - component: {fileID: 1538954083}
   - component: {fileID: 1538954084}
+  - component: {fileID: 1538954086}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -7399,6 +7400,18 @@ MonoBehaviour:
   mainMixer: {fileID: 24100000, guid: 4e46f4d251aaed048baff08594fbe263, type: 2}
   musicSlider: {fileID: 1126202693}
   SFXSlider: {fileID: 1365816188}
+--- !u!114 &1538954086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538954076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115c18807cc247b48ad3aca7b72795db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1539360474
 GameObject:
   m_ObjectHideFlags: 0

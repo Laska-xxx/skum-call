@@ -5,13 +5,13 @@ using UnityEngine;
 public class ShowUpgradeMenu : MonoBehaviour
 {
     [SerializeField] private GameObject menuBg;
-    private BuyUpgradeWorker[] buyUpgradeWorkers;
-    private BuyWorker[] buyeWorkers;
+    private BuyUpgradeController upgradeController;
     public bool UpgradeMenuOpen { get; private set; }
     void Start()
     {
         UpgradeMenuOpen = false;
         menuBg.SetActive(false);
+        upgradeController = FindObjectOfType<BuyUpgradeController>();
     }
 
     private void OnMouseDown()
@@ -20,16 +20,7 @@ public class ShowUpgradeMenu : MonoBehaviour
         {
             UpgradeMenuOpen = false;
             menuBg.SetActive(false);
-            buyUpgradeWorkers = FindObjectsOfType<BuyUpgradeWorker>();
-            buyeWorkers = FindObjectsOfType<BuyWorker>();
-            foreach (var worker in buyUpgradeWorkers)
-            {
-                worker.Close();
-            }
-            foreach (var worker in buyeWorkers)
-            {
-                worker.Close();
-            }
+            upgradeController.CloseAllPanels();
         }
         else
         {
