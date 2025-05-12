@@ -13,11 +13,11 @@ public class PhoneInHand : MonoBehaviour
 
     public void ChangePhone()
     {
-        Destroy(spawnPos.transform.GetChild(1).gameObject);
+        Destroy(spawnPos.transform.GetChild(0).gameObject);
         Instantiate(phones[1], spawnPos.transform);
     }
     public void DelPhone()
     {
-        Destroy(spawnPos.transform.GetChild(1).gameObject);
+        Destroy(spawnPos.transform.GetChild(0).gameObject);
     }
 }

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1a8e0fa7c2c6c64db42d72db4af0b1e, type: 3}
+  m_Name: Ozon
+  m_EditorClassIdentifier: 
+  PersName: Ozon
+  Sprite: {fileID: 0}
+  Icon: {fileID: 0}
+  Level: 4
+  Tilent: 0.4
+  PlusCooldown: 0
+  IsBuy: 0
+  SpeshalText: "..\u042F \u0442\u0435\u0440\u043F\u0435\u043B \u0438 \u0432\u0430\u043C
+    \u0432\u0435\u043B\u0435\u043B.."

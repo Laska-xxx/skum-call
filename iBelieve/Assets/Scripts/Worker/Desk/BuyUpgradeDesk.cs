@@ -16,6 +16,9 @@ public class BuyUpgradeDesk : MonoBehaviour
     private GameUIController gameUIController;
     private BuyUpgradeController upgradeController;
     private Coins coins;
+
+    private AudioSource buyAudio;
+    private AudioSource lvlUpAudio;
     void Start()
     {
         coins = FindObjectOfType<Coins>();
@@ -26,6 +29,9 @@ public class BuyUpgradeDesk : MonoBehaviour
         upgradePanel.SetActive(false);
         labelText.GetComponent<TextMeshProUGUI>().text = $"Стол";
         buyButton.onClick.AddListener(BuyUpgrade);
+
+        buyAudio = GameObject.Find("BuySource").GetComponent<AudioSource>();
+        lvlUpAudio = GameObject.Find("LvlUpSource").GetComponent<AudioSource>();
     }
 
     private void OnMouseDown()
@@ -55,6 +61,14 @@ public class BuyUpgradeDesk : MonoBehaviour
             coins.AddSpecialCoins();
             desk.LevelUp();
             DrowInfo();
+            if (desk.Level % 5 == 0)
+            {
+                lvlUpAudio.Play();
+            }
+            else
+            {
+                buyAudio.Play();
+            }
         }
     }
 

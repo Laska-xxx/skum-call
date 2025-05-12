@@ -17,6 +17,9 @@ public class MainMenuUiController : MonoBehaviour
     [Header("Authors")]
     [SerializeField] private GameObject authorsPanel;
     [SerializeField] private Button closeAuthorsButton;
+
+    private AudioSource clickAudio;
+    private AudioSource openPanelAudio;
     void Start()
     {
         playButton.onClick.AddListener(Play);
@@ -25,30 +28,41 @@ public class MainMenuUiController : MonoBehaviour
         closeSettingsButton.onClick.AddListener(CloseSettings);
         closeAuthorsButton.onClick.AddListener(CloseAuthors);
         quitButton.onClick.AddListener(Quit);
+
+        clickAudio = GameObject.Find("ClickUISource").GetComponent<AudioSource>();
+        openPanelAudio = GameObject.Find("OpenUISource").GetComponent<AudioSource>();
     }
 
     private void Play()
     {
+        clickAudio.Play();
         SceneManager.LoadScene("FirstLevel");
     }
     private void ShowSettings()
     {
+        clickAudio.Play();
+        openPanelAudio.Play();
         settingsPanel.SetActive(true);
     }
     private void ShowAuthors()
     {
+        clickAudio.Play();
+        openPanelAudio.Play();
         authorsPanel.SetActive(true);
     }
     private void CloseSettings()
     {
+        clickAudio.Play();
         settingsPanel.SetActive(false);
     }
     private void CloseAuthors()
     {
+        clickAudio.Play();
         authorsPanel.SetActive(false);
     }
     private void Quit()
     {
+        clickAudio.Play();
         Application.Quit();
     }
 }

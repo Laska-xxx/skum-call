@@ -16,6 +16,9 @@ public class BuyUpgradeWorker : MonoBehaviour
     private GameUIController gameUIController;
     private BuyUpgradeController upgradeController;
     private Coins coins;
+
+    private AudioSource buyAudio;
+    private AudioSource lvlUpAudio;
     void Start()
     {
         coins = FindObjectOfType<Coins>();
@@ -26,6 +29,9 @@ public class BuyUpgradeWorker : MonoBehaviour
         upgradePanel.SetActive(false);
         labelText.GetComponent<TextMeshProUGUI>().text = $"{worker.PersName}";
         buyButton.onClick.AddListener(BuyUpgrade);
+
+        buyAudio = GameObject.Find("BuySource").GetComponent<AudioSource>();
+        lvlUpAudio = GameObject.Find("LvlUpSource").GetComponent<AudioSource>();
     }
 
     private void OnMouseDown()
@@ -55,6 +61,14 @@ public class BuyUpgradeWorker : MonoBehaviour
             coins.AddSpecialCoins();
             worker.LevelUp();
             DrowInfo();
+            if (worker.Level % 5 == 0)
+            {
+                lvlUpAudio.Play();
+            }
+            else
+            {
+                buyAudio.Play();
+            }
         }
     }
 

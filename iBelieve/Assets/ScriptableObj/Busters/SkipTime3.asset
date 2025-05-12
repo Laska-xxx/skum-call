@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SkipTime3
   m_EditorClassIdentifier: 
   Time: 300
-  Cost: 5
+  Cost: 20
   IsDobleSallaryBuster: 0

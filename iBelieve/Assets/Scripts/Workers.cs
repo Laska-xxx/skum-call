@@ -10,6 +10,7 @@ public class Workers : ScriptableObject
     [SerializeField] public Sprite Icon;
     [SerializeField] public int Level;
     [SerializeField] public float Tilent = 0.4f;
-    [SerializeField] public bool IsBuy;
+    [SerializeField] public int PlusCooldown = 0;
+    [SerializeField] public bool IsBuy = false;
     [SerializeField] public string SpeshalText;
 }

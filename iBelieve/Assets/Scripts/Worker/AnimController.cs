@@ -19,13 +19,14 @@ public class AnimController : MonoBehaviour
 
     public void ClickAnim()
     {
-        if (isWhithPhone)
-        {
-            animator.SetTrigger("ClickWhithPhone");
-        }
-        else
-        {
-            animator.SetTrigger("Click");
-        }
+        /* if (isWhithPhone)
+         {
+             animator.SetTrigger("ClickWhithPhone");
+         }
+         else
+         {
+             animator.SetTrigger("Click");
+         }*/
+        animator.SetTrigger("Click");
     }
 }

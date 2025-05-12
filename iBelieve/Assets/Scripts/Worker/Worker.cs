@@ -23,6 +23,8 @@ public class Worker : MonoBehaviour
     private Desk desk;
     private Coins coins;
     private Shop shop;
+
+    private AudioSource taskCompleteAudio;
     void Start()
     {
         desk = gameObject.GetComponentInChildren<Desk>();
@@ -37,6 +39,8 @@ public class Worker : MonoBehaviour
         Sallary = Mathf.Round((float)(tilent * 15 * (Mathf.Pow(1.1f, Level))));
         shop = FindObjectOfType<Shop>();
         CostUpgrade = cost;
+
+        taskCompleteAudio = GameObject.Find("TaskCompleteSource").GetComponent<AudioSource>();
     }
 
 
@@ -62,6 +66,7 @@ public class Worker : MonoBehaviour
         curWorkTime += Time.fixedDeltaTime;
         if (curWorkTime >= desk.Cooldown)
         {
+            taskCompleteAudio.Play();
             coins.AddCoins(Sallary * (shop.IsDobleSallary ? 2 : 1));
             curWorkTime = 0;
             timeSlider.value = 0;

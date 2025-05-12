@@ -10,7 +10,7 @@ public class ShowBabls : MonoBehaviour
     void Start()
     {
         workerData = gameObject.GetComponentInParent<Worker>().workerData;
-        babls[5].GetComponentInChildren<TextMeshProUGUI>().text = $"{workerData.SpeshalText}";
+        babls[6].GetComponentInChildren<TextMeshProUGUI>().text = $"{workerData.SpeshalText}";
     }
 
     public void Chat()
@@ -23,7 +23,7 @@ public class ShowBabls : MonoBehaviour
         {
             babls[Random.Range(0, babls.Length-1)].SetActive(true);
         }
-        Invoke("Close",1);
+        Invoke("Close",1.5f);
         
     }
     private void Close()

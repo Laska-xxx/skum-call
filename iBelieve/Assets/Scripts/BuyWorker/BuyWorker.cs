@@ -20,6 +20,7 @@ public class BuyWorker : MonoBehaviour
     private GameUIController gameUIController;
     private BuyUpgradeController upgradeController;
     public Workers workerData;
+    private AudioSource buyAudio;
     void Start()
     {
         createWorker = FindObjectOfType<CreateBuyWorker>();
@@ -35,6 +36,8 @@ public class BuyWorker : MonoBehaviour
 
         cost = Mathf.Round(10*(Mathf.Pow(10, Num)));
         costText.text = cost.ToString();
+
+        buyAudio = GameObject.Find("BuySource").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -64,6 +67,7 @@ public class BuyWorker : MonoBehaviour
 
     public void Buy(Workers worker)
     {
+        buyAudio.Play();
         coins.TakeCoins(cost);
         coins.AddSpecialCoins();
         worker.IsBuy = true;

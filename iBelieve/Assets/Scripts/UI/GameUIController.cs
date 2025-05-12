@@ -24,6 +24,9 @@ public class GameUIController : MonoBehaviour
     public bool SettingsOpen = false;
     private Coins coins;
     private Workers[] allWorkers;
+
+    private AudioSource clickAudio;
+    private AudioSource openPanelAudio;
     void Start()
     {
         coins = FindObjectOfType<Coins>();
@@ -34,6 +37,9 @@ public class GameUIController : MonoBehaviour
         closeSettingsButton.onClick.AddListener(CloseSettings);
         goMainMenuButton.onClick.AddListener(GoMainMenu);
         resetGameButton.onClick.AddListener(ReloadGame);
+
+        clickAudio = GameObject.Find("ClickUISource").GetComponent<AudioSource>();
+        openPanelAudio = GameObject.Find("OpenUISource").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -44,34 +50,42 @@ public class GameUIController : MonoBehaviour
 
     private void ShowShop()
     {
+        openPanelAudio.Play();
+        clickAudio.Play();
         shopPanel.SetActive(true);
         ShopOpen = true;
     }
 
     private void ShowSettings()
     {
+        openPanelAudio.Play();
+        clickAudio.Play();
         settingsPanel.SetActive(true);
         SettingsOpen = true;
     }
     private void CloseShop()
     {
+        clickAudio.Play();
         shopPanel.SetActive(false);
         ShopOpen = false;
     }
 
     private void CloseSettings()
     {
+        clickAudio.Play();
         settingsPanel.SetActive(false );
         SettingsOpen = false;
     }
 
     private void GoMainMenu()
     {
+        clickAudio.Play();
         SceneManager.LoadScene("MainMenu");
     }
 
     private void ReloadGame()
     {
+        clickAudio.Play();
         foreach (var worker in allWorkers)
         {
             worker.IsBuy = false;
