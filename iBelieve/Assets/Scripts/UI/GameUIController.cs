@@ -20,13 +20,15 @@ public class GameUIController : MonoBehaviour
     [SerializeField] private Button resetGameButton;
     [SerializeField] private Button goMainMenuButton;
     [SerializeField] private GameObject settingsPanel;
+    [Header("Buster")]
+    [SerializeField] private GameObject busterImage;
+    [SerializeField] private TextMeshProUGUI busterTimerText;
     public bool ShopOpen = false;
     public bool SettingsOpen = false;
     private Coins coins;
     private Workers[] allWorkers;
 
-    private AudioSource clickAudio;
-    private AudioSource openPanelAudio;
+    private AudioController audioController;
     void Start()
     {
         coins = FindObjectOfType<Coins>();
@@ -38,8 +40,7 @@ public class GameUIController : MonoBehaviour
         goMainMenuButton.onClick.AddListener(GoMainMenu);
         resetGameButton.onClick.AddListener(ReloadGame);
 
-        clickAudio = GameObject.Find("ClickUISource").GetComponent<AudioSource>();
-        openPanelAudio = GameObject.Find("OpenUISource").GetComponent<AudioSource>();
+        audioController = FindObjectOfType<AudioController>();
     }
 
     void Update()
@@ -50,43 +51,46 @@ public class GameUIController : MonoBehaviour
 
     private void ShowShop()
     {
-        openPanelAudio.Play();
-        clickAudio.Play();
+        audioController.PlayClickUI();
         shopPanel.SetActive(true);
         ShopOpen = true;
     }
 
     private void ShowSettings()
     {
-        openPanelAudio.Play();
-        clickAudio.Play();
+        audioController.PlayClickUI();
         settingsPanel.SetActive(true);
         SettingsOpen = true;
     }
     private void CloseShop()
     {
-        clickAudio.Play();
+        audioController.PlayClickUI();
         shopPanel.SetActive(false);
         ShopOpen = false;
     }
 
     private void CloseSettings()
     {
-        clickAudio.Play();
+        audioController.PlayClickUI();
         settingsPanel.SetActive(false );
         SettingsOpen = false;
     }
 
     private void GoMainMenu()
     {
-        clickAudio.Play();
+        audioController.PlayClickUI();
+        foreach (Workers worker in allWorkers)
+        {
+            worker.IsBuy = false;
+        }
+        PlayerPrefs.SetInt("ShowTutorial", 0);
         SceneManager.LoadScene("MainMenu");
     }
 
     private void ReloadGame()
     {
-        clickAudio.Play();
-        foreach (var worker in allWorkers)
+        audioController.PlayClickUI();
+        foreach (Workers worker in allWorkers)
         {
             worker.IsBuy = false;
         }

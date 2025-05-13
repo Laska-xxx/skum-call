@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a8e0fa7c2c6c64db42d72db4af0b1e, type: 3}
   m_Name: Liza
   m_EditorClassIdentifier: 
-  PersName: Liza
+  PersName: "\u041B\u0438\u0437\u0430"
   Sprite: {fileID: 1944583550975998851, guid: a7e8a274f91113e4c9fb1b50ecaaf2a7, type: 3}
-  Icon: {fileID: -263622649, guid: 5dce10d629dd174479b8d963721973c9, type: 3}
+  Icon: {fileID: -1147402141, guid: 8ada49b4b18d601489397d9ddfd31e3a, type: 3}
   Level: 1
   Tilent: 0.4
   PlusCooldown: 0
-  IsBuy: 1
-  SpeshalText: "..\u0431\u0443\u0441\u0442 \u0430\u043A\u043A\u0430 \u0437\u0430
-    20\u043A \u0434\u043E \u0436\u0435\u043B\u0435\u0437\u043E.."
+  IsBuy: 0
+  SpeshalText: "\u0411\u0443\u0441\u0442 \u0430\u043A\u0430 \u0437\u0430 20\u043A
+    \u0434\u043E \u0436\u0435\u043B\u0435\u0437\u043E \u0441\u0443\u043F\u0435\u0440
+    \u0432\u044B\u0433\u043E\u0434\u0430!"

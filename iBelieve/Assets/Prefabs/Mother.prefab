@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 9021316256939187421}
   - component: {fileID: 6217236367020008660}
   - component: {fileID: 8699469650916865456}
+  - component: {fileID: 6560028870400962922}
   m_Layer: 0
   m_Name: Mother
   m_TagString: Untagged
@@ -401,6 +402,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a03d38d80033a4084f7d0270d8fc1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6560028870400962922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2443238123297185570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cbab10a59acf3a4a9bf264dd8b5e463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPos: {fileID: 7042834873832911965}
+  headphones:
+  - {fileID: 1499498574000707101, guid: 4eeda2a4cee6a4f49b13266b85dfd5c1, type: 3}
+  - {fileID: 6061108628568532601, guid: 9ea46d1efa6826e438c96f87343c66c2, type: 3}
 --- !u!1 &3585741296257547272
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,7 +792,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_Sprite: {fileID: -1893899191, guid: 235052e4550488c439791cfddf787132, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -903,6 +920,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7042834873832911965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6124815454086418550}
+  m_Layer: 0
+  m_Name: HeadphonesPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6124815454086418550
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7042834873832911965}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3763791021759637498}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7825372444787690935
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,6 +1014,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7444950562544762681}
+  - {fileID: 6124815454086418550}
   m_Father: {fileID: 1969288462860004035}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4248670696345848631

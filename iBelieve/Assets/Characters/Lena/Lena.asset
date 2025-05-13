@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a8e0fa7c2c6c64db42d72db4af0b1e, type: 3}
   m_Name: Lena
   m_EditorClassIdentifier: 
-  PersName: Lena
-  Sprite: {fileID: 0}
-  Icon: {fileID: 0}
-  Level: 0
-  Tilent: 0.4
-  PlusCooldown: 0
+  PersName: "\u041B\u0435\u043D\u0430"
+  Sprite: {fileID: 3106306710475899600, guid: da57d0fd401adab47bd4c141a7680311, type: 3}
+  Icon: {fileID: 709136962, guid: a5052c4295dd12b4e9e393e5059be68a, type: 3}
+  Level: 1
+  Tilent: 0.38
+  PlusCooldown: -5
   IsBuy: 0
-  SpeshalText: "..\u043D\u0430\u0441\u0442\u043E\u044F\u0449\u0438\u0439 \u043C\u0438\u0440
-    \u0432\u043E\u0432\u0441\u0435 \u043D\u0435 \u043D\u0430\u0441\u0442\u043E\u044F\u0449\u0438\u0439.."
+  SpeshalText: "\u0422\u044B \u0436\u0435 \u043D\u0435 \u0434\u0443\u043C\u0430\u0435\u0448\u044C,
+    \u0447\u0442\u043E \u0442\u0430 \u0442\u044B, \u0447\u0442\u043E \u0441\u0438\u0434\u0438\u0442
+    \u0437\u0430 \u044D\u043A\u0440\u0430\u043D\u043E\u043C, \u0438 \u0442\u044B
+    \u0437\u0434\u0435\u0441\u044C, \u0432 \u0421\u0435\u0442\u0438 \u2014 \u044D\u0442\u043E
+    \u043E\u0434\u043D\u043E \u0438 \u0442\u043E \u0436\u0435?"

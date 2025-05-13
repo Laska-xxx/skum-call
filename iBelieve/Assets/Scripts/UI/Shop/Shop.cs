@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
+    [SerializeField] private GameObject busterImage;
     private Desk desk;
     private Worker[] workers;
     private Coins coins;
@@ -16,22 +18,42 @@ public class Shop : MonoBehaviour
     public void SkipTime(int time)
     {
         workers = FindObjectsOfType<Worker>();
-        foreach (Worker worker in workers)
+        if (IsDobleSallary)
         {
-            desk = worker.gameObject.GetComponent<Desk>();
-            coins.AddCoins(worker.Sallary * (time / desk.Cooldown));
+            foreach (Worker worker in workers)
+            {
+                desk = worker.gameObject.GetComponent<Desk>();
+                coins.AddCoins(worker.Sallary * 2 * (time / desk.Cooldown));
+            }
+        }
+        else
+        {
+            foreach (Worker worker in workers)
+            {
+                desk = worker.gameObject.GetComponent<Desk>();
+                coins.AddCoins(worker.Sallary * (time / desk.Cooldown));
+            }
         }
 
     }
 
     public void DobleSellary(int time)
     {
-        IsDobleSallary = true;
-        Invoke("StopDobleSallary", time);
+        if (IsDobleSallary)
+        {
+            busterImage.GetComponent<BusterTimer>().Timer += time;
+        }
+        else
+        {
+            IsDobleSallary = true;
+            busterImage.SetActive(true);
+            busterImage.GetComponent<BusterTimer>().Timer += time;
+        }
     }
 
-    private void StopDobleSallary()
+    public void StopDobleSallary()
     {
         IsDobleSallary = false;
+        busterImage.SetActive(false);
     }
 }

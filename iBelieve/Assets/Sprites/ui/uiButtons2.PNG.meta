@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -134,7 +134,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: uiButtons2_0
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 717
+        width: 598
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9410d73a626c4da43912a74a3940ff1d
+      internalID: 766976263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uiButtons2_1
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 524
+        width: 598
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 364d544689f40564aab8f785cd994126
+      internalID: -752197063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uiButtons2_3
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 333
+        width: 598
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ce3e6cfe8345a74aa77449432fab4c5
+      internalID: 18761586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +208,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      uiButtons2_0: 766976263
+      uiButtons2_1: -752197063
+      uiButtons2_2: 1582669285
+      uiButtons2_3: 18761586
+      uiButtons2_4: -1880334826
+      uiButtons2_5: 1644654839
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

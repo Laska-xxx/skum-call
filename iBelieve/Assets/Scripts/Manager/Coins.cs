@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Coins : MonoBehaviour
 {
-    public double coins;
+    public double coins { get; private set; }
     public double specialCoins { get; private set; }
 
     private void Start()

@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BuyBuster : MonoBehaviour
 {
     [SerializeField] private Busters busterData;
+    private TextMeshProUGUI costText;
     private Button button;
     private Coins coins;
     private Shop shop;
 
     void Start()
     {
-        button = GetComponent<Button>();   
+        button = GetComponent<Button>();  
+        costText = GetComponentInChildren<TextMeshProUGUI>();
+        costText.text = busterData.Cost.ToString();
         coins = FindObjectOfType<Coins>();
         shop = FindObjectOfType<Shop>();
         button.onClick.AddListener(BuyClick);

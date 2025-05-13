@@ -20,14 +20,14 @@ public class ShowWorkerInfo : MonoBehaviour
         worker = gameObject.GetComponentInParent<Worker>();
         desk = gameObject.GetComponentInParent<Desk>();
         infoPanel.SetActive(false);
-        labelText.GetComponent<TextMeshProUGUI>().text = $"{worker.PersName}";
+        labelText.text = $"{worker.PersName}";
     }
 
     private void OnMouseOver()
     {
         if (!menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen) 
         {
-            infoText.GetComponent<TextMeshProUGUI>().text = $"Sallary:{worker.Sallary} coins\r\nCooldown: {desk.Cooldown} sec";
+            infoText.text = $"Заработок:{worker.Sallary} монет\r\nКулдаун: {desk.Cooldown} сек";
             infoPanel.SetActive(true);
         }
     }

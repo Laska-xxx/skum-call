@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class Worker : MonoBehaviour
 {
     [SerializeField] private Slider timeSlider;
-    [SerializeField] private int cost = 15;
+    [SerializeField] private int cost = 20;
+    public int Num = 0;
     public float Sallary { get; private set; }
     public string PersName { get; private set; }
     public int Level { get; private set; }
@@ -18,13 +19,12 @@ public class Worker : MonoBehaviour
     private GameObject buyWorker;
     private ShowUpgradeMenu menu;
     private ShowBabls showBabls;
+    private HeadphonesOnHead headphones;
 
     public Workers workerData;
     private Desk desk;
     private Coins coins;
     private Shop shop;
-
-    private AudioSource taskCompleteAudio;
     void Start()
     {
         desk = gameObject.GetComponentInChildren<Desk>();
@@ -33,18 +33,16 @@ public class Worker : MonoBehaviour
         coins = FindObjectOfType<Coins>();
         sprite = gameObject.transform.Find("Pers").gameObject;
         Instantiate(workerData.Sprite, sprite.gameObject.transform);
+        headphones = sprite.GetComponentInChildren<HeadphonesOnHead>();
         PersName = workerData.PersName;
         Level = workerData.Level;
         tilent = workerData.Tilent;
-        Sallary = Mathf.Round((float)(tilent * 15 * (Mathf.Pow(1.1f, Level))));
+        Sallary = Mathf.Round((float)(tilent * cost * (Mathf.Pow(1.1f, Level))));
         shop = FindObjectOfType<Shop>();
         CostUpgrade = cost;
-
-        taskCompleteAudio = GameObject.Find("TaskCompleteSource").GetComponent<AudioSource>();
     }
 
-
-    private void FixedUpdate()
+    private void Update()
     {
         PassiveIncome();
     }
@@ -53,7 +51,18 @@ public class Worker : MonoBehaviour
     {
         Level++;
         Sallary = FutireSallary(Level);
-        CostUpgrade = Mathf.Round(cost*(Mathf.Pow(1.1f,Level)));
+        CostUpgrade = Mathf.Round(cost*(Mathf.Pow(1.1f,Level * Num)));
+        if (Level % 10 == 0)
+        {
+            if (Level / 10 == 1)
+            {
+                headphones.ChangeHeadphonesOne();
+            }
+            if (Level / 10 == 2)
+            {
+                headphones.ChangeHeadphonesTwo();
+            }
+        }
     }
 
     public void ReduceTimer()
@@ -63,10 +72,9 @@ public class Worker : MonoBehaviour
     private void PassiveIncome()
     {
         timeSlider.value = curWorkTime /desk.Cooldown;
-        curWorkTime += Time.fixedDeltaTime;
+        curWorkTime += Time.deltaTime;
         if (curWorkTime >= desk.Cooldown)
         {
-            taskCompleteAudio.Play();
             coins.AddCoins(Sallary * (shop.IsDobleSallary ? 2 : 1));
             curWorkTime = 0;
             timeSlider.value = 0;

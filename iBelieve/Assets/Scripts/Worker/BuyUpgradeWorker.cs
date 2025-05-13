@@ -15,10 +15,10 @@ public class BuyUpgradeWorker : MonoBehaviour
     private ShowUpgradeMenu menu;
     private GameUIController gameUIController;
     private BuyUpgradeController upgradeController;
+    private ChekWorkersLvl chekWorkersLvl;
     private Coins coins;
 
-    private AudioSource buyAudio;
-    private AudioSource lvlUpAudio;
+    private AudioController audioController;
     void Start()
     {
         coins = FindObjectOfType<Coins>();
@@ -26,25 +26,27 @@ public class BuyUpgradeWorker : MonoBehaviour
         gameUIController = FindObjectOfType<GameUIController>();
         worker = gameObject.GetComponentInParent<Worker>();
         upgradeController = FindObjectOfType<BuyUpgradeController>();
+        chekWorkersLvl = FindObjectOfType<ChekWorkersLvl>();
         upgradePanel.SetActive(false);
-        labelText.GetComponent<TextMeshProUGUI>().text = $"{worker.PersName}";
+        labelText.text = $"{worker.PersName}";
         buyButton.onClick.AddListener(BuyUpgrade);
 
-        buyAudio = GameObject.Find("BuySource").GetComponent<AudioSource>();
-        lvlUpAudio = GameObject.Find("LvlUpSource").GetComponent<AudioSource>();
+        audioController = FindObjectOfType<AudioController>();
     }
 
     private void OnMouseDown()
     {
         if (menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && !upgradePanel.activeInHierarchy)
         {
+            audioController.PlayOpenPanel();
             upgradeController.CloseAllPanels();
             DrowInfo();
             upgradePanel.SetActive(true);
             IsOpen = true;
         }
-        else
+        else if (menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && upgradePanel.activeInHierarchy)
         {
+            audioController.PlayOpenPanel();
             Close();
         }
     }
@@ -58,23 +60,29 @@ public class BuyUpgradeWorker : MonoBehaviour
         if (coins.coins >= worker.CostUpgrade)
         {
             coins.TakeCoins(worker.CostUpgrade);
-            coins.AddSpecialCoins();
             worker.LevelUp();
             DrowInfo();
             if (worker.Level % 5 == 0)
             {
-                lvlUpAudio.Play();
+                audioController.PlayLvlUp();
+                coins.AddSpecialCoins();
             }
             else
             {
-                buyAudio.Play();
+                audioController.PlayBuy();
             }
+        }
+        if (worker.Level == 20)
+        {
+            infoText.text = $"Уровень: Максимальный";
+            Destroy(buyButton.gameObject);
+            chekWorkersLvl.ChekLvl();
         }
     }
 
     private void DrowInfo()
     {
-        infoText.GetComponent<TextMeshProUGUI>().text = $"Уровень: {worker.Level}->{worker.Level + 1}\r\nЗаработок: {worker.Sallary}->{worker.FutireSallary(worker.Level + 1)} монет\r\nСтоимость: {worker.CostUpgrade}";
+        infoText.text = $"Уровень: {worker.Level}->{worker.Level + 1}\r\nЗаработок: {worker.Sallary}->{worker.FutireSallary(worker.Level + 1)} монет\r\nСтоимость: {worker.CostUpgrade}";
     }
 
 }

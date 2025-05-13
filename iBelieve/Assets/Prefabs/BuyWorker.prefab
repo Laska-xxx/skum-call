@@ -177,8 +177,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bc465a9488dbd2a4298e57ea4a5356b2, type: 2}
+  m_sharedMaterial: {fileID: 7902741825824686414, guid: bc465a9488dbd2a4298e57ea4a5356b2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 32
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -434,10 +434,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   workerPrefab: {fileID: 7695686754502197998, guid: b564f1c4ac7b8814796fbbb73f4c3003, type: 3}
-  num: 0
   cost: 0
   costText: {fileID: 7921147261050430186}
   choouseWorkerObj: {fileID: 1336627386349081984}
+  Num: 0
   workerData: {fileID: 11400000, guid: adf9344bf4d4c2b4b8b0f6b8bdeb7dcc, type: 2}
 --- !u!61 &5054447994314945277
 BoxCollider2D:
@@ -619,7 +619,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 15
   m_TargetDisplay: 0
 --- !u!114 &6163306655843395979
 MonoBehaviour:
@@ -781,7 +781,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3671119191797665563}
   m_HandleRect: {fileID: 3656656837262730740}
   m_Direction: 0
-  m_Value: -0.0000023276612
+  m_Value: -0.0000022306751
   m_Size: 0.4371221
   m_NumberOfSteps: 0
   m_OnValueChanged:

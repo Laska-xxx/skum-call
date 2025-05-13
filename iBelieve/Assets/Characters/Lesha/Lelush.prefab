@@ -148,6 +148,37 @@ Transform:
   - {fileID: 365334971343981238}
   m_Father: {fileID: 7692553593214009009}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1046407617890952778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8881070198628939325}
+  m_Layer: 0
+  m_Name: HeadphonesPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8881070198628939325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046407617890952778}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3538978878609631030}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1067807889483067332
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,6 +658,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 727238391296112533}
+  - {fileID: 8881070198628939325}
   m_Father: {fileID: 2675064467444494848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3485222800878137718
@@ -830,6 +862,7 @@ GameObject:
   - component: {fileID: 1539581824646906159}
   - component: {fileID: 3288001286630968531}
   - component: {fileID: 4782228958611468964}
+  - component: {fileID: 8539562225402813895}
   m_Layer: 0
   m_Name: Lelush
   m_TagString: Untagged
@@ -902,6 +935,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a03d38d80033a4084f7d0270d8fc1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8539562225402813895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6888539860454725863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cbab10a59acf3a4a9bf264dd8b5e463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPos: {fileID: 1046407617890952778}
+  headphones:
+  - {fileID: 1499498574000707101, guid: 4eeda2a4cee6a4f49b13266b85dfd5c1, type: 3}
+  - {fileID: 6061108628568532601, guid: 9ea46d1efa6826e438c96f87343c66c2, type: 3}
 --- !u!1 &7383652483999387497
 GameObject:
   m_ObjectHideFlags: 0

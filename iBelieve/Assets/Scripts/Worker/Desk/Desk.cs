@@ -7,12 +7,14 @@ public class Desk : MonoBehaviour
 {
     [SerializeField] private GameObject updradePos;
     [SerializeField] private GameObject[] upgrads;
-    [SerializeField] private int startCooldown = 25;
+    [SerializeField] private int startCooldown = 30;
+    private int num;
      public int Cooldown { get; private set; }
     [SerializeField] private int cost = 15;
     public float UpgradeCost { get; private set; }
     public int Level { get; private set; } = 1;
     private Worker worker;
+    private Workers workerData;
     private PhoneInHand phoneInHand;
     private AnimController animController;
     
@@ -22,7 +24,9 @@ public class Desk : MonoBehaviour
         worker = GetComponent<Worker>();
         phoneInHand = GetComponentInChildren<PhoneInHand>();
         animController = GetComponentInChildren<AnimController>();
-        Cooldown = startCooldown;
+        workerData = worker.workerData;
+        num = worker.Num;
+        Cooldown = startCooldown + workerData.PlusCooldown;
         UpgradeCost = cost;
     }
 
@@ -31,7 +35,7 @@ public class Desk : MonoBehaviour
     {
         Level++;
         Cooldown =FutureCooldown(Level);
-        UpgradeCost = Mathf.Round(cost * (Mathf.Pow(1.45f, Level)));
+        UpgradeCost = Mathf.Round(cost * (Mathf.Pow(1.11f, Level * num)));
         if (Level % 5 == 0 && Level <= 20)
         {
             Destroy(updradePos.transform.GetChild(0).gameObject);
@@ -49,6 +53,6 @@ public class Desk : MonoBehaviour
     }
     public int FutureCooldown(int lvl)
     {
-        return startCooldown - lvl;
+        return startCooldown - lvl + workerData.PlusCooldown;
     }
 }

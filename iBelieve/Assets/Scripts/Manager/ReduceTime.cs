@@ -7,21 +7,20 @@ public class ReduceTime : MonoBehaviour
     public Worker[] workers;
     private ShowUpgradeMenu menu;
     private GameUIController gameUIController;
+    private AudioController audioController;
 
-    private AudioSource clickAudio;
     void Start()
     {
         menu = FindObjectOfType<ShowUpgradeMenu>();
         gameUIController = FindObjectOfType<GameUIController>();
-
-        clickAudio = GameObject.Find("ClickSource").GetComponent<AudioSource>();
+        audioController = FindObjectOfType<AudioController>();
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen)
         {
-            clickAudio.Play();
+            audioController.PlayClick();
             foreach (Worker worker in workers)
             {
                 worker.ReduceTimer();

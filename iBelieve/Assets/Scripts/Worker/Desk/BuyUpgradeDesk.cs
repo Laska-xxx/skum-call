@@ -17,8 +17,7 @@ public class BuyUpgradeDesk : MonoBehaviour
     private BuyUpgradeController upgradeController;
     private Coins coins;
 
-    private AudioSource buyAudio;
-    private AudioSource lvlUpAudio;
+    private AudioController audioController;
     void Start()
     {
         coins = FindObjectOfType<Coins>();
@@ -27,24 +26,26 @@ public class BuyUpgradeDesk : MonoBehaviour
         desk = gameObject.GetComponentInParent<Desk>();
         upgradeController = FindObjectOfType<BuyUpgradeController>();
         upgradePanel.SetActive(false);
-        labelText.GetComponent<TextMeshProUGUI>().text = $"Стол";
+        labelText.text = $"Стол";
         buyButton.onClick.AddListener(BuyUpgrade);
 
-        buyAudio = GameObject.Find("BuySource").GetComponent<AudioSource>();
-        lvlUpAudio = GameObject.Find("LvlUpSource").GetComponent<AudioSource>();
+        audioController = FindObjectOfType<AudioController>();
     }
 
     private void OnMouseDown()
     {
         if (menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && !upgradePanel.activeInHierarchy)
         {
+            audioController.PlayOpenPanel();
             upgradeController.CloseAllPanels();
             DrowInfo();
             upgradePanel.SetActive(true);
             IsOpen = true;
+            audioController.PlayClickUI();
         }
-        else
+        else if (menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && upgradePanel.activeInHierarchy)
         {
+            audioController.PlayOpenPanel();
             Close();
         }
     }
@@ -58,22 +59,27 @@ public class BuyUpgradeDesk : MonoBehaviour
         if (coins.coins >= desk.UpgradeCost)
         {
             coins.TakeCoins(desk.UpgradeCost);
-            coins.AddSpecialCoins();
             desk.LevelUp();
             DrowInfo();
             if (desk.Level % 5 == 0)
             {
-                lvlUpAudio.Play();
+                audioController.PlayLvlUp();
+                coins.AddSpecialCoins();
             }
             else
             {
-                buyAudio.Play();
+                audioController.PlayBuy();
             }
+        }
+        if (desk.Level == 20)
+        {
+            infoText.text = $"Уровень: Максимальный";
+            Destroy(buyButton.gameObject);
         }
     }
 
     private void DrowInfo()
     {
-        infoText.GetComponent<TextMeshProUGUI>().text = $"Уровень: {desk.Level}->{desk.Level + 1}\r\nКулдаун: {desk.Cooldown}->{desk.FutureCooldown(desk.Level+1)} сек\r\nСтоимость: {desk.UpgradeCost}";
+        infoText.text = $"Уровень: {desk.Level}->{desk.Level + 1}\r\nКулдаун: {desk.Cooldown}->{desk.FutureCooldown(desk.Level+1)} сек\r\nСтоимость: {desk.UpgradeCost}";
     }
 }

@@ -20,7 +20,8 @@ public class BuyWorker : MonoBehaviour
     private GameUIController gameUIController;
     private BuyUpgradeController upgradeController;
     public Workers workerData;
-    private AudioSource buyAudio;
+
+    private AudioController audioController;
     void Start()
     {
         createWorker = FindObjectOfType<CreateBuyWorker>();
@@ -34,10 +35,27 @@ public class BuyWorker : MonoBehaviour
         choouseWorkerObj.SetActive(false);
         spriteRenderer.color = Color.grey;
 
+        if (Num == 1)
+        {
+            cost = 300;
+        }
+        if (Num == 2)
+        {
+            cost = 2000;
+        }
+        if (Num == 3)
+        {
+            cost = 12000;
+        }
+        if (Num == 4)
+        {
+            cost = 80000;
+        }
+
         cost = Mathf.Round(10*(Mathf.Pow(10, Num)));
         costText.text = cost.ToString();
 
-        buyAudio = GameObject.Find("BuySource").GetComponent<AudioSource>();
+        audioController = FindObjectOfType<AudioController>();
     }
 
     void Update()
@@ -52,11 +70,13 @@ public class BuyWorker : MonoBehaviour
     {
         if (coins.coins >= cost && upgradeMenu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && !choouseWorkerObj.activeInHierarchy)
         {
+            audioController.PlayOpenPanel();
             upgradeController.CloseAllPanels();
             choouseWorkerObj.SetActive(true);
         }
-        else
+        else if (upgradeMenu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && choouseWorkerObj.activeInHierarchy)
         {
+            audioController.PlayOpenPanel();
             Close();    
         }
     }
@@ -67,11 +87,12 @@ public class BuyWorker : MonoBehaviour
 
     public void Buy(Workers worker)
     {
-        buyAudio.Play();
+        audioController.PlayBuy();
         coins.TakeCoins(cost);
         coins.AddSpecialCoins();
         worker.IsBuy = true;
         workerPrefab.GetComponent<Worker>().workerData = worker;
+        workerPrefab.GetComponent<Worker>().Num = Num + 1;
         Instantiate(workerPrefab, spawnPos.transform);
         reduceTime.FindWorkers();
         createWorker.CreateNewBuyWorker();
