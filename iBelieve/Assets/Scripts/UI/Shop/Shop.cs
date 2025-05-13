@@ -6,6 +6,7 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
     [SerializeField] private GameObject busterImage;
+    private BusterTimer busterTimer;
     private Desk desk;
     private Worker[] workers;
     private Coins coins;
@@ -20,10 +21,25 @@ public class Shop : MonoBehaviour
         workers = FindObjectsOfType<Worker>();
         if (IsDobleSallary)
         {
-            foreach (Worker worker in workers)
+            if (busterTimer.Timer >= time)
             {
-                desk = worker.gameObject.GetComponent<Desk>();
-                coins.AddCoins(worker.Sallary * 2 * (time / desk.Cooldown));
+                foreach (Worker worker in workers)
+                {
+                    desk = worker.gameObject.GetComponent<Desk>();
+                    coins.AddCoins(worker.Sallary * 2 * (time / desk.Cooldown));
+                    busterTimer.Timer -= time;
+                }
+            }
+            else
+            {
+                foreach (Worker worker in workers)
+                {
+                    float curTime = time - busterTimer.Timer;
+                    desk = worker.gameObject.GetComponent<Desk>();
+                    coins.AddCoins(worker.Sallary * 2 * (int)(busterTimer.Timer / desk.Cooldown));
+                    StopDobleSallary();
+                    coins.AddCoins(worker.Sallary * (int)(curTime / desk.Cooldown));
+                }
             }
         }
         else
@@ -41,13 +57,14 @@ public class Shop : MonoBehaviour
     {
         if (IsDobleSallary)
         {
-            busterImage.GetComponent<BusterTimer>().Timer += time;
+            busterTimer.Timer += time;
         }
         else
         {
             IsDobleSallary = true;
             busterImage.SetActive(true);
-            busterImage.GetComponent<BusterTimer>().Timer += time;
+            busterTimer = busterImage.GetComponent<BusterTimer>();
+            busterTimer.Timer = time;
         }
     }
 
