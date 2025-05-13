@@ -5,14 +5,12 @@ using UnityEngine;
 
 public class BusterTimer : MonoBehaviour
 {
+    [SerializeField] private Shop shop;
     private TextMeshProUGUI busterTimerText;
-    private Shop shop;
     public float Timer = 0;
     void Start()
     {
         busterTimerText = GetComponentInChildren<TextMeshProUGUI>();
-        shop = FindObjectOfType<Shop>();
-        Debug.Log(shop);
         gameObject.SetActive(false);
     }
     void Update()
@@ -23,7 +21,6 @@ public class BusterTimer : MonoBehaviour
         busterTimerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         if (Timer <= 0)
         {
-            Debug.Log(shop);
             shop.StopDobleSallary();
             gameObject.SetActive(false);
         }

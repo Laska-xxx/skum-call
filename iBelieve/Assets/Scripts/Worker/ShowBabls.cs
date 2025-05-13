@@ -17,13 +17,14 @@ public class ShowBabls : MonoBehaviour
     {
         if (Random.Range(1,20) == 1)
         {
-            babls[5].SetActive(true);
+            babls[6].SetActive(true);
+            Invoke("Close", 2f);
         }
         else
         {
             babls[Random.Range(0, babls.Length-1)].SetActive(true);
+            Invoke("Close", 1.5f);
         }
-        Invoke("Close",1.5f);
         
     }
     private void Close()

@@ -12947,6 +12947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202da5401f61d0946a369a4026f5cd76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shop: {fileID: 1538954084}
   Timer: 0
 --- !u!1 &1310446806
 GameObject:
