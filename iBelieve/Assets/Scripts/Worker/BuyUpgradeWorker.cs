@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class BuyUpgradeWorker : MonoBehaviour
 {
@@ -74,15 +75,41 @@ public class BuyUpgradeWorker : MonoBehaviour
         }
         if (worker.Level == 20)
         {
-            infoText.text = $"Уровень: Максимальный";
-            Destroy(buyButton.gameObject);
+            /*Destroy(buyButton.gameObject);*/
             chekWorkersLvl.ChekLvl();
         }
     }
 
     private void DrowInfo()
     {
-        infoText.text = $"Уровень: {worker.Level}->{worker.Level + 1}\r\nЗаработок: {worker.Sallary}->{worker.FutireSallary(worker.Level + 1)} монет\r\nСтоимость: {worker.CostUpgrade}";
+        /*if (worker.Level < 20)
+        {*/
+            infoText.text = $"Уровень: {worker.Level}->{worker.Level + 1}\r\nЗаработок: {DrowCostUpgrade(worker.Sallary)}->{DrowCostUpgrade(worker.FutireSallary(worker.Level + 1))}\r\nСтоимость: {DrowCostUpgrade(worker.CostUpgrade)}";
+        /*}
+        else
+        {
+            infoText.text = $"Уровень: Максимальный";
+        }*/
+    }
+
+    private string DrowCostUpgrade(float cost)
+    {
+        if (cost >= 1000000000)
+        {
+            return (cost / 1000000000).ToString("#.#") + "B";
+        }
+        else if (cost >= 1000000)
+        {
+            return (cost / 1000000).ToString("#.#") + "M";
+        }
+        else if (cost >= 1000)
+        {
+            return (cost / 1000).ToString("#.#") + "K";
+        }
+        else
+        {
+            return cost.ToString();
+        }
     }
 
 }

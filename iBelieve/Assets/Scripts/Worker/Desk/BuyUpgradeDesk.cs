@@ -73,13 +73,19 @@ public class BuyUpgradeDesk : MonoBehaviour
         }
         if (desk.Level == 20)
         {
-            infoText.text = $"Уровень: Максимальный";
             Destroy(buyButton.gameObject);
         }
     }
 
     private void DrowInfo()
     {
-        infoText.text = $"Уровень: {desk.Level}->{desk.Level + 1}\r\nКулдаун: {desk.Cooldown}->{desk.FutureCooldown(desk.Level+1)} сек\r\nСтоимость: {desk.UpgradeCost}";
+        if (desk.Level < 20 )
+        {
+            infoText.text = $"Уровень: {desk.Level}->{desk.Level + 1}\r\nКулдаун: {desk.Cooldown}->{desk.Cooldown-1}\r\nСтоимость: {desk.UpgradeCost}";
+        }
+        else
+        {
+            infoText.text = $"Уровень: Максимальный";
+        }
     }
 }

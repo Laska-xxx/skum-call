@@ -37,9 +37,9 @@ public class Worker : MonoBehaviour
         PersName = workerData.PersName;
         Level = workerData.Level;
         tilent = workerData.Tilent;
-        Sallary = Mathf.Round((float)(tilent * cost * (Mathf.Pow(1.1f, Level))));
+        Sallary = Mathf.Round((float)(tilent * cost * (Mathf.Pow(1.1f, Level * Num))));
         shop = FindObjectOfType<Shop>();
-        CostUpgrade = cost;
+        CostUpgrade = Mathf.Round(cost * (Mathf.Pow(1.1f, Level * Num)));
     }
 
     private void Update()
@@ -87,6 +87,6 @@ public class Worker : MonoBehaviour
 
     public float FutireSallary(int level)
     {
-        return Mathf.Round((float)(tilent * 15 * (Mathf.Pow(1.1f, level))));
+        return Mathf.Round((float)(tilent * 15 * (Mathf.Pow(1.1f, level*Num))));
     }
 }

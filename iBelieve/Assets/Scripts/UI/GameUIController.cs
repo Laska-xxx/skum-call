@@ -45,7 +45,7 @@ public class GameUIController : MonoBehaviour
 
     void Update()
     {
-        coinsText.text = coins.coins.ToString();
+        DrowCoins();
         speshalCoinsText.text = coins.specialCoins.ToString();
     }
 
@@ -95,5 +95,25 @@ public class GameUIController : MonoBehaviour
             worker.IsBuy = false;
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void DrowCoins()
+    {
+        if (coins.coins >= 1000000000)
+        {
+            coinsText.text = (coins.coins / 1000000000).ToString("#.#") + "B";
+        }
+        else if (coins.coins >= 1000000)
+        {
+            coinsText.text = (coins.coins / 1000000).ToString("#.#") + "M";
+        }
+        else if (coins.coins >= 1000)
+        {
+            coinsText.text = (coins.coins / 1000).ToString("#.#") + "K";
+        }
+        else
+        {
+            coinsText.text = coins.coins.ToString();
+        }
     }
 }

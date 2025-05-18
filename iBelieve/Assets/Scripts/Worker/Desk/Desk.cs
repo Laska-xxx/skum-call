@@ -27,14 +27,14 @@ public class Desk : MonoBehaviour
         workerData = worker.workerData;
         num = worker.Num;
         Cooldown = startCooldown + workerData.PlusCooldown;
-        UpgradeCost = cost;
+        UpgradeCost = Mathf.Round(cost * (Mathf.Pow(1.11f, Level * num)));
     }
 
     
     public void LevelUp()
     {
         Level++;
-        Cooldown =FutureCooldown(Level);
+        Cooldown --;
         UpgradeCost = Mathf.Round(cost * (Mathf.Pow(1.11f, Level * num)));
         if (Level % 5 == 0 && Level <= 20)
         {

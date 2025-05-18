@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class Coins : MonoBehaviour
 {
-    public double coins { get; private set; }
-    public double specialCoins { get; private set; }
-
-    private void Start()
-    {
-        coins = 10;
-        specialCoins = 0;
-    }
+    public double coins { get; private set; } = 10;
+    public double specialCoins { get; private set; } = 0;
 
     public void AddCoins(float amount)
     {

@@ -7,16 +7,30 @@ using UnityEngine;
 public class AnimatedText : MonoBehaviour
 {
     [SerializeField] private float speedText = 0.06f;
-    [SerializeField] private TextMeshProUGUI text;
+    private TextMeshProUGUI text;
     private string story;
 
-    void Start()
+    private void OnEnable()
     {
+        speedText = 0.05f;
+        text = GetComponent<TextMeshProUGUI>();
         story = text.text;
         text.text = "";
         StartCoroutine("PlayText"); ;
     }
-    
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            StopCoroutine("PlayText");
+            text.text = story;
+        }
+    }
+
+
+
+
     IEnumerator PlayText()
     {
         foreach (char c in story)
@@ -25,5 +39,6 @@ public class AnimatedText : MonoBehaviour
             yield return new WaitForSeconds(speedText);
         }
     }
+
 
 }
