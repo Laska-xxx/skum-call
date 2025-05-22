@@ -18,6 +18,7 @@ public class BuyUpgradeWorker : MonoBehaviour
     private BuyUpgradeController upgradeController;
     private ChekWorkersLvl chekWorkersLvl;
     private Coins coins;
+    private AchivController achivController;
 
     private AudioController audioController;
     void Start()
@@ -28,6 +29,7 @@ public class BuyUpgradeWorker : MonoBehaviour
         worker = gameObject.GetComponentInParent<Worker>();
         upgradeController = FindObjectOfType<BuyUpgradeController>();
         chekWorkersLvl = FindObjectOfType<ChekWorkersLvl>();
+        achivController = FindObjectOfType<AchivController>();
         upgradePanel.SetActive(false);
         labelText.text = $"{worker.PersName}";
         buyButton.onClick.AddListener(BuyUpgrade);
@@ -37,7 +39,7 @@ public class BuyUpgradeWorker : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && !upgradePanel.activeInHierarchy)
+        if (menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.AchievementOpen && !gameUIController.SettingsOpen && !upgradePanel.activeInHierarchy)
         {
             audioController.PlayOpenPanel();
             upgradeController.CloseAllPanels();
@@ -45,7 +47,7 @@ public class BuyUpgradeWorker : MonoBehaviour
             upgradePanel.SetActive(true);
             IsOpen = true;
         }
-        else if (menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && upgradePanel.activeInHierarchy)
+        else if (menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.AchievementOpen && !gameUIController.SettingsOpen && upgradePanel.activeInHierarchy)
         {
             audioController.PlayOpenPanel();
             Close();
@@ -65,8 +67,10 @@ public class BuyUpgradeWorker : MonoBehaviour
             DrowInfo();
             if (worker.Level % 5 == 0)
             {
+                worker.ChangeLevelUp();
                 audioController.PlayLvlUp();
                 coins.AddSpecialCoins();
+                achivController.GetWorkerLvlAchiv(worker.Level);
             }
             else
             {

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ChooseWorker : MonoBehaviour
 {
-    public Workers workerData;
+    public WorkerData workerData;
     private Button button;
     private GameObject iconImage;
     private GameObject levelText;

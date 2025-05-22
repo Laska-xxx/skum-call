@@ -6,7 +6,7 @@ using UnityEngine;
 public class ShowBabls : MonoBehaviour
 {
     [SerializeField] private GameObject[] babls;
-    private Workers workerData;
+    private WorkerData workerData;
     private bool isChat = false;
     void Start()
     {

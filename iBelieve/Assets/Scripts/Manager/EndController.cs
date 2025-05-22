@@ -6,7 +6,7 @@ public class EndController : MonoBehaviour
 {
     [SerializeField] private Button[] quinButtoms;
     private GameObject end;
-    private Workers[] allWorkers; 
+    private WorkerData[] allWorkers; 
 
     private AudioController audioController;
     void Start()
@@ -30,7 +30,7 @@ public class EndController : MonoBehaviour
     {
 
         allWorkers = FindObjectOfType<AllWorkers>().listWorkers;
-        foreach (Workers worker in allWorkers)
+        foreach (WorkerData worker in allWorkers)
         {
             worker.IsBuy = false;
         }

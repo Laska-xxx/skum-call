@@ -16,6 +16,7 @@ public class BuyUpgradeDesk : MonoBehaviour
     private GameUIController gameUIController;
     private BuyUpgradeController upgradeController;
     private Coins coins;
+    private AchivController achivController;
 
     private AudioController audioController;
     void Start()
@@ -25,6 +26,7 @@ public class BuyUpgradeDesk : MonoBehaviour
         gameUIController = FindObjectOfType<GameUIController>();
         desk = gameObject.GetComponentInParent<Desk>();
         upgradeController = FindObjectOfType<BuyUpgradeController>();
+        achivController = FindObjectOfType<AchivController>();
         upgradePanel.SetActive(false);
         labelText.text = $"Стол";
         buyButton.onClick.AddListener(BuyUpgrade);
@@ -34,7 +36,7 @@ public class BuyUpgradeDesk : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && !upgradePanel.activeInHierarchy)
+        if (menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.AchievementOpen && !gameUIController.SettingsOpen && !upgradePanel.activeInHierarchy)
         {
             audioController.PlayOpenPanel();
             upgradeController.CloseAllPanels();
@@ -43,7 +45,7 @@ public class BuyUpgradeDesk : MonoBehaviour
             IsOpen = true;
             audioController.PlayClickUI();
         }
-        else if (menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && upgradePanel.activeInHierarchy)
+        else if (menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.AchievementOpen && !gameUIController.SettingsOpen && upgradePanel.activeInHierarchy)
         {
             audioController.PlayOpenPanel();
             Close();
@@ -63,8 +65,10 @@ public class BuyUpgradeDesk : MonoBehaviour
             DrowInfo();
             if (desk.Level % 5 == 0)
             {
+                desk.ChangeLevelUp();
                 audioController.PlayLvlUp();
                 coins.AddSpecialCoins();
+                achivController.GetDeskLvlAchiv(desk.Level);
             }
             else
             {

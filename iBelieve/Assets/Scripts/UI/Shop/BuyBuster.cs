@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class BuyBuster : MonoBehaviour
 {
-    [SerializeField] private Busters busterData;
+    [SerializeField] private BusterData busterData;
     private TextMeshProUGUI costText;
     private Button button;
     private Coins coins;

@@ -8,7 +8,7 @@ public class Worker : MonoBehaviour
 {
     [SerializeField] private Slider timeSlider;
     [SerializeField] private int cost = 20;
-    public int Num = 0;
+    [HideInInspector] public int Num = 0;
     public float Sallary { get; private set; }
     public string PersName { get; private set; }
     public int Level { get; private set; }
@@ -21,7 +21,7 @@ public class Worker : MonoBehaviour
     private ShowBabls showBabls;
     private HeadphonesOnHead headphones;
 
-    public Workers workerData;
+    public WorkerData workerData;
     private Desk desk;
     private Coins coins;
     private Shop shop;
@@ -52,16 +52,18 @@ public class Worker : MonoBehaviour
         Level++;
         Sallary = FutireSallary(Level);
         CostUpgrade = Mathf.Round(cost*(Mathf.Pow(1.1f,Level * Num)));
-        if (Level % 10 == 0)
+        
+    }
+
+    public void ChangeLevelUp()
+    {
+        if (Level / 10 == 1)
         {
-            if (Level / 10 == 1)
-            {
-                headphones.ChangeHeadphonesOne();
-            }
-            if (Level / 10 == 2)
-            {
-                headphones.ChangeHeadphonesTwo();
-            }
+            headphones.ChangeHeadphonesOne();
+        }
+        if (Level / 10 == 2)
+        {
+            headphones.ChangeHeadphonesTwo();
         }
     }
 

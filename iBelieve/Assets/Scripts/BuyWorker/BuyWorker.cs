@@ -10,7 +10,7 @@ public class BuyWorker : MonoBehaviour
     [SerializeField] private float cost;
     [SerializeField] private TextMeshProUGUI costText;
     [SerializeField] private GameObject choouseWorkerObj;
-    public int Num;
+    [HideInInspector] public int Num;
     private CreateBuyWorker createWorker;
     private GameObject spawnPos;
     private SpriteRenderer spriteRenderer;
@@ -19,7 +19,8 @@ public class BuyWorker : MonoBehaviour
     private ReduceTime reduceTime;
     private GameUIController gameUIController;
     private BuyUpgradeController upgradeController;
-    public Workers workerData;
+    public WorkerData workerData;
+    private AchivController achivController;
 
     private AudioController audioController;
     void Start()
@@ -27,6 +28,7 @@ public class BuyWorker : MonoBehaviour
         createWorker = FindObjectOfType<CreateBuyWorker>();
         gameUIController = FindObjectOfType<GameUIController>();
         reduceTime = FindObjectOfType<ReduceTime>();
+        achivController = FindObjectOfType<AchivController>();
         spawnPos = gameObject.transform.parent.gameObject;
         coins = FindObjectOfType<Coins>();
         upgradeMenu = FindObjectOfType<ShowUpgradeMenu>();
@@ -35,24 +37,21 @@ public class BuyWorker : MonoBehaviour
         choouseWorkerObj.SetActive(false);
         spriteRenderer.color = Color.grey;
 
-        if (Num == 1)
+        switch (Num)
         {
-            cost = 300;
+            case 1:
+                cost = 300;
+                break;
+            case 2:
+                cost = 2000;
+                break;
+            case 3:
+                cost = 12000;
+                break;
+            case 4:
+                cost = 80000;
+                break;
         }
-        if (Num == 2)
-        {
-            cost = 2000;
-        }
-        if (Num == 3)
-        {
-            cost = 12000;
-        }
-        if (Num == 4)
-        {
-            cost = 80000;
-        }
-
-        cost = Mathf.Round(10*(Mathf.Pow(10, Num)));
         costText.text = cost.ToString();
 
         audioController = FindObjectOfType<AudioController>();
@@ -85,7 +84,7 @@ public class BuyWorker : MonoBehaviour
         choouseWorkerObj.SetActive(false);
     }
 
-    public void Buy(Workers worker)
+    public void Buy(WorkerData worker)
     {
         audioController.PlayBuy();
         coins.TakeCoins(cost);
@@ -96,6 +95,7 @@ public class BuyWorker : MonoBehaviour
         Instantiate(workerPrefab, spawnPos.transform);
         reduceTime.FindWorkers();
         createWorker.CreateNewBuyWorker();
+        achivController.GetCharacterAchiv(worker);
         Destroy(gameObject);
     }
 }

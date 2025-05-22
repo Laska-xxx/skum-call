@@ -10,11 +10,16 @@ public class GameUIController : MonoBehaviour
     [Header("Game")]
     [SerializeField] private TextMeshProUGUI coinsText;
     [SerializeField] private Button showShopButton;
+    [SerializeField] private Button showAchievementButton;
     [SerializeField] private Button showSettingsButton;
+    [SerializeField] private GameObject haveAchivPoint;
     [Header("Shop")]
     [SerializeField] private Button closeShopButton;
     [SerializeField] private GameObject shopPanel;
     [SerializeField] private TextMeshProUGUI speshalCoinsText;
+    [Header("Achievement")]
+    [SerializeField] private Button closeAchievementButton;
+    [SerializeField] private GameObject achievementPanel;
     [Header("Settings")]
     [SerializeField] private Button closeSettingsButton;
     [SerializeField] private Button resetGameButton;
@@ -24,9 +29,10 @@ public class GameUIController : MonoBehaviour
     [SerializeField] private GameObject busterImage;
     [SerializeField] private TextMeshProUGUI busterTimerText;
     public bool ShopOpen = false;
+    public bool AchievementOpen = false;
     public bool SettingsOpen = false;
     private Coins coins;
-    private Workers[] allWorkers;
+    private WorkerData[] allWorkers;
 
     private AudioController audioController;
     void Start()
@@ -34,8 +40,10 @@ public class GameUIController : MonoBehaviour
         coins = FindObjectOfType<Coins>();
         allWorkers = FindObjectOfType<AllWorkers>().listWorkers;
         showShopButton.onClick.AddListener(ShowShop);
+        showAchievementButton.onClick.AddListener(ShowAchievement);
         showSettingsButton.onClick.AddListener(ShowSettings);
         closeShopButton.onClick.AddListener(CloseShop);
+        closeAchievementButton.onClick.AddListener(CloseAchievement);
         closeSettingsButton.onClick.AddListener(CloseSettings);
         goMainMenuButton.onClick.AddListener(GoMainMenu);
         resetGameButton.onClick.AddListener(ReloadGame);
@@ -55,6 +63,13 @@ public class GameUIController : MonoBehaviour
         shopPanel.SetActive(true);
         ShopOpen = true;
     }
+    private void ShowAchievement()
+    {
+        audioController.PlayClickUI();
+        achievementPanel.SetActive(true);
+        haveAchivPoint.SetActive(false);
+        AchievementOpen = true;
+    }
 
     private void ShowSettings()
     {
@@ -69,6 +84,13 @@ public class GameUIController : MonoBehaviour
         ShopOpen = false;
     }
 
+    private void CloseAchievement()
+    {
+        audioController.PlayClickUI();
+        achievementPanel.SetActive(false);
+        AchievementOpen = false;
+    }
+
     private void CloseSettings()
     {
         audioController.PlayClickUI();
@@ -79,7 +101,7 @@ public class GameUIController : MonoBehaviour
     private void GoMainMenu()
     {
         audioController.PlayClickUI();
-        foreach (Workers worker in allWorkers)
+        foreach (WorkerData worker in allWorkers)
         {
             worker.IsBuy = false;
         }
@@ -90,7 +112,7 @@ public class GameUIController : MonoBehaviour
     private void ReloadGame()
     {
         audioController.PlayClickUI();
-        foreach (Workers worker in allWorkers)
+        foreach (WorkerData worker in allWorkers)
         {
             worker.IsBuy = false;
         }
@@ -115,5 +137,10 @@ public class GameUIController : MonoBehaviour
         {
             coinsText.text = coins.coins.ToString();
         }
+    }
+
+    public void HaveAchiv()
+    {
+        haveAchivPoint.SetActive(true);
     }
 }

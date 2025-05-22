@@ -6,10 +6,16 @@ public class Coins : MonoBehaviour
 {
     public double coins { get; private set; } = 10;
     public double specialCoins { get; private set; } = 0;
+    private AchivController achivController;
 
+    private void Start()
+    {
+        achivController = FindObjectOfType<AchivController>();
+    }
     public void AddCoins(float amount)
     {
         coins += amount;
+        achivController.GetMoneyAchiv(coins);
     }
 
     public void TakeCoins(float amount)

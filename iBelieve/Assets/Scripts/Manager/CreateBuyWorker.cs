@@ -6,10 +6,12 @@ public class CreateBuyWorker : MonoBehaviour
 {
     [SerializeField] private GameObject[] spawns;
     [SerializeField] private GameObject buyWorkerPrefab;
+    private AchivController achivController;
     private int num = 0;
 
     private void Start()
     {
+        achivController = FindObjectOfType<AchivController>();
         CreateNewBuyWorker();
     }
 
@@ -21,6 +23,10 @@ public class CreateBuyWorker : MonoBehaviour
             {
                 buyWorkerPrefab.GetComponent<BuyWorker>().Num = i;
                 Instantiate(buyWorkerPrefab, spawns[i].gameObject.transform);
+            }
+            if (spawns.Length < num)
+            {
+                achivController.GetCharacterAchiv();
             }
         }
         num++;

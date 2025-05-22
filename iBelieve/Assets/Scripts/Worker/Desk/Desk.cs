@@ -14,7 +14,7 @@ public class Desk : MonoBehaviour
     public float UpgradeCost { get; private set; }
     public int Level { get; private set; } = 1;
     private Worker worker;
-    private Workers workerData;
+    private WorkerData workerData;
     private PhoneInHand phoneInHand;
     private AnimController animController;
     
@@ -36,19 +36,19 @@ public class Desk : MonoBehaviour
         Level++;
         Cooldown --;
         UpgradeCost = Mathf.Round(cost * (Mathf.Pow(1.11f, Level * num)));
-        if (Level % 5 == 0 && Level <= 20)
+    }
+    public void ChangeLevelUp()
+    {
+        Destroy(updradePos.transform.GetChild(0).gameObject);
+        Instantiate(upgrads[Level / 5], updradePos.transform);
+        if (Level / 5 == 1)
         {
-            Destroy(updradePos.transform.GetChild(0).gameObject);
-            Instantiate(upgrads[Level / 5], updradePos.transform);
-            if (Level / 5 == 1)
-            {
-                phoneInHand.ChangePhone();
-            }
-            if (Level / 5 == 2)
-            {
-                phoneInHand.DelPhone();
-                animController.ChangeAnim();
-            }
+            phoneInHand.ChangePhone();
+        }
+        if (Level / 5 == 2)
+        {
+            phoneInHand.DelPhone();
+            animController.ChangeAnim();
         }
     }
     public int FutureCooldown(int lvl)

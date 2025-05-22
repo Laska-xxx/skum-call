@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class AllWorkers : MonoBehaviour
 {
-    public Workers[] listWorkers;
+    public WorkerData[] listWorkers;
 }

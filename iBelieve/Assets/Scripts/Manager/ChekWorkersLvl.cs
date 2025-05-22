@@ -6,10 +6,12 @@ public class ChekWorkersLvl : MonoBehaviour
 {
     private Worker[] workers;
     private EndController endController;
-    private int generalLevel = 0;
+    private AchivController achivController;
+    private int generalLevel;
     void Start()
     {
         endController = FindObjectOfType<EndController>();
+        achivController = FindObjectOfType<AchivController>();
     }
 
     public void ChekLvl()
@@ -21,7 +23,7 @@ public class ChekWorkersLvl : MonoBehaviour
             generalLevel += worker.Level;
         }
 
-        if (generalLevel >= 96)
+        if (generalLevel >= 120)
         {
             endController.StartEnd();
         }
