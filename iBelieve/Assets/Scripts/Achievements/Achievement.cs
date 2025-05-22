@@ -17,13 +17,15 @@ public class Achievement : MonoBehaviour
     private GameUIController gameUIController;
     private Coins coins;
 
+    private AudioController audioController;
+
     private void Start()
     {
-        coins = FindObjectOfType<Coins>();
-        achivController = FindObjectOfType<AchivController>();
         gameUIController = FindObjectOfType<GameUIController>();
+        coins = FindObjectOfType<Coins>();
         getAchivButton.onClick.AddListener(GetAchiv);
-        getAchivButton.interactable = false;
+
+        audioController = FindObjectOfType<AudioController>();
     }
 
     public void DrowAchiv()
@@ -36,14 +38,22 @@ public class Achievement : MonoBehaviour
 
     public void CanGetAchiv()
     {
+        if (gameUIController == null)
+        {
+            gameUIController = FindObjectOfType<GameUIController>(true);
+            audioController = FindObjectOfType<AudioController>();
+        }
         gameUIController.HaveAchiv();
-        getAchivButton.interactable = true;
+        getAchivButton.gameObject.SetActive(true);
         icone.sprite = achievementData.OpenImage;
+
+        audioController.PlayAchiv();
     }
 
     private void GetAchiv()
     {
         achievementData.IsGet = true;
+        Destroy(getAchivButton.gameObject);
         coins.AddSpecialCoins(achievementData.Reward);
     }
 }

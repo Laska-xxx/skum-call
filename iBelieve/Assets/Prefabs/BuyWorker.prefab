@@ -438,7 +438,7 @@ MonoBehaviour:
   costText: {fileID: 7921147261050430186}
   choouseWorkerObj: {fileID: 1336627386349081984}
   Num: 0
-  workerData: {fileID: 11400000, guid: adf9344bf4d4c2b4b8b0f6b8bdeb7dcc, type: 2}
+  workerData: {fileID: 0}
 --- !u!61 &5054447994314945277
 BoxCollider2D:
   m_ObjectHideFlags: 0

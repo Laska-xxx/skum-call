@@ -24,10 +24,6 @@ public class CreateBuyWorker : MonoBehaviour
                 buyWorkerPrefab.GetComponent<BuyWorker>().Num = i;
                 Instantiate(buyWorkerPrefab, spawns[i].gameObject.transform);
             }
-            if (spawns.Length < num)
-            {
-                achivController.GetCharacterAchiv();
-            }
         }
         num++;
     }

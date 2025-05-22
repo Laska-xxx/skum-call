@@ -11,6 +11,7 @@ public class AudioController : MonoBehaviour
     private AudioSource lvlUpAudio;
     private AudioSource taskCompleteAudio;
     private AudioSource sirenAudio;
+    private AudioSource achivAudio;
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class AudioController : MonoBehaviour
         lvlUpAudio = GameObject.Find("LvlUpSource").GetComponent<AudioSource>();
         taskCompleteAudio = GameObject.Find("TaskCompleteSource").GetComponent<AudioSource>();
         sirenAudio = GameObject.Find("SirenSource").GetComponent<AudioSource>();
+        achivAudio = GameObject.Find("AchivSource").GetComponent<AudioSource>();
     }
 
     public void PlayClickUI()
@@ -47,9 +49,12 @@ public class AudioController : MonoBehaviour
     {
         lvlUpAudio.Play();
     }
-
     public void PlaySiren()
     {
         sirenAudio.Play();
+    }
+    public void PlayAchiv()
+    {
+        achivAudio.Play();
     }
 }

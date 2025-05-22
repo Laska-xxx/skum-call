@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fee6c4c923114414eb23496e5138df2e, type: 3}
-  m_Name: DeskLevel1
+  m_Name: DeskLvl2
   m_EditorClassIdentifier: 
-  Name: DeskLevel1
-  Description: DeskLevel1
+  Name: "\u041A\u0430\u043A\u043E\u0439 \u0440\u0430\u0431\u043E\u0442\u043D\u0438\u043A
+    -\u0442\u0430\u043A\u043E\u0435 \u0438 \u043C\u0435\u0441\u0442\u043E"
+  Description: "\u0425\u043E\u0442\u044C \u043F\u044B\u043B\u044C \u043F\u0440\u043E\u0442\u0435\u0440!"
   OpenImage: {fileID: 21300000, guid: 879a6e688ea7e554a8035bd71bc03b0b, type: 3}
   CloseImage: {fileID: 21300000, guid: 0e2dc129e5898d44d96ecd08339fbee1, type: 3}
-  Reward: 1
+  Reward: 2
   Type: 4
-  Level: 1
-  Condition: 5
+  Level: 2
+  Condition: 10
   IsGet: 0

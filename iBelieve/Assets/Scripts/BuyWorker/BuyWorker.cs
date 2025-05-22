@@ -19,7 +19,6 @@ public class BuyWorker : MonoBehaviour
     private ReduceTime reduceTime;
     private GameUIController gameUIController;
     private BuyUpgradeController upgradeController;
-    public WorkerData workerData;
     private AchivController achivController;
 
     private AudioController audioController;
@@ -39,6 +38,9 @@ public class BuyWorker : MonoBehaviour
 
         switch (Num)
         {
+            case 0:
+                cost = 10;
+                break;
             case 1:
                 cost = 300;
                 break;
@@ -88,7 +90,6 @@ public class BuyWorker : MonoBehaviour
     {
         audioController.PlayBuy();
         coins.TakeCoins(cost);
-        coins.AddSpecialCoins();
         worker.IsBuy = true;
         workerPrefab.GetComponent<Worker>().workerData = worker;
         workerPrefab.GetComponent<Worker>().Num = Num + 1;
@@ -96,6 +97,10 @@ public class BuyWorker : MonoBehaviour
         reduceTime.FindWorkers();
         createWorker.CreateNewBuyWorker();
         achivController.GetCharacterAchiv(worker);
+        if (Num == 4)
+        {
+            achivController.GetCharacterAchiv();
+        }
         Destroy(gameObject);
     }
 }

@@ -32,13 +32,15 @@ public class GameUIController : MonoBehaviour
     public bool AchievementOpen = false;
     public bool SettingsOpen = false;
     private Coins coins;
-    private WorkerData[] allWorkers;
+    private List<WorkerData> allWorkers;
+    private ReductionCoins reductionCoins;
 
     private AudioController audioController;
     void Start()
     {
         coins = FindObjectOfType<Coins>();
         allWorkers = FindObjectOfType<AllWorkers>().listWorkers;
+        reductionCoins = FindObjectOfType<ReductionCoins>();
         showShopButton.onClick.AddListener(ShowShop);
         showAchievementButton.onClick.AddListener(ShowAchievement);
         showSettingsButton.onClick.AddListener(ShowSettings);
@@ -53,7 +55,7 @@ public class GameUIController : MonoBehaviour
 
     void Update()
     {
-        DrowCoins();
+        coinsText.text = reductionCoins.Reduction(coins.coins);
         speshalCoinsText.text = coins.specialCoins.ToString();
     }
 
@@ -117,26 +119,6 @@ public class GameUIController : MonoBehaviour
             worker.IsBuy = false;
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    private void DrowCoins()
-    {
-        if (coins.coins >= 1000000000)
-        {
-            coinsText.text = (coins.coins / 1000000000).ToString("#.#") + "B";
-        }
-        else if (coins.coins >= 1000000)
-        {
-            coinsText.text = (coins.coins / 1000000).ToString("#.#") + "M";
-        }
-        else if (coins.coins >= 1000)
-        {
-            coinsText.text = (coins.coins / 1000).ToString("#.#") + "K";
-        }
-        else
-        {
-            coinsText.text = coins.coins.ToString();
-        }
     }
 
     public void HaveAchiv()

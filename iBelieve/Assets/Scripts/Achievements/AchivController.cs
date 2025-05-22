@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class AchivController : MonoBehaviour
 {   
-    [SerializeField] private List<AchievementsData> closeAchiv = new List<AchievementsData>();
+    [SerializeField] private List<AchievementsData> allAchiv = new List<AchievementsData>();
     [SerializeField] private List<Achievement> achievements = new List<Achievement>();
     private List<Achievement> moneyAchiv = new List<Achievement>();
     private List<Achievement> timeAchiv = new List<Achievement>();
@@ -17,10 +17,10 @@ public class AchivController : MonoBehaviour
 
     private void Start()
     {
-        closeAchiv = closeAchiv.OrderBy(achievement => achievement.Level).ToList();
+        allAchiv = allAchiv.OrderBy(achievement => achievement.Level).ToList();
         for (int i = 0; i < achievements.Count; i++)
         {
-            achievements[i].achievementData = closeAchiv[i];
+            achievements[i].achievementData = allAchiv[i];
         }
         foreach (var achievement in achievements)
         {
@@ -68,6 +68,10 @@ public class AchivController : MonoBehaviour
         {
             moneyAchiv[0].CanGetAchiv();
             moneyAchiv.RemoveAt(0);
+            if (moneyAchiv.Count > 0 && coins >= moneyAchiv[0].achievementData.Condition)
+            {
+                GetMoneyAchiv(coins);
+            }
         }
     }
     private void GetTimeAchiv(int curTime)
@@ -88,8 +92,8 @@ public class AchivController : MonoBehaviour
         {
             if (data.ID == caracterAchiv[i].achievementData.Condition)
             {
-                timeAchiv[i].CanGetAchiv();
-                timeAchiv.RemoveAt(i);
+                caracterAchiv[i].CanGetAchiv();
+                caracterAchiv.RemoveAt(i);
             }
         }
     }

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee6c4c923114414eb23496e5138df2e, type: 3}
+  m_Name: WorkLvl3
+  m_EditorClassIdentifier: 
+  Name: "\u0414\u043E\u0441\u0442\u0438\u0436\u0435\u043D\u0438\u0435 \u0432 \u043A\u0430\u0440\u044C\u0435\u0440\u0435
+    \u0441\u043A\u0430\u043C\u0430!"
+  Description: "\u041D\u0430\u0440\u0430\u0431\u043E\u0442\u0430\u043B \u0441\u0432\u043E\u0438\u043C
+    \u0433\u0440\u044F\u0437\u043D\u044B\u043C \u044F\u0437\u044B\u043A\u043E\u043C
+    \u043D\u0430 \u043F\u043E\u0432\u044B\u0448\u0435\u043D\u0438\u0435"
+  OpenImage: {fileID: -1438731630, guid: d541bddbbc914f443b003ed64fe2e1d6, type: 3}
+  CloseImage: {fileID: -1438731630, guid: d541bddbbc914f443b003ed64fe2e1d6, type: 3}
+  Reward: 3
+  Type: 3
+  Level: 3
+  Condition: 15
+  IsGet: 0

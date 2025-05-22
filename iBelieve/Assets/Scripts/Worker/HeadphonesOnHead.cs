@@ -7,14 +7,12 @@ public class HeadphonesOnHead : MonoBehaviour
     [SerializeField] private GameObject spawnPos;
     [SerializeField] private GameObject[] headphones;
 
-    public void ChangeHeadphonesOne()
+    public void ChangeHeadphones(int num)
     {
-        Instantiate(headphones[0], spawnPos.transform);
-    }
-    public void ChangeHeadphonesTwo()
-    {
-        Destroy(spawnPos.transform.GetChild(0).gameObject);
-
-        Instantiate(headphones[1], spawnPos.transform);
+        if (spawnPos.transform.childCount > 0)
+        {
+            Destroy(spawnPos.transform.GetChild(0).gameObject);
+        }
+        Instantiate(headphones[num], spawnPos.transform);
     }
 }

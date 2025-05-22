@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fee6c4c923114414eb23496e5138df2e, type: 3}
-  m_Name: Character1
+  m_Name: Ozon
   m_EditorClassIdentifier: 
-  Name: Character1
-  Description: Caracter1
+  Name: "\u041E\u0437\u043E\u043D"
+  Description: "\u042D\u0442\u043E \u043A\u043E\u043D\u0435\u0447\u043D\u043E \u043D\u0435
+    \u0441\u043E\u0433\u043D\u0443\u0442\u0430\u044F \u043F\u0438\u0446\u0446\u0430
+    \u043D\u043E \u0442\u043E\u0436\u0435 \u043D\u0438\u0447\u0435\u0433\u043E "
   OpenImage: {fileID: 709136962, guid: a5052c4295dd12b4e9e393e5059be68a, type: 3}
   CloseImage: {fileID: 2070038136, guid: 3dd4d5f98a64be1478542ec916f7a5e3, type: 3}
   Reward: 1
   Type: 2
   Level: 1
-  Condition: 1
+  Condition: 5
   IsGet: 0

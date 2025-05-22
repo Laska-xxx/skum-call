@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee6c4c923114414eb23496e5138df2e, type: 3}
+  m_Name: Time3
+  m_EditorClassIdentifier: 
+  Name: "\u0413\u0443\u0440\u0443 \u0440\u0430\u0437\u0432\u043E\u0434\u0430"
+  Description: "\"\u0417\u0434\u0440\u0430\u0432\u0441\u0442\u0432\u0443\u0439\u0442\u0435,
+    \u0443 \u0432\u0430\u0441 \u0437\u0430\u0434\u043E\u043B\u0436\u043D\u043E\u0441\u0442\u044C
+    \u043F\u043E \u043A\u0430\u0440\u0442\u0435\""
+  OpenImage: {fileID: -304885277, guid: a785a533590999b40accfc316bc05250, type: 3}
+  CloseImage: {fileID: -304885277, guid: a785a533590999b40accfc316bc05250, type: 3}
+  Reward: 5
+  Type: 1
+  Level: 3
+  Condition: 900
+  IsGet: 0

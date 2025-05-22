@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fee6c4c923114414eb23496e5138df2e, type: 3}
-  m_Name: WorkerLevel1
+  m_Name: WorkLvl2
   m_EditorClassIdentifier: 
-  Name: WorkerLevel1
-  Description: WlrkerLevel1
+  Name: "\u041F\u043E\u043B\u043D\u043E\u0446\u0435\u043D\u043D\u044B\u0439 \u0440\u0430\u0431\u043E\u0442\u043D\u0438\u043A"
+  Description: "\u0412\u0430\u0448 \u0442\u0440\u0443\u0434 \u0431\u044B\u043B \u043E\u0446\u0435\u043D\u0451\u043D!"
   OpenImage: {fileID: -1438731630, guid: d541bddbbc914f443b003ed64fe2e1d6, type: 3}
   CloseImage: {fileID: -1438731630, guid: d541bddbbc914f443b003ed64fe2e1d6, type: 3}
-  Reward: 1
+  Reward: 2
   Type: 3
-  Level: 1
-  Condition: 5
+  Level: 2
+  Condition: 10
   IsGet: 0

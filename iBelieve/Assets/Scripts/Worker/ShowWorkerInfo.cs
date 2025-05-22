@@ -13,10 +13,12 @@ public class ShowWorkerInfo : MonoBehaviour
     private Desk desk;
     private ShowUpgradeMenu menu;
     private GameUIController gameUIController;
+    private ReductionCoins reductionCoins;
     void Start()
     {
         menu = FindObjectOfType<ShowUpgradeMenu>();
         gameUIController = FindObjectOfType<GameUIController>();
+        reductionCoins = FindObjectOfType<ReductionCoins>();
         worker = gameObject.GetComponentInParent<Worker>();
         desk = gameObject.GetComponentInParent<Desk>();
         infoPanel.SetActive(false);
@@ -27,7 +29,7 @@ public class ShowWorkerInfo : MonoBehaviour
     {
         if (!menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen) 
         {
-            infoText.text = $"Заработок:{worker.Sallary} монет\r\nКулдаун: {desk.Cooldown} сек";
+            infoText.text = $"Заработок:{reductionCoins.Reduction(worker.Sallary)}\r\nКулдаун: {desk.Cooldown}";
             infoPanel.SetActive(true);
         }
     }

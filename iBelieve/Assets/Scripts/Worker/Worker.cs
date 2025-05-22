@@ -57,13 +57,9 @@ public class Worker : MonoBehaviour
 
     public void ChangeLevelUp()
     {
-        if (Level / 10 == 1)
+        if (Level % 10 == 0 && Level <= 20)
         {
-            headphones.ChangeHeadphonesOne();
-        }
-        if (Level / 10 == 2)
-        {
-            headphones.ChangeHeadphonesTwo();
+            headphones.ChangeHeadphones((Level / 10)-1);
         }
     }
 
@@ -89,6 +85,6 @@ public class Worker : MonoBehaviour
 
     public float FutireSallary(int level)
     {
-        return Mathf.Round((float)(tilent * 15 * (Mathf.Pow(1.1f, level*Num))));
+        return Mathf.Round((float)(tilent * cost * (Mathf.Pow(1.1f, level*Num))));
     }
 }

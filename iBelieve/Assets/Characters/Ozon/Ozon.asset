@@ -9,15 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1a8e0fa7c2c6c64db42d72db4af0b1e, type: 3}
+  m_Script: {fileID: 11500000, guid: 68a74567f51ec9f41a5a6d5621b1acf7, type: 3}
   m_Name: Ozon
   m_EditorClassIdentifier: 
   PersName: "\u041E\u0437\u043E\u043D"
+  ID: 5
   Sprite: {fileID: 5039333521453205190, guid: 282e83435be34e644b94a175b1c1acf7, type: 3}
   Icon: {fileID: 2070038136, guid: 3dd4d5f98a64be1478542ec916f7a5e3, type: 3}
-  Level: 3
-  Tilent: 0.32
+  Level: 4
+  Tilent: 0.3
   PlusCooldown: 3
   IsBuy: 0
   SpeshalText: "\u042F \u0442\u0435\u0440\u043F\u0435\u043B \u0438 \u0432\u0430\u043C
-    \u0432\u0435\u043B\u0435\u043B.."
+    \u0432\u0435\u043B\u0435\u043B"

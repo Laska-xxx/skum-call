@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -6,7 +7,7 @@ public class EndController : MonoBehaviour
 {
     [SerializeField] private Button[] quinButtoms;
     private GameObject end;
-    private WorkerData[] allWorkers; 
+    private List<WorkerData> allWorkers; 
 
     private AudioController audioController;
     void Start()

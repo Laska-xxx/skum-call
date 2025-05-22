@@ -16,9 +16,10 @@ public class BuyUpgradeWorker : MonoBehaviour
     private ShowUpgradeMenu menu;
     private GameUIController gameUIController;
     private BuyUpgradeController upgradeController;
-    private ChekWorkersLvl chekWorkersLvl;
+    private ChekLvl chekWorkersLvl;
     private Coins coins;
     private AchivController achivController;
+    private ReductionCoins reductionCoins;
 
     private AudioController audioController;
     void Start()
@@ -28,8 +29,9 @@ public class BuyUpgradeWorker : MonoBehaviour
         gameUIController = FindObjectOfType<GameUIController>();
         worker = gameObject.GetComponentInParent<Worker>();
         upgradeController = FindObjectOfType<BuyUpgradeController>();
-        chekWorkersLvl = FindObjectOfType<ChekWorkersLvl>();
+        chekWorkersLvl = FindObjectOfType<ChekLvl>();
         achivController = FindObjectOfType<AchivController>();
+        reductionCoins = FindObjectOfType<ReductionCoins>();
         upgradePanel.SetActive(false);
         labelText.text = $"{worker.PersName}";
         buyButton.onClick.AddListener(BuyUpgrade);
@@ -69,7 +71,6 @@ public class BuyUpgradeWorker : MonoBehaviour
             {
                 worker.ChangeLevelUp();
                 audioController.PlayLvlUp();
-                coins.AddSpecialCoins();
                 achivController.GetWorkerLvlAchiv(worker.Level);
             }
             else
@@ -79,41 +80,24 @@ public class BuyUpgradeWorker : MonoBehaviour
         }
         if (worker.Level == 20)
         {
-            /*Destroy(buyButton.gameObject);*/
-            chekWorkersLvl.ChekLvl();
+            chekWorkersLvl.ChekWorkerLvl();
+        }
+        if (worker.Level == 25)
+        {
+            Destroy(buyButton.gameObject);
+            chekWorkersLvl.ChekWorkerLvl();
         }
     }
 
     private void DrowInfo()
     {
-        /*if (worker.Level < 20)
-        {*/
-            infoText.text = $"Уровень: {worker.Level}->{worker.Level + 1}\r\nЗаработок: {DrowCostUpgrade(worker.Sallary)}->{DrowCostUpgrade(worker.FutireSallary(worker.Level + 1))}\r\nСтоимость: {DrowCostUpgrade(worker.CostUpgrade)}";
-        /*}
+        if (worker.Level < 25)
+        {
+            infoText.text = $"Уровень: {worker.Level}->{worker.Level + 1}\r\nЗаработок: {reductionCoins.Reduction(worker.Sallary)}->{reductionCoins.Reduction(worker.FutireSallary(worker.Level + 1))}\r\nСтоимость: {reductionCoins.Reduction(worker.CostUpgrade)}";
+        }
         else
         {
             infoText.text = $"Уровень: Максимальный";
-        }*/
-    }
-
-    private string DrowCostUpgrade(float cost)
-    {
-        if (cost >= 1000000000)
-        {
-            return (cost / 1000000000).ToString("#.#") + "B";
-        }
-        else if (cost >= 1000000)
-        {
-            return (cost / 1000000).ToString("#.#") + "M";
-        }
-        else if (cost >= 1000)
-        {
-            return (cost / 1000).ToString("#.#") + "K";
-        }
-        else
-        {
-            return cost.ToString();
         }
     }
-
 }

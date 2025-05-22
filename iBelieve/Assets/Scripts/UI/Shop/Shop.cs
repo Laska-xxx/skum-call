@@ -70,7 +70,6 @@ public class Shop : MonoBehaviour
 
     public void StopDobleSallary()
     {
-        Debug.Log("stopDobleSallary");
         IsDobleSallary = false;
         busterImage.SetActive(false);
     }

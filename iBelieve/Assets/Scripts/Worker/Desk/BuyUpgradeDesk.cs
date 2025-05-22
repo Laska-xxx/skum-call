@@ -17,6 +17,8 @@ public class BuyUpgradeDesk : MonoBehaviour
     private BuyUpgradeController upgradeController;
     private Coins coins;
     private AchivController achivController;
+    private ReductionCoins reductionCoins;
+    private ChekLvl chekLvl;
 
     private AudioController audioController;
     void Start()
@@ -27,6 +29,8 @@ public class BuyUpgradeDesk : MonoBehaviour
         desk = gameObject.GetComponentInParent<Desk>();
         upgradeController = FindObjectOfType<BuyUpgradeController>();
         achivController = FindObjectOfType<AchivController>();
+        reductionCoins = FindObjectOfType<ReductionCoins>();
+        chekLvl = FindObjectOfType<ChekLvl>();
         upgradePanel.SetActive(false);
         labelText.text = $"Стол";
         buyButton.onClick.AddListener(BuyUpgrade);
@@ -67,7 +71,6 @@ public class BuyUpgradeDesk : MonoBehaviour
             {
                 desk.ChangeLevelUp();
                 audioController.PlayLvlUp();
-                coins.AddSpecialCoins();
                 achivController.GetDeskLvlAchiv(desk.Level);
             }
             else
@@ -77,6 +80,7 @@ public class BuyUpgradeDesk : MonoBehaviour
         }
         if (desk.Level == 20)
         {
+            chekLvl.ChekDeskLvl();
             Destroy(buyButton.gameObject);
         }
     }
@@ -85,7 +89,7 @@ public class BuyUpgradeDesk : MonoBehaviour
     {
         if (desk.Level < 20 )
         {
-            infoText.text = $"Уровень: {desk.Level}->{desk.Level + 1}\r\nКулдаун: {desk.Cooldown}->{desk.Cooldown-1}\r\nСтоимость: {desk.UpgradeCost}";
+            infoText.text = $"Уровень: {desk.Level}->{desk.Level + 1}\r\nКулдаун: {desk.Cooldown}->{desk.Cooldown-1}\r\nСтоимость: {reductionCoins.Reduction(desk.UpgradeCost)}";
         }
         else
         {

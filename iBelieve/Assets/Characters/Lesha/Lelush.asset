@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1a8e0fa7c2c6c64db42d72db4af0b1e, type: 3}
+  m_Script: {fileID: 11500000, guid: 68a74567f51ec9f41a5a6d5621b1acf7, type: 3}
   m_Name: Lelush
   m_EditorClassIdentifier: 
   PersName: "\u041B\u0435\u0448\u0430"
+  ID: 4
   Sprite: {fileID: 6888539860454725863, guid: 940873da9e77eaf47b30e7f122620023, type: 3}
   Icon: {fileID: 1454463817, guid: db0b15fff0676c146b0e8f428c0e3e61, type: 3}
-  Level: 2
-  Tilent: 0.45
+  Level: 3
+  Tilent: 0.5
   PlusCooldown: 0
   IsBuy: 0
   SpeshalText: "\u042F \u041B\u0435\u0448\u0430 \u0420\u0443\u0441\u0441\u043A\u0438\u0439
