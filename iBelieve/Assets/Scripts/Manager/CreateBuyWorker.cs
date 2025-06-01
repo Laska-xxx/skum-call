@@ -10,6 +10,7 @@ public class CreateBuyWorker : MonoBehaviour
     private AchivController achivController;
     private int buyWorkerNum = 0;
     private int workerNum = 0;
+    public List<Worker> workers = new List<Worker>();
 
     private void Start()
     {
@@ -38,6 +39,7 @@ public class CreateBuyWorker : MonoBehaviour
                 workerPrefab.GetComponent<Worker>().workerData = workerData;
                 workerPrefab.GetComponent<Worker>().Num = workerNum +1;
                 Instantiate(workerPrefab, spawns[i].gameObject.transform);
+                workers.Add()
             }
         }
         workerNum++;

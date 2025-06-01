@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Coins : MonoBehaviour
 {
-    public double coins { get; private set; } = 10;
+    public double coins { get; private set; } = 0;
     public double specialCoins { get; private set; } = 0;
     private AchivController achivController;
 
@@ -31,5 +31,11 @@ public class Coins : MonoBehaviour
     public void TakeSpecialCoins(float amount)
     {
         specialCoins -= amount;
+    }
+
+    public void LoadCoinsValue(double coinsValue, int specialCoinsValue)
+    {
+        coins = coinsValue;
+        specialCoins = specialCoinsValue;
     }
 }

@@ -56,4 +56,9 @@ public class Achievement : MonoBehaviour
         Destroy(getAchivButton.gameObject);
         coins.AddSpecialCoins(achievementData.Reward);
     }
+    private void AchivHasBeenGet()
+    {
+        icone.sprite = achievementData.OpenImage;
+        Destroy(getAchivButton.gameObject);
+    }
 }
