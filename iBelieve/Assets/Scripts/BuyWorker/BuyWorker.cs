@@ -91,9 +91,7 @@ public class BuyWorker : MonoBehaviour
         audioController.PlayBuy();
         coins.TakeCoins(cost);
         worker.IsBuy = true;
-        workerPrefab.GetComponent<Worker>().workerData = worker;
-        workerPrefab.GetComponent<Worker>().Num = Num + 1;
-        Instantiate(workerPrefab, spawnPos.transform);
+        createWorker.CreateNewWorker(worker);
         reduceTime.FindWorkers();
         createWorker.CreateNewBuyWorker();
         achivController.GetCharacterAchiv(worker);
