@@ -70,16 +70,22 @@ public class Desk : MonoBehaviour
         }
         else if (Level >= 10)
         {
-            phoneInHand.DelPhone();
-            animController.ChangeAnim();
             Destroy(updradePos.transform.GetChild(0).gameObject);
             Instantiate(upgrads[2], updradePos.transform);
         }
         else if (Level >= 5)
         {
-            phoneInHand.ChangePhone();
             Destroy(updradePos.transform.GetChild(0).gameObject);
             Instantiate(upgrads[1], updradePos.transform);
+        }
+        if (Level >= 10)
+        {
+            phoneInHand.DelPhone();
+            animController.ChangeAnim();
+        }
+        else if (Level >= 5)
+        {
+            phoneInHand.ChangePhone();
         }
     }
 }

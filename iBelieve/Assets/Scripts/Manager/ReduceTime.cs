@@ -5,6 +5,7 @@ using UnityEngine;
 public class ReduceTime : MonoBehaviour
 {
     public Worker[] workers;
+    private BossAnim bossAnim;
     private ShowUpgradeMenu menu;
     private GameUIController gameUIController;
     private AudioController audioController;
@@ -12,6 +13,7 @@ public class ReduceTime : MonoBehaviour
     void Start()
     {
         menu = FindObjectOfType<ShowUpgradeMenu>();
+        bossAnim = FindObjectOfType<BossAnim>();
         gameUIController = FindObjectOfType<GameUIController>();
         audioController = FindObjectOfType<AudioController>();
     }
@@ -25,6 +27,7 @@ public class ReduceTime : MonoBehaviour
             {
                 worker.ReduceTimer();
                 worker.GetComponentInChildren<AnimController>().ClickAnim();
+                bossAnim.ClickAnim();
             }
         }
     }

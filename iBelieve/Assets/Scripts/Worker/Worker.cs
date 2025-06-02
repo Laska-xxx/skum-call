@@ -83,6 +83,7 @@ public class Worker : MonoBehaviour
         curWorkTime += Time.deltaTime;
         if (curWorkTime >= desk.Cooldown)
         {
+            Debug.Log(timeSlider);
             coins.AddCoins(Sallary * (shop.IsDobleSallary ? 2 : 1));
             curWorkTime = 0;
             timeSlider.value = 0;

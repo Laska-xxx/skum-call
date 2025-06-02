@@ -103,14 +103,15 @@ public class SaveManager : MonoBehaviour
                     achivController.InitializeAchivList();
                     achivController.achievements[i].achievementData.IsGet = gameData.SaveAchivs[i].IsGet;
                     achivController.achievements[i].achievementData.CanGet = gameData.SaveAchivs[i].CanGet;
-                    if (achivController.achievements[i].achievementData.CanGet)
-                    {
-                        achivController.achievements[i].CanGetAchiv();
-                    }
                     if (achivController.achievements[i].achievementData.IsGet)
                     {
                         achivController.achievements[i].AchivHasBeenGet();
                     }
+                    else if (achivController.achievements[i].achievementData.CanGet)
+                    {
+                        achivController.achievements[i].CanGetAchiv();
+                    }
+                    
                 }
             }
             stream.Close();

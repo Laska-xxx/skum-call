@@ -15,10 +15,11 @@ MonoBehaviour:
   Name: "\u041B\u0443\u0447\u0448\u0438\u0439 \u0441\u043A\u0430\u043C\u0435\u0440 "
   Description: "\u041B\u0435\u0433\u0435\u043D\u0434\u0430\u0440\u043D\u044B\u0439
     \u0441\u043A\u0430\u043C!"
-  OpenImage: {fileID: 599558081, guid: aad66d8975dfc08418c68d25001f9cd0, type: 3}
-  CloseImage: {fileID: 599558081, guid: aad66d8975dfc08418c68d25001f9cd0, type: 3}
+  OpenImage: {fileID: 1381200714, guid: eb658512c9e0d1b4b8eb445a469eed21, type: 3}
+  CloseImage: {fileID: 917567121, guid: 62149c354cfe5344b8acf023fedebaa1, type: 3}
   Reward: 5
   Type: 0
   Level: 4
   Condition: 100000
   IsGet: 0
+  CanGet: 0

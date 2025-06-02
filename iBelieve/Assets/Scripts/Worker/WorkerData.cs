@@ -8,6 +8,7 @@ public class WorkerData : ScriptableObject
     [SerializeField] public string PersName;
     [SerializeField] public int ID = 00;
     [SerializeField] public GameObject Sprite;
+    [SerializeField] public GameObject SpriteInPrison;
     [SerializeField] public Sprite Icon;
     [SerializeField] public int Level;
     [SerializeField] public float Tilent = 0.4f;
