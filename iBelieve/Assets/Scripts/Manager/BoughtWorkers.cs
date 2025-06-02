@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoughtWorkers : MonoBehaviour
+public class BoughtWorkers : MonoBehaviour 
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<GameObject> workers;
+    public void AddWorker(GameObject worker)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        workers.Add(worker);
     }
 }

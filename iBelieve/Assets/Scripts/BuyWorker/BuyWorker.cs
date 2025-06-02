@@ -39,7 +39,7 @@ public class BuyWorker : MonoBehaviour
         switch (Num)
         {
             case 0:
-                cost = 10;
+                cost = 0;
                 break;
             case 1:
                 cost = 300;
@@ -90,7 +90,6 @@ public class BuyWorker : MonoBehaviour
     {
         audioController.PlayBuy();
         coins.TakeCoins(cost);
-        worker.IsBuy = true;
         createWorker.CreateNewWorker(worker);
         reduceTime.FindWorkers();
         createWorker.CreateNewBuyWorker();

@@ -11,7 +11,7 @@ public class Worker : MonoBehaviour
     [HideInInspector] public int Num = 0;
     public float Sallary { get; private set; }
     public string PersName { get; private set; }
-    public int Level { get; private set; }
+    [HideInInspector] public int Level;
     public float CostUpgrade { get; private set; }
     private float tilent = 0.4f;
     private float curWorkTime = 0;
@@ -25,6 +25,7 @@ public class Worker : MonoBehaviour
     private Desk desk;
     private Coins coins;
     private Shop shop;
+    private BoughtWorkers boughtWorkers;
     void Start()
     {
         desk = gameObject.GetComponentInChildren<Desk>();
@@ -35,11 +36,20 @@ public class Worker : MonoBehaviour
         Instantiate(workerData.Sprite, sprite.gameObject.transform);
         headphones = sprite.GetComponentInChildren<HeadphonesOnHead>();
         PersName = workerData.PersName;
-        Level = workerData.Level;
         tilent = workerData.Tilent;
         Sallary = Mathf.Round((float)(tilent * cost * (Mathf.Pow(1.1f, Level * Num))));
         shop = FindObjectOfType<Shop>();
+        boughtWorkers = FindObjectOfType<BoughtWorkers>();
+        boughtWorkers.workers.Add(gameObject);
         CostUpgrade = Mathf.Round(cost * (Mathf.Pow(1.1f, Level * Num)));
+        if (Level >= 20)
+        {
+            headphones.ChangeHeadphones(1);
+        }
+        else if (Level >= 10)
+        {
+            headphones.ChangeHeadphones(0);
+        } 
     }
 
     private void Update()

@@ -19399,6 +19399,8 @@ GameObject:
   - component: {fileID: 1538954087}
   - component: {fileID: 1538954089}
   - component: {fileID: 1538954088}
+  - component: {fileID: 1538954090}
+  - component: {fileID: 1538954091}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -19530,6 +19532,9 @@ MonoBehaviour:
   - {fileID: 1477321089}
   - {fileID: 858321969}
   buyWorkerPrefab: {fileID: 4160180381188342245, guid: 688bd4a035a0c8245bf6ca34cb46a0fb, type: 3}
+  workerPrefab: {fileID: 7695686754502197998, guid: b564f1c4ac7b8814796fbbb73f4c3003, type: 3}
+  boughtWorkers: {fileID: 1538954091}
+  allWorkers: {fileID: 1538954082}
 --- !u!114 &1538954084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19660,6 +19665,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5bbef769bad7714e918cef8adfd2c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1538954090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538954076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 213c6e3efc0337a47b194e98a0f5b795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coins: {fileID: 1538954077}
+  boughtWorkers: {fileID: 1538954091}
+  allWorkers: {fileID: 1538954082}
+  createBuyWorker: {fileID: 1538954083}
+  achivController: {fileID: 1538954088}
+--- !u!114 &1538954091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538954076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66a2fd80fcf4ad94f9c0d942a4cda9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  workers: []
 --- !u!1 &1539360474
 GameObject:
   m_ObjectHideFlags: 0

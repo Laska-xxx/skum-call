@@ -34,6 +34,7 @@ public class GameUIController : MonoBehaviour
     private Coins coins;
     private List<WorkerData> allWorkers;
     private ReductionCoins reductionCoins;
+    private SaveManager saveManager;
 
     private AudioController audioController;
     void Start()
@@ -41,6 +42,7 @@ public class GameUIController : MonoBehaviour
         coins = FindObjectOfType<Coins>();
         allWorkers = FindObjectOfType<AllWorkers>().listWorkers;
         reductionCoins = FindObjectOfType<ReductionCoins>();
+        saveManager = FindObjectOfType<SaveManager>();
         showShopButton.onClick.AddListener(ShowShop);
         showAchievementButton.onClick.AddListener(ShowAchievement);
         showSettingsButton.onClick.AddListener(ShowSettings);
@@ -51,6 +53,8 @@ public class GameUIController : MonoBehaviour
         resetGameButton.onClick.AddListener(ReloadGame);
 
         audioController = FindObjectOfType<AudioController>();
+        
+        saveManager.Load();
     }
 
     void Update()
@@ -103,10 +107,7 @@ public class GameUIController : MonoBehaviour
     private void GoMainMenu()
     {
         audioController.PlayClickUI();
-        foreach (WorkerData worker in allWorkers)
-        {
-            worker.IsBuy = false;
-        }
+        saveManager.Save();
         PlayerPrefs.SetInt("ShowTutorial", 0);
         SceneManager.LoadScene("MainMenu");
     }
@@ -118,6 +119,7 @@ public class GameUIController : MonoBehaviour
         {
             worker.IsBuy = false;
         }
+        saveManager.DelSave();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

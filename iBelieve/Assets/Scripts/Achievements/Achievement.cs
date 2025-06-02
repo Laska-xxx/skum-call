@@ -43,6 +43,7 @@ public class Achievement : MonoBehaviour
             gameUIController = FindObjectOfType<GameUIController>(true);
             audioController = FindObjectOfType<AudioController>();
         }
+        achievementData.CanGet = true;
         gameUIController.HaveAchiv();
         getAchivButton.gameObject.SetActive(true);
         icone.sprite = achievementData.OpenImage;
@@ -56,7 +57,7 @@ public class Achievement : MonoBehaviour
         Destroy(getAchivButton.gameObject);
         coins.AddSpecialCoins(achievementData.Reward);
     }
-    private void AchivHasBeenGet()
+    public void AchivHasBeenGet()
     {
         icone.sprite = achievementData.OpenImage;
         Destroy(getAchivButton.gameObject);

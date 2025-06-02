@@ -6,10 +6,6 @@ public class PhoneInHand : MonoBehaviour
 {
     [SerializeField] private GameObject spawnPos;
     [SerializeField] private GameObject[] phones;
-    void Start()
-    {
-        Instantiate(phones[0], spawnPos.transform);
-    }
 
     public void ChangePhone()
     {

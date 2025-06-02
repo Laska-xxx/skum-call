@@ -12,7 +12,7 @@ public class Desk : MonoBehaviour
      public int Cooldown { get; private set; }
     [SerializeField] private int cost = 15;
     public float UpgradeCost { get; private set; }
-    public int Level { get; private set; } = 1;
+    [HideInInspector] public int Level = 1;
     private Worker worker;
     private WorkerData workerData;
     private PhoneInHand phoneInHand;
@@ -28,6 +28,7 @@ public class Desk : MonoBehaviour
         num = worker.Num;
         Cooldown = startCooldown + workerData.PlusCooldown;
         UpgradeCost = Mathf.Round(cost * (Mathf.Pow(1.11f, Level * num)));
+        LoadLvlGrafica();
     }
 
     
@@ -54,5 +55,31 @@ public class Desk : MonoBehaviour
     public int FutureCooldown(int lvl)
     {
         return startCooldown - lvl + workerData.PlusCooldown;
+    }
+    private void LoadLvlGrafica()
+    {
+        if (Level >= 20)
+        {
+            Destroy(updradePos.transform.GetChild(0).gameObject);
+            Instantiate(upgrads[4], updradePos.transform);
+        }
+        else if (Level >= 15)
+        {
+            Destroy(updradePos.transform.GetChild(0).gameObject);
+            Instantiate(upgrads[3], updradePos.transform);
+        }
+        else if (Level >= 10)
+        {
+            phoneInHand.DelPhone();
+            animController.ChangeAnim();
+            Destroy(updradePos.transform.GetChild(0).gameObject);
+            Instantiate(upgrads[2], updradePos.transform);
+        }
+        else if (Level >= 5)
+        {
+            phoneInHand.ChangePhone();
+            Destroy(updradePos.transform.GetChild(0).gameObject);
+            Instantiate(upgrads[1], updradePos.transform);
+        }
     }
 }

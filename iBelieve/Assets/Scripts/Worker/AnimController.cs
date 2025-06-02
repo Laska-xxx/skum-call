@@ -13,20 +13,16 @@ public class AnimController : MonoBehaviour
     }
     public void ChangeAnim()
     {
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
         isWhithPhone = false;
         animator.SetBool("WhithPhone", isWhithPhone);
     }
 
     public void ClickAnim()
     {
-        /* if (isWhithPhone)
-         {
-             animator.SetTrigger("ClickWhithPhone");
-         }
-         else
-         {
-             animator.SetTrigger("Click");
-         }*/
         animator.SetTrigger("Click");
     }
 }

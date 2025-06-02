@@ -33,7 +33,7 @@ public class Coins : MonoBehaviour
         specialCoins -= amount;
     }
 
-    public void LoadCoinsValue(double coinsValue, int specialCoinsValue)
+    public void LoadCoinsValue(double coinsValue, double specialCoinsValue)
     {
         coins = coinsValue;
         specialCoins = specialCoinsValue;

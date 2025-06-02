@@ -7,7 +7,7 @@ using UnityEngine;
 public class AchivController : MonoBehaviour
 {   
     [SerializeField] private List<AchievementsData> allAchiv = new List<AchievementsData>();
-    [SerializeField] private List<Achievement> achievements = new List<Achievement>();
+    public List<Achievement> achievements = new List<Achievement>();
     private List<Achievement> moneyAchiv = new List<Achievement>();
     private List<Achievement> timeAchiv = new List<Achievement>();
     private List<Achievement> caracterAchiv = new List<Achievement>();
@@ -17,32 +17,32 @@ public class AchivController : MonoBehaviour
 
     private void Start()
     {
-        allAchiv = allAchiv.OrderBy(achievement => achievement.Level).ToList();
-        for (int i = 0; i < achievements.Count; i++)
-        {
-            achievements[i].achievementData = allAchiv[i];
-        }
+        InitializeAchivList();
         foreach (var achievement in achievements)
         {
             achievement.DrowAchiv();
-            switch (achievement.achievementData.Type)
+            if (!achievement.achievementData.CanGet)
             {
-                case AchivType.Money:
-                    moneyAchiv.Add(achievement); 
-                    break;
-                case AchivType.Time:
-                    timeAchiv.Add(achievement);
-                    break;
-                case AchivType.Character:
-                    caracterAchiv.Add(achievement);
-                    break;
-                case AchivType.WorkerLevel:
-                    workerLvlAchiv.Add(achievement);
-                    break;
-                case AchivType.DeskLevel:
-                    deskLvlAchiv.Add(achievement);
-                    break;
+                switch (achievement.achievementData.Type)
+                {
+                    case AchivType.Money:
+                        moneyAchiv.Add(achievement);
+                        break;
+                    case AchivType.Time:
+                        timeAchiv.Add(achievement);
+                        break;
+                    case AchivType.Character:
+                        caracterAchiv.Add(achievement);
+                        break;
+                    case AchivType.WorkerLevel:
+                        workerLvlAchiv.Add(achievement);
+                        break;
+                    case AchivType.DeskLevel:
+                        deskLvlAchiv.Add(achievement);
+                        break;
+                }
             }
+            
         }
         StartCoroutine(CurTime());
     }
@@ -134,6 +134,14 @@ public class AchivController : MonoBehaviour
         {
             deskLvlAchiv[0].CanGetAchiv();
             deskLvlAchiv.RemoveAt(0);
+        }
+    }
+    public void InitializeAchivList()
+    {
+        allAchiv = allAchiv.OrderBy(achievement => achievement.Level).ToList();
+        for (int i = 0; i < achievements.Count; i++)
+        {
+            achievements[i].achievementData = allAchiv[i];
         }
     }
 }

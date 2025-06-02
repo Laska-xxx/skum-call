@@ -10,12 +10,16 @@ public class CreateBuyWorker : MonoBehaviour
     private AchivController achivController;
     private int buyWorkerNum = 0;
     private int workerNum = 0;
-    public List<Worker> workers = new List<Worker>();
+    private WorkerData workerData;
+    private ReduceTime reduceTime;
+    [SerializeField] private BoughtWorkers boughtWorkers;
+    [SerializeField] private AllWorkers allWorkers;
+    
 
     private void Start()
     {
         achivController = FindObjectOfType<AchivController>();
-        CreateNewBuyWorker();
+        reduceTime = FindObjectOfType<ReduceTime>();
     }
 
     public void CreateNewBuyWorker()
@@ -36,12 +40,38 @@ public class CreateBuyWorker : MonoBehaviour
         {
             if (i == workerNum)
             {
+                workerData.IsBuy = true;
                 workerPrefab.GetComponent<Worker>().workerData = workerData;
-                workerPrefab.GetComponent<Worker>().Num = workerNum +1;
+                workerPrefab.GetComponent<Worker>().Num = workerNum + 1;
+                workerPrefab.GetComponent<Worker>().Level = workerData.Level;
+                workerPrefab.GetComponent<Desk>().Level = 1;
                 Instantiate(workerPrefab, spawns[i].gameObject.transform);
-                workers.Add()
             }
         }
+        reduceTime.FindWorkers();
         workerNum++;
+    }
+    public void LoadWorkers(int num, int level, int dataID, int deskLevel)
+    {
+        for (int i = 0; i < allWorkers.listWorkers.Count; i++)
+        {
+            if (allWorkers.listWorkers[i].ID == dataID)
+            {
+                workerData = allWorkers.listWorkers[i];
+            }
+        }
+        workerData.IsBuy = true;
+        workerPrefab.GetComponent<Worker>().workerData = workerData;
+        workerPrefab.GetComponent<Worker>().Num = num;
+        workerPrefab.GetComponent<Worker>().Level = level;
+        workerPrefab.GetComponent<Desk>().Level = deskLevel;
+        Instantiate(workerPrefab, spawns[num-1].gameObject.transform);
+        if (reduceTime == null)
+        {
+            reduceTime = FindObjectOfType<ReduceTime>();
+        }
+        reduceTime.FindWorkers();
+        workerNum ++;
+        buyWorkerNum ++;
     }
 }
