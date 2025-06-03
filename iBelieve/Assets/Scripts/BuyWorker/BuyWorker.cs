@@ -35,6 +35,7 @@ public class BuyWorker : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         choouseWorkerObj.SetActive(false);
         spriteRenderer.color = Color.grey;
+        upgradeMenu.GetBuyWorker(this);
 
         switch (Num)
         {
@@ -57,6 +58,7 @@ public class BuyWorker : MonoBehaviour
         costText.text = cost.ToString();
 
         audioController = FindObjectOfType<AudioController>();
+        gameObject.SetActive(false);
     }
 
     void Update()
@@ -69,23 +71,23 @@ public class BuyWorker : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (coins.coins >= cost && upgradeMenu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && !choouseWorkerObj.activeInHierarchy)
+        if (coins.coins >= cost && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && !choouseWorkerObj.activeInHierarchy)
         {
             audioController.PlayOpenPanel();
             upgradeController.CloseAllPanels();
             choouseWorkerObj.SetActive(true);
         }
-        else if (upgradeMenu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && choouseWorkerObj.activeInHierarchy)
+        else if (!gameUIController.ShopOpen && !gameUIController.SettingsOpen && choouseWorkerObj.activeInHierarchy)
         {
             audioController.PlayOpenPanel();
-            Close();    
+            CloseChouseWorker();    
         }
     }
-    public void Close()
+    public void CloseChouseWorker()
     {
         choouseWorkerObj.SetActive(false);
     }
-
+    
     public void Buy(WorkerData worker)
     {
         audioController.PlayBuy();

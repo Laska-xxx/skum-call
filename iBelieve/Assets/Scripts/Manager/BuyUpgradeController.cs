@@ -5,21 +5,21 @@ using UnityEngine;
 public class BuyUpgradeController : MonoBehaviour
 {
     private BuyUpgradeWorker[] buyUpgradeWorkers;
-    private BuyWorker[] buyeWorkers;
+    private BuyWorker[] buyWorkers;
     private BuyUpgradeDesk[] buyUpgradeDesks;
     
     public void CloseAllPanels()
     {
         buyUpgradeWorkers = FindObjectsOfType<BuyUpgradeWorker>();
-        buyeWorkers = FindObjectsOfType<BuyWorker>();
+        buyWorkers = FindObjectsOfType<BuyWorker>();
         buyUpgradeDesks = FindObjectsOfType<BuyUpgradeDesk>();
         foreach (var buyWorker in buyUpgradeWorkers)
         {
             buyWorker.Close();
         }
-        foreach (var worker in buyeWorkers)
+        foreach (var worker in buyWorkers)
         {
-            worker.Close();
+            worker.CloseChouseWorker();
         }
         foreach (var desk in buyUpgradeDesks)
         {

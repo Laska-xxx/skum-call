@@ -8,6 +8,7 @@ public class ShowUpgradeMenu : MonoBehaviour
     private BuyUpgradeController upgradeController;
     public bool UpgradeMenuOpen { get; private set; }
     private AudioController audioController;
+    private BuyWorker curBuyWorker;
     void Start()
     {
         UpgradeMenuOpen = false;
@@ -24,11 +25,24 @@ public class ShowUpgradeMenu : MonoBehaviour
             UpgradeMenuOpen = false;
             menuBg.SetActive(false);
             upgradeController.CloseAllPanels();
+            if (curBuyWorker != null)
+            {
+                curBuyWorker.gameObject.SetActive(false);
+            }
         }
         else
         {
             UpgradeMenuOpen = true;
             menuBg.SetActive(true);
+            if (curBuyWorker != null)
+            {
+                curBuyWorker.gameObject.SetActive(true);
+            }
         }
+    }
+
+    public void GetBuyWorker(BuyWorker buyWorker)
+    {
+        curBuyWorker = buyWorker;
     }
 }

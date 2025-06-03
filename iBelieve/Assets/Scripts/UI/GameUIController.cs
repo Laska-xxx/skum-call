@@ -23,14 +23,19 @@ public class GameUIController : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private Button closeSettingsButton;
     [SerializeField] private Button resetGameButton;
-    [SerializeField] private Button goMainMenuButton;
+    [SerializeField] private Button showChoosSaveButton;
     [SerializeField] private GameObject settingsPanel;
     [Header("Buster")]
     [SerializeField] private GameObject busterImage;
     [SerializeField] private TextMeshProUGUI busterTimerText;
-    public bool ShopOpen = false;
-    public bool AchievementOpen = false;
-    public bool SettingsOpen = false;
+    [Header("SaveGame")]
+    [SerializeField] private GameObject ChooseSaveGamePanel;
+    [SerializeField] private Button saveGameButton;
+    [SerializeField] private Button quitGameButton;
+    [SerializeField] private Button closeChooseSaveButton;
+    [HideInInspector] public bool ShopOpen = false;
+    [HideInInspector] public bool AchievementOpen = false;
+    [HideInInspector] public bool SettingsOpen = false;
     private Coins coins;
     private List<WorkerData> allWorkers;
     private ReductionCoins reductionCoins;
@@ -46,10 +51,13 @@ public class GameUIController : MonoBehaviour
         showShopButton.onClick.AddListener(ShowShop);
         showAchievementButton.onClick.AddListener(ShowAchievement);
         showSettingsButton.onClick.AddListener(ShowSettings);
+        showChoosSaveButton.onClick.AddListener(ShowChooseSave);
         closeShopButton.onClick.AddListener(CloseShop);
         closeAchievementButton.onClick.AddListener(CloseAchievement);
         closeSettingsButton.onClick.AddListener(CloseSettings);
-        goMainMenuButton.onClick.AddListener(GoMainMenu);
+        closeChooseSaveButton.onClick.AddListener(CloseChoosSave);
+        saveGameButton.onClick.AddListener(SaveAndQuitGame);
+        quitGameButton.onClick.AddListener(QuitMenu);
         resetGameButton.onClick.AddListener(ReloadGame);
 
         audioController = FindObjectOfType<AudioController>();
@@ -83,6 +91,11 @@ public class GameUIController : MonoBehaviour
         settingsPanel.SetActive(true);
         SettingsOpen = true;
     }
+    private void ShowChooseSave()
+    {
+        audioController.PlayClickUI();
+        ChooseSaveGamePanel.SetActive(true);
+    }
     private void CloseShop()
     {
         audioController.PlayClickUI();
@@ -103,15 +116,22 @@ public class GameUIController : MonoBehaviour
         settingsPanel.SetActive(false );
         SettingsOpen = false;
     }
-
-    private void GoMainMenu()
+    private void CloseChoosSave()
+    {
+        audioController.PlayClickUI();
+        ChooseSaveGamePanel.SetActive(false);
+    }
+    private void QuitMenu()
+    {
+        audioController.PlayClickUI();
+        SceneManager.LoadScene("MainMenu");
+    }
+    private void SaveAndQuitGame()
     {
         audioController.PlayClickUI();
         saveManager.Save();
-        PlayerPrefs.SetInt("ShowTutorial", 0);
         SceneManager.LoadScene("MainMenu");
     }
-
     private void ReloadGame()
     {
         audioController.PlayClickUI();
