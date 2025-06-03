@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Worker : MonoBehaviour
 {
     [SerializeField] private Slider timeSlider;
-    [SerializeField] private int cost = 20;
+    [SerializeField] private int sallaryBase = 20;
     [HideInInspector] public int Num = 0;
     public float Sallary { get; private set; }
     public string PersName { get; private set; }
@@ -20,6 +20,7 @@ public class Worker : MonoBehaviour
     private ShowUpgradeMenu menu;
     private ShowBabls showBabls;
     private HeadphonesOnHead headphones;
+    private float worldFactor = 1;
 
     public WorkerData workerData;
     private Desk desk;
@@ -33,15 +34,23 @@ public class Worker : MonoBehaviour
         menu = FindObjectOfType<ShowUpgradeMenu>();
         coins = FindObjectOfType<Coins>();
         sprite = gameObject.transform.Find("Pers").gameObject;
-        Instantiate(workerData.Sprite, sprite.gameObject.transform);
         headphones = sprite.GetComponentInChildren<HeadphonesOnHead>();
         PersName = workerData.PersName;
         tilent = workerData.Tilent;
-        Sallary = Mathf.Round((float)(tilent * cost * (Mathf.Pow(1.1f, Level * Num))));
+        if (PlayerPrefs.GetInt("GameLevel") == 1)
+        {
+            Instantiate(workerData.SpriteInPrison, sprite.gameObject.transform);
+            worldFactor = 1.5f;
+        }
+        else
+        {
+            Instantiate(workerData.Sprite, sprite.gameObject.transform);
+        }
+        Sallary = Mathf.Round((float)(tilent * sallaryBase * worldFactor * (Mathf.Pow(1.1f, Level * Num))));
         shop = FindObjectOfType<Shop>();
         boughtWorkers = FindObjectOfType<BoughtWorkers>();
         boughtWorkers.workers.Add(gameObject);
-        CostUpgrade = Mathf.Round(cost * (Mathf.Pow(1.1f, Level * Num)));
+        CostUpgrade = Mathf.Round(sallaryBase * (Mathf.Pow(1.1f, Level * Num)));
         if (Level >= 20)
         {
             headphones.ChangeHeadphones(1);
@@ -61,7 +70,7 @@ public class Worker : MonoBehaviour
     {
         Level++;
         Sallary = FutireSallary(Level);
-        CostUpgrade = Mathf.Round(cost*(Mathf.Pow(1.1f,Level * Num)));
+        CostUpgrade = Mathf.Round(sallaryBase*(Mathf.Pow(1.1f,Level * Num)));
         
     }
 
@@ -96,6 +105,6 @@ public class Worker : MonoBehaviour
 
     public float FutireSallary(int level)
     {
-        return Mathf.Round((float)(tilent * cost * (Mathf.Pow(1.1f, level*Num))));
+        return Mathf.Round((float)(tilent * sallaryBase * worldFactor * (Mathf.Pow(1.1f, level*Num))));
     }
 }

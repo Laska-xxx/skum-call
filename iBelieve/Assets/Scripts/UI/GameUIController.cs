@@ -36,6 +36,7 @@ public class GameUIController : MonoBehaviour
     [HideInInspector] public bool ShopOpen = false;
     [HideInInspector] public bool AchievementOpen = false;
     [HideInInspector] public bool SettingsOpen = false;
+
     private Coins coins;
     private List<WorkerData> allWorkers;
     private ReductionCoins reductionCoins;
@@ -64,13 +65,11 @@ public class GameUIController : MonoBehaviour
         
         saveManager.Load();
     }
-
     void Update()
     {
         coinsText.text = reductionCoins.Reduction(coins.coins);
         speshalCoinsText.text = coins.specialCoins.ToString();
     }
-
     private void ShowShop()
     {
         audioController.PlayClickUI();
@@ -84,7 +83,6 @@ public class GameUIController : MonoBehaviour
         haveAchivPoint.SetActive(false);
         AchievementOpen = true;
     }
-
     private void ShowSettings()
     {
         audioController.PlayClickUI();
@@ -102,14 +100,12 @@ public class GameUIController : MonoBehaviour
         shopPanel.SetActive(false);
         ShopOpen = false;
     }
-
     private void CloseAchievement()
     {
         audioController.PlayClickUI();
         achievementPanel.SetActive(false);
         AchievementOpen = false;
     }
-
     private void CloseSettings()
     {
         audioController.PlayClickUI();
@@ -140,9 +136,9 @@ public class GameUIController : MonoBehaviour
             worker.IsBuy = false;
         }
         saveManager.DelSave();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        PlayerPrefs.SetInt("GameLevel", 0);
+        SceneManager.LoadScene("FirstLevel");
     }
-
     public void HaveAchiv()
     {
         haveAchivPoint.SetActive(true);

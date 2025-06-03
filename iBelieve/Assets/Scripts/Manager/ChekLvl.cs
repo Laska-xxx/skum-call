@@ -34,7 +34,10 @@ public class ChekLvl : MonoBehaviour
         }
         if (generalLevel >= 120)
         {
-            endController.StartEnd();
+            if (endController != null)
+            {
+                endController.StartEnd();
+            }
         }
     }
 

@@ -34,6 +34,7 @@ public class Achievement : MonoBehaviour
         descriptionText.text = achievementData.Description;
         rewardText.text = achievementData.Reward.ToString();
         icone.sprite = achievementData.CloseImage;
+        getAchivButton.interactable = false;
     }
 
     public void CanGetAchiv()
@@ -45,7 +46,7 @@ public class Achievement : MonoBehaviour
         }
         achievementData.CanGet = true;
         gameUIController.HaveAchiv();
-        getAchivButton.gameObject.SetActive(true);
+        getAchivButton.interactable = true;
         icone.sprite = achievementData.OpenImage;
 
         audioController.PlayAchiv();

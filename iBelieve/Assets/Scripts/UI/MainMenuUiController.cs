@@ -49,6 +49,7 @@ public class MainMenuUiController : MonoBehaviour
         else
         {
             PlayerPrefs.SetInt("ShowTutorial", 0);
+            PlayerPrefs.SetInt("GameLevel", 0);
             audioController.PlayClickUI();
             SceneManager.LoadScene("FirstLevel");
         } 

@@ -15,6 +15,7 @@ MonoBehaviour:
   PersName: "\u041B\u0435\u0448\u0430"
   ID: 4
   Sprite: {fileID: 6888539860454725863, guid: 940873da9e77eaf47b30e7f122620023, type: 3}
+  SpriteInPrison: {fileID: 4671165276118629567, guid: c6c9a6a7d5529a44a9b7d985dfbe0c0e, type: 3}
   Icon: {fileID: 1454463817, guid: db0b15fff0676c146b0e8f428c0e3e61, type: 3}
   Level: 3
   Tilent: 0.5
