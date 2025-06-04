@@ -19,13 +19,21 @@ public class Achievement : MonoBehaviour
 
     private AudioController audioController;
 
-    private void Start()
+    /*private void Start()
     {
         gameUIController = FindObjectOfType<GameUIController>();
         coins = FindObjectOfType<Coins>();
         getAchivButton.onClick.AddListener(GetAchiv);
 
         audioController = FindObjectOfType<AudioController>();
+    }*/
+
+    public void StartWork(GameUIController gameUIController, Coins coins, AudioController audioController)
+    {
+        this.gameUIController = gameUIController;
+        this.coins = coins;
+        getAchivButton.onClick.AddListener(GetAchiv);
+        this.audioController = audioController;
     }
 
     public void DrowAchiv()

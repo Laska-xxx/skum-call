@@ -9,7 +9,7 @@ public class SaveManager : MonoBehaviour
 {
     [SerializeField] private Coins coins;
     [SerializeField] private BoughtWorkers boughtWorkers;
-    [SerializeField] private AllWorkers allWorkers;
+    [SerializeField] private AllWorkersData allWorkers;
     [SerializeField] private CreateBuyWorker createBuyWorker;
     [SerializeField] private AchivController achivController;
 
@@ -93,6 +93,7 @@ public class SaveManager : MonoBehaviour
             }
             else
             {
+                print("Lol");
                 createBuyWorker.CreateNewBuyWorker();
             }
             coins.LoadCoinsValue(gameData.CoinsValue, gameData.SpecialCoinsValue);

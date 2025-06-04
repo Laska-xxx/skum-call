@@ -14,11 +14,11 @@ public class EndController : MonoBehaviour
     private AudioController audioController;
     void Start()
     {
-        end.SetActive(false);
-        allWorkers = FindObjectOfType<AllWorkers>().listWorkers;
+        allWorkers = FindObjectOfType<AllWorkersData>().listWorkers;
         audioController = FindObjectOfType<AudioController>();
         saveManager = FindObjectOfType<SaveManager>();
         quinButtom.onClick.AddListener(GoMainMenu);
+        end.SetActive(false);
     }
 
     public void StartEnd()

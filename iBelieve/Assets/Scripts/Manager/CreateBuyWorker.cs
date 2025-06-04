@@ -12,14 +12,21 @@ public class CreateBuyWorker : MonoBehaviour
     private int workerNum = 0;
     private WorkerData workerData;
     private ReduceTime reduceTime;
-    [SerializeField] private BoughtWorkers boughtWorkers;
-    [SerializeField] private AllWorkers allWorkers;
+    private BoughtWorkers boughtWorkers;
+    private AllWorkersData allWorkers;
     
 
-    private void Start()
+    /*private void Start()
     {
         achivController = FindObjectOfType<AchivController>();
         reduceTime = FindObjectOfType<ReduceTime>();
+    }*/
+    public void StartWork(AchivController achivController, ReduceTime reduceTime, BoughtWorkers boughtWorkers, AllWorkersData allWorkersData)
+    {
+        this.achivController = achivController;
+        this.reduceTime = reduceTime;
+        this.boughtWorkers = boughtWorkers;
+        allWorkers = allWorkersData;
     }
 
     public void CreateNewBuyWorker()

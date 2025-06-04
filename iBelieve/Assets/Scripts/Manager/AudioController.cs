@@ -13,7 +13,7 @@ public class AudioController : MonoBehaviour
     private AudioSource sirenAudio;
     private AudioSource achivAudio;
 
-    private void Start()
+    private void Awake()
     {
         clickUIAudio = GameObject.Find("ClickUISource").GetComponent<AudioSource>();
         clickAudio = GameObject.Find("ClickSource").GetComponent<AudioSource>();

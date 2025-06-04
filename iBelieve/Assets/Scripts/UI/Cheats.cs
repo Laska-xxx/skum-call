@@ -12,9 +12,16 @@ public class Cheats : MonoBehaviour
     [SerializeField] private Button closeButton;
     private float curValue;
     private Coins coins;
-    void Start()
+    /*void Start()
     {
         coins = FindObjectOfType<Coins>();
+        cheatsPanel.SetActive(false);
+        useButton.onClick.AddListener(UseCheats);
+        closeButton.onClick.AddListener(() => cheatsPanel.SetActive(false));
+    }*/
+    public void StartWork(Coins coins)
+    {
+        this.coins = coins;
         cheatsPanel.SetActive(false);
         useButton.onClick.AddListener(UseCheats);
         closeButton.onClick.AddListener(() => cheatsPanel.SetActive(false));

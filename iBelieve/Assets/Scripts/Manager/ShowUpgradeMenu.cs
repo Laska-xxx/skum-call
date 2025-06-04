@@ -9,12 +9,19 @@ public class ShowUpgradeMenu : MonoBehaviour
     public bool UpgradeMenuOpen { get; private set; }
     private AudioController audioController;
     private BuyWorker curBuyWorker;
-    void Start()
+    /*void Start()
     {
         UpgradeMenuOpen = false;
         menuBg.SetActive(false);
         upgradeController = FindObjectOfType<BuyUpgradeController>();
         audioController = FindObjectOfType<AudioController>();
+    }*/
+    public void StartWork(BuyUpgradeController upgradeController, AudioController audioController)
+    {
+        UpgradeMenuOpen = false;
+        menuBg.SetActive(false);
+        this.upgradeController = upgradeController;
+        this.audioController = audioController;
     }
 
     private void OnMouseDown()

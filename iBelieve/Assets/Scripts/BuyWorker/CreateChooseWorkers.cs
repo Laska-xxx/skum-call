@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CreateChooseWorkers : MonoBehaviour
 {
-    private AllWorkers allWorkers;
+    private AllWorkersData allWorkers;
     [SerializeField] private GameObject iconWorkerPrefab;
     void Start()
     {
-        allWorkers = FindObjectOfType<AllWorkers>();
+        allWorkers = FindObjectOfType<AllWorkersData>();
         foreach (var worker in allWorkers.listWorkers)
         {
             if (worker.IsBuy == false)

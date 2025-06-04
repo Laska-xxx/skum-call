@@ -10,12 +10,19 @@ public class ReduceTime : MonoBehaviour
     private GameUIController gameUIController;
     private AudioController audioController;
 
-    void Start()
+    /*void Start()
     {
         menu = FindObjectOfType<ShowUpgradeMenu>();
         bossAnim = FindObjectOfType<BossAnim>();
         gameUIController = FindObjectOfType<GameUIController>();
         audioController = FindObjectOfType<AudioController>();
+    }*/
+    public void StartWork(ShowUpgradeMenu showUpgradeMenu, GameUIController gameUIController, AudioController audioController)
+    {
+        menu = showUpgradeMenu;
+        bossAnim = FindObjectOfType<BossAnim>();
+        this.gameUIController = gameUIController;
+        this.audioController = audioController;
     }
 
     private void Update()
@@ -27,8 +34,8 @@ public class ReduceTime : MonoBehaviour
             {
                 worker.ReduceTimer();
                 worker.GetComponentInChildren<AnimController>().ClickAnim();
-                bossAnim.ClickAnim();
             }
+            bossAnim.ClickAnim();
         }
     }
 

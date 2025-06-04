@@ -39,15 +39,14 @@ public class GameUIController : MonoBehaviour
 
     private Coins coins;
     private List<WorkerData> allWorkers;
-    private ReductionCoins reductionCoins;
+    private ReductionCoins reductionCoins = new ReductionCoins();
     private SaveManager saveManager;
 
     private AudioController audioController;
-    void Start()
+    /*void Start()
     {
         coins = FindObjectOfType<Coins>();
-        allWorkers = FindObjectOfType<AllWorkers>().listWorkers;
-        reductionCoins = FindObjectOfType<ReductionCoins>();
+        allWorkers = FindObjectOfType<AllWorkersData>().listWorkers;
         saveManager = FindObjectOfType<SaveManager>();
         showShopButton.onClick.AddListener(ShowShop);
         showAchievementButton.onClick.AddListener(ShowAchievement);
@@ -62,8 +61,26 @@ public class GameUIController : MonoBehaviour
         resetGameButton.onClick.AddListener(ReloadGame);
 
         audioController = FindObjectOfType<AudioController>();
-        
-        saveManager.Load();
+    }*/
+    public void StartWork(Coins coins, AllWorkersData allWorkers, ReductionCoins reductionCoins, SaveManager saveManager, AudioController audioController)
+    {
+        this.coins = coins;
+        this.allWorkers = allWorkers.listWorkers;
+        this.reductionCoins = reductionCoins;
+        this.saveManager = saveManager;
+        this.audioController = audioController;
+
+        showShopButton.onClick.AddListener(ShowShop);
+        showAchievementButton.onClick.AddListener(ShowAchievement);
+        showSettingsButton.onClick.AddListener(ShowSettings);
+        showChoosSaveButton.onClick.AddListener(ShowChooseSave);
+        closeShopButton.onClick.AddListener(CloseShop);
+        closeAchievementButton.onClick.AddListener(CloseAchievement);
+        closeSettingsButton.onClick.AddListener(CloseSettings);
+        closeChooseSaveButton.onClick.AddListener(CloseChoosSave);
+        saveGameButton.onClick.AddListener(SaveAndQuitGame);
+        quitGameButton.onClick.AddListener(QuitMenu);
+        resetGameButton.onClick.AddListener(ReloadGame);
     }
     void Update()
     {

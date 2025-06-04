@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReductionCoins : MonoBehaviour
+public class ReductionCoins
 {
     public string Reduction(double value)
     {

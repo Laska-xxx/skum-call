@@ -18,7 +18,7 @@ public class BuyUpgradeWorker : MonoBehaviour
     private ChekLvl chekWorkersLvl;
     private Coins coins;
     private AchivController achivController;
-    private ReductionCoins reductionCoins;
+    private ReductionCoins reductionCoins = new ReductionCoins();
 
     private AudioController audioController;
     void Start()
@@ -30,7 +30,6 @@ public class BuyUpgradeWorker : MonoBehaviour
         upgradeController = FindObjectOfType<BuyUpgradeController>();
         chekWorkersLvl = FindObjectOfType<ChekLvl>();
         achivController = FindObjectOfType<AchivController>();
-        reductionCoins = FindObjectOfType<ReductionCoins>();
         upgradePanel.SetActive(false);
         labelText.text = $"{worker.PersName}";
         buyButton.onClick.AddListener(BuyUpgrade);

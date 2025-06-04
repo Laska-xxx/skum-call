@@ -17,7 +17,7 @@ public class BuyUpgradeDesk : MonoBehaviour
     private BuyUpgradeController upgradeController;
     private Coins coins;
     private AchivController achivController;
-    private ReductionCoins reductionCoins;
+    private ReductionCoins reductionCoins = new ReductionCoins();
     private ChekLvl chekLvl;
 
     private AudioController audioController;
@@ -29,7 +29,6 @@ public class BuyUpgradeDesk : MonoBehaviour
         desk = gameObject.GetComponentInParent<Desk>();
         upgradeController = FindObjectOfType<BuyUpgradeController>();
         achivController = FindObjectOfType<AchivController>();
-        reductionCoins = FindObjectOfType<ReductionCoins>();
         chekLvl = FindObjectOfType<ChekLvl>();
         upgradePanel.SetActive(false);
         labelText.text = $"Стол";

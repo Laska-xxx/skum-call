@@ -13,12 +13,11 @@ public class ShowWorkerInfo : MonoBehaviour
     private Desk desk;
     private ShowUpgradeMenu menu;
     private GameUIController gameUIController;
-    private ReductionCoins reductionCoins;
+    private ReductionCoins reductionCoins = new ReductionCoins();
     void Start()
     {
         menu = FindObjectOfType<ShowUpgradeMenu>();
         gameUIController = FindObjectOfType<GameUIController>();
-        reductionCoins = FindObjectOfType<ReductionCoins>();
         worker = gameObject.GetComponentInParent<Worker>();
         desk = gameObject.GetComponentInParent<Desk>();
         infoPanel.SetActive(false);

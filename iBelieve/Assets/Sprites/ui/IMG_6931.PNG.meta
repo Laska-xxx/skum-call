@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3a7fd63b353dc2743b06c08b4d9f044e
+guid: 49865ed84461db442b2a5df9d2dd4a83
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,97 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IMG_6906_13
+      name: IMG_6931_0
       rect:
         serializedVersion: 2
-        x: 222
-        y: 1634
-        width: 150
-        height: 195
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 367791db55edf6848891165bbfa8e5c1
-      internalID: -1716535231
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IMG_6906_14
-      rect:
-        serializedVersion: 2
-        x: 388
-        y: 1631
-        width: 150
-        height: 195
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e0c20f0a8d16c3949a5a3f4c4de60fdf
-      internalID: 14219879
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IMG_6906_20
-      rect:
-        serializedVersion: 2
-        x: 70
-        y: 1342
-        width: 454
-        height: 105
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 54159617271dae14995e158cdabe08f7
-      internalID: 494994139
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IMG_6906_0
-      rect:
-        serializedVersion: 2
-        x: 70
-        y: 1219
-        width: 455
-        height: 105
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da1c00f08021f9547b7ba254832aeabb
-      internalID: -321174850
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IMG_6906_1
-      rect:
-        serializedVersion: 2
-        x: 572
-        y: 1684
-        width: 161
-        height: 161
+        x: 34
+        y: 69
+        width: 831
+        height: 608
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,29 +150,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49931a0cac6661245b122e450223ce61
-      internalID: -1914158126
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IMG_6906_2
-      rect:
-        serializedVersion: 2
-        x: 750
-        y: 1684
-        width: 161
-        height: 161
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c3537b74e894f940ac88628561cee26
-      internalID: 1762496322
+      spriteID: 2b562545aa8170f459282228a0bc9c2f
+      internalID: -1793346373
       vertices: []
       indices: 
       edges: []
@@ -272,29 +167,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      IMG_6906_0: -321174850
-      IMG_6906_1: -1914158126
-      IMG_6906_10: 1749822940
-      IMG_6906_11: 1126276507
-      IMG_6906_12: 686578887
-      IMG_6906_13: -1716535231
-      IMG_6906_14: 14219879
-      IMG_6906_15: 184901701
-      IMG_6906_16: -821281566
-      IMG_6906_17: -1680003337
-      IMG_6906_18: -1825278275
-      IMG_6906_19: -1255502954
-      IMG_6906_2: 1762496322
-      IMG_6906_20: 494994139
-      IMG_6906_21: 1081603152
-      IMG_6906_22: -542054174
-      IMG_6906_3: 1593317842
-      IMG_6906_4: 1469138469
-      IMG_6906_5: 817775199
-      IMG_6906_6: 333793959
-      IMG_6906_7: 1317964949
-      IMG_6906_8: 788138679
-      IMG_6906_9: 190892760
+      IMG_6931_0: -1793346373
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

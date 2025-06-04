@@ -22,16 +22,17 @@ public class BuyWorker : MonoBehaviour
     private AchivController achivController;
 
     private AudioController audioController;
+
     void Start()
     {
-        createWorker = FindObjectOfType<CreateBuyWorker>();
-        gameUIController = FindObjectOfType<GameUIController>();
-        reduceTime = FindObjectOfType<ReduceTime>();
-        achivController = FindObjectOfType<AchivController>();
+        createWorker = FindObjectOfType<CreateBuyWorker>(true);
+        gameUIController = FindObjectOfType<GameUIController>(true);
+        reduceTime = FindObjectOfType<ReduceTime>(true);
+        achivController = FindObjectOfType<AchivController>(true);
         spawnPos = gameObject.transform.parent.gameObject;
-        coins = FindObjectOfType<Coins>();
-        upgradeMenu = FindObjectOfType<ShowUpgradeMenu>();
-        upgradeController = FindObjectOfType<BuyUpgradeController>();
+        coins = FindObjectOfType<Coins>(true);
+        upgradeMenu = FindObjectOfType<ShowUpgradeMenu>(true);
+        upgradeController = FindObjectOfType<BuyUpgradeController>(true);
         spriteRenderer = GetComponent<SpriteRenderer>();
         choouseWorkerObj.SetActive(false);
         spriteRenderer.color = Color.grey;
@@ -61,7 +62,7 @@ public class BuyWorker : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (coins.coins >= cost)
         {
@@ -71,7 +72,7 @@ public class BuyWorker : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (coins.coins >= cost && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && !choouseWorkerObj.activeInHierarchy)
+        if (coins.coins >= cost && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && !choouseWorkerObj.activeInHierarchy) 
         {
             audioController.PlayOpenPanel();
             upgradeController.CloseAllPanels();

@@ -27,16 +27,9 @@ public class Worker : MonoBehaviour
     private Coins coins;
     private Shop shop;
     private BoughtWorkers boughtWorkers;
-    void Start()
+    private void Awake()
     {
-        desk = gameObject.GetComponentInChildren<Desk>();
-        showBabls = gameObject.GetComponentInChildren<ShowBabls>();
-        menu = FindObjectOfType<ShowUpgradeMenu>();
-        coins = FindObjectOfType<Coins>();
         sprite = gameObject.transform.Find("Pers").gameObject;
-        headphones = sprite.GetComponentInChildren<HeadphonesOnHead>();
-        PersName = workerData.PersName;
-        tilent = workerData.Tilent;
         if (PlayerPrefs.GetInt("GameLevel") == 1)
         {
             Instantiate(workerData.SpriteInPrison, sprite.gameObject.transform);
@@ -46,6 +39,16 @@ public class Worker : MonoBehaviour
         {
             Instantiate(workerData.Sprite, sprite.gameObject.transform);
         }
+    }
+    void Start()
+    {
+        desk = gameObject.GetComponentInChildren<Desk>();
+        showBabls = gameObject.GetComponentInChildren<ShowBabls>();
+        menu = FindObjectOfType<ShowUpgradeMenu>();
+        coins = FindObjectOfType<Coins>();
+        headphones = sprite.GetComponentInChildren<HeadphonesOnHead>();
+        PersName = workerData.PersName;
+        tilent = workerData.Tilent;
         Sallary = Mathf.Round((float)(tilent * sallaryBase * worldFactor * (Mathf.Pow(1.1f, Level * Num))));
         shop = FindObjectOfType<Shop>();
         boughtWorkers = FindObjectOfType<BoughtWorkers>();
@@ -92,7 +95,6 @@ public class Worker : MonoBehaviour
         curWorkTime += Time.deltaTime;
         if (curWorkTime >= desk.Cooldown)
         {
-            Debug.Log(timeSlider);
             coins.AddCoins(Sallary * (shop.IsDobleSallary ? 2 : 1));
             curWorkTime = 0;
             timeSlider.value = 0;

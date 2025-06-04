@@ -14,12 +14,50 @@ public class AchivController : MonoBehaviour
     private List<Achievement> workerLvlAchiv = new List<Achievement>();
     private List<Achievement> deskLvlAchiv = new List<Achievement>();
 
-
-    private void Start()
+    public void StartWork()
     {
-        if (achievements[0].achievementData == null)
+        allAchiv = allAchiv.OrderBy(achievement => achievement.Level).ToList();
+        for (int i = 0; i < achievements.Count; i++)
         {
-            InitializeAchivList();
+            achievements[i].achievementData = allAchiv[i];
+        }
+    }
+    public void DistributionAchiv()
+    {
+        foreach (var achievement in achievements)
+        {
+            achievement.DrowAchiv();
+            if (!achievement.achievementData.CanGet)
+            {
+                switch (achievement.achievementData.Type)
+                {
+                    case AchivType.Money:
+                        moneyAchiv.Add(achievement);
+                        break;
+                    case AchivType.Time:
+                        timeAchiv.Add(achievement);
+                        break;
+                    case AchivType.Character:
+                        caracterAchiv.Add(achievement);
+                        break;
+                    case AchivType.WorkerLevel:
+                        workerLvlAchiv.Add(achievement);
+                        break;
+                    case AchivType.DeskLevel:
+                        deskLvlAchiv.Add(achievement);
+                        break;
+                }
+            }
+
+        }
+        StartCoroutine(CurTime());
+    }
+    /*private void Start()
+    {
+        allAchiv = allAchiv.OrderBy(achievement => achievement.Level).ToList();
+        for (int i = 0; i < achievements.Count; i++)
+        {
+            achievements[i].achievementData = allAchiv[i];
         }
         foreach (var achievement in achievements)
         {
@@ -48,7 +86,7 @@ public class AchivController : MonoBehaviour
             
         }
         StartCoroutine(CurTime());
-    }
+    }*/
 
     IEnumerator CurTime()
     {

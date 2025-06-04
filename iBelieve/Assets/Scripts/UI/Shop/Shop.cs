@@ -11,9 +11,13 @@ public class Shop : MonoBehaviour
     private Worker[] workers;
     private Coins coins;
     public bool IsDobleSallary { get; private set; } = false;
-    void Start()
+    /*void Start()
     {
         coins = FindObjectOfType<Coins>();
+    }*/
+    public void StartWork(Coins coins)
+    {
+        this.coins = coins;
     }
 
     public void SkipTime(int time)
