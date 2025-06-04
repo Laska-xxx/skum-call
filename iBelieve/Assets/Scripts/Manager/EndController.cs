@@ -10,8 +10,8 @@ public class EndController : MonoBehaviour
     [SerializeField] private GameObject end;
     private List<WorkerData> allWorkers;
     private SaveManager saveManager;
-
     private AudioController audioController;
+
     void Start()
     {
         allWorkers = FindObjectOfType<AllWorkersData>().listWorkers;
@@ -20,7 +20,6 @@ public class EndController : MonoBehaviour
         quinButtom.onClick.AddListener(GoMainMenu);
         end.SetActive(false);
     }
-
     public void StartEnd()
     {
         end.SetActive(true);
@@ -42,7 +41,6 @@ public class EndController : MonoBehaviour
         saveManager.DelSave();
         SceneManager.LoadScene("MainMenu");
     }
-
     public void SirenSound()
     {
         audioController.PlaySiren();

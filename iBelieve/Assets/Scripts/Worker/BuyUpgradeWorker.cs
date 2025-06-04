@@ -80,7 +80,7 @@ public class BuyUpgradeWorker : MonoBehaviour
         {
             chekWorkersLvl.ChekWorkerLvl();
         }
-        if (worker.Level == 25)
+        if (worker.Level == worker.MaxLevel)
         {
             Destroy(buyButton.gameObject);
             chekWorkersLvl.ChekWorkerLvl();
@@ -89,7 +89,7 @@ public class BuyUpgradeWorker : MonoBehaviour
 
     private void DrowInfo()
     {
-        if (worker.Level < 25)
+        if (worker.Level < worker.MaxLevel)
         {
             infoText.text = $"Уровень: {worker.Level}->{worker.Level + 1}\r\nЗаработок: {reductionCoins.Reduction(worker.Sallary)}->{reductionCoins.Reduction(worker.FutireSallary(worker.Level + 1))}\r\nСтоимость: {reductionCoins.Reduction(worker.CostUpgrade)}";
         }

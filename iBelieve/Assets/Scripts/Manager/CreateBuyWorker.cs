@@ -7,20 +7,14 @@ public class CreateBuyWorker : MonoBehaviour
     [SerializeField] private GameObject[] spawns;
     [SerializeField] private GameObject buyWorkerPrefab;
     [SerializeField] private GameObject workerPrefab;
-    private AchivController achivController;
     private int buyWorkerNum = 0;
     private int workerNum = 0;
     private WorkerData workerData;
     private ReduceTime reduceTime;
     private BoughtWorkers boughtWorkers;
     private AllWorkersData allWorkers;
-    
+    private AchivController achivController;
 
-    /*private void Start()
-    {
-        achivController = FindObjectOfType<AchivController>();
-        reduceTime = FindObjectOfType<ReduceTime>();
-    }*/
     public void StartWork(AchivController achivController, ReduceTime reduceTime, BoughtWorkers boughtWorkers, AllWorkersData allWorkersData)
     {
         this.achivController = achivController;
@@ -28,7 +22,6 @@ public class CreateBuyWorker : MonoBehaviour
         this.boughtWorkers = boughtWorkers;
         allWorkers = allWorkersData;
     }
-
     public void CreateNewBuyWorker()
     {
         for (int i = 0; i < spawns.Length; i++)

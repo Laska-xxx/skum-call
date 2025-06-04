@@ -11,7 +11,6 @@ public class CloseChooseWorker : MonoBehaviour
     {
         isInArea = true;
     }
-
     private void OnMouseExit()
     {
         if (isInArea)

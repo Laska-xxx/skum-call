@@ -6,6 +6,7 @@ public class AnimController : MonoBehaviour
 {
     private Animator animator;
     private bool isWhithPhone = true;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -20,7 +21,6 @@ public class AnimController : MonoBehaviour
         isWhithPhone = false;
         animator.SetBool("WhithPhone", isWhithPhone);
     }
-
     public void ClickAnim()
     {
         animator.SetTrigger("Click");

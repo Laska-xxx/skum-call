@@ -17,22 +17,18 @@ public class Coins : MonoBehaviour
         coins += amount;
         achivController.GetMoneyAchiv(coins);
     }
-
     public void TakeCoins(float amount)
     {
         coins -= amount;
     }
-
     public void AddSpecialCoins(float amount = 1)
     {
         specialCoins += amount;
     }
-
     public void TakeSpecialCoins(float amount)
     {
         specialCoins -= amount;
     }
-
     public void LoadCoinsValue(double coinsValue, double specialCoinsValue)
     {
         coins = coinsValue;

@@ -8,12 +8,12 @@ public class ShowBabls : MonoBehaviour
     [SerializeField] private GameObject[] babls;
     private WorkerData workerData;
     private bool isChat = false;
+
     void Start()
     {
         workerData = gameObject.GetComponentInParent<Worker>().workerData;
         babls[babls.Length - 1].GetComponentInChildren<TextMeshProUGUI>().text = $"{workerData.SpeshalText}";
     }
-
     public void Chat()
     {
         if (!isChat)

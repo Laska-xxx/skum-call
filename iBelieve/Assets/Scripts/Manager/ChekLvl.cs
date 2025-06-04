@@ -8,21 +8,21 @@ public class ChekLvl : MonoBehaviour
     private Desk[] desks;
     private EndController endController;
     private AchivController achivController;
-    private int generalLevel;
+    private int generalWorkerLevel;
+
     void Start()
     {
         endController = FindObjectOfType<EndController>();
         achivController = FindObjectOfType<AchivController>();
     }
-
     public void ChekWorkerLvl()
     {
         workers = FindObjectsOfType<Worker>();
-        generalLevel = 0;
+        generalWorkerLevel = 0;
         int cur = 0;
         foreach (Worker worker in workers)
         {
-            generalLevel += worker.Level;
+            generalWorkerLevel += worker.Level;
             if (worker.Level >= 20)
             {
                 cur++;
@@ -32,26 +32,26 @@ public class ChekLvl : MonoBehaviour
         {
             achivController.GetWorkerLvlAchiv(100);
         }
-        if (generalLevel >= 120)
+        if (generalWorkerLevel >= 120)
         {
+            print(generalWorkerLevel);
             if (endController != null)
             {
                 endController.StartEnd();
             }
         }
     }
-
     public void ChekDeskLvl()
     {
         desks = FindObjectsOfType<Desk>();
-        generalLevel = 0;
+        generalWorkerLevel = 0;
         foreach (Desk desk in desks)
         {
-            generalLevel += desk.Level;
+            generalWorkerLevel += desk.Level;
         }
-        if (generalLevel == 100)
+        if (generalWorkerLevel == 100)
         {
-            achivController.GetDeskLvlAchiv(generalLevel);
+            achivController.GetDeskLvlAchiv(generalWorkerLevel);
         }
     }
 }

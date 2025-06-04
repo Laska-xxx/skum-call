@@ -6,6 +6,7 @@ public class CreateChooseWorkers : MonoBehaviour
 {
     private AllWorkersData allWorkers;
     [SerializeField] private GameObject iconWorkerPrefab;
+
     void Start()
     {
         allWorkers = FindObjectOfType<AllWorkersData>();

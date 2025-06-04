@@ -7,8 +7,8 @@ public class TutorialController : MonoBehaviour
     [SerializeField] private GameObject tutorial;
     [SerializeField] private GameObject manager;
     [SerializeField] private GameObject boss;
-
     private AudioController audioController;
+
     void Start()
     {
         audioController = FindObjectOfType<AudioController>();
@@ -30,7 +30,6 @@ public class TutorialController : MonoBehaviour
             Close();
         }
     }
-    
     public void ClickUISound()
     {
         audioController.PlayClickUI();
@@ -39,7 +38,6 @@ public class TutorialController : MonoBehaviour
     {
         audioController.PlayClick();
     }
-
     public void BuySound()
     {
         audioController.PlayBuy();
@@ -48,7 +46,6 @@ public class TutorialController : MonoBehaviour
     {
         audioController.PlayOpenPanel();
     }
-
     private void Close()
     {
         tutorial.SetActive(false);

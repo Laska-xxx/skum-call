@@ -12,6 +12,7 @@ public class ChooseWorker : MonoBehaviour
     private GameObject iconImage;
     private GameObject levelText;
     private BuyWorker ded;
+
     void Start()
     {
         button = gameObject.GetComponent<Button>();
@@ -22,7 +23,6 @@ public class ChooseWorker : MonoBehaviour
         levelText.GetComponent<TextMeshProUGUI>().text = $"Level: {workerData.Level}";
         button.onClick.AddListener(StartBuy);
     }
-
     private void StartBuy()
     {
         workerData.IsBuy = true;

@@ -21,12 +21,14 @@ public class Worker : MonoBehaviour
     private ShowBabls showBabls;
     private HeadphonesOnHead headphones;
     private float worldFactor = 1;
+    public int MaxLevel { get; private set; } = 25;
 
     public WorkerData workerData;
     private Desk desk;
     private Coins coins;
     private Shop shop;
     private BoughtWorkers boughtWorkers;
+
     private void Awake()
     {
         sprite = gameObject.transform.Find("Pers").gameObject;
@@ -34,6 +36,7 @@ public class Worker : MonoBehaviour
         {
             Instantiate(workerData.SpriteInPrison, sprite.gameObject.transform);
             worldFactor = 1.5f;
+            MaxLevel = 100;
         }
         else
         {
@@ -63,12 +66,10 @@ public class Worker : MonoBehaviour
             headphones.ChangeHeadphones(0);
         } 
     }
-
     private void Update()
     {
         PassiveIncome();
     }
-
     public void LevelUp()
     {
         Level++;
@@ -76,7 +77,6 @@ public class Worker : MonoBehaviour
         CostUpgrade = Mathf.Round(sallaryBase*(Mathf.Pow(1.1f,Level * Num)));
         
     }
-
     public void ChangeLevelUp()
     {
         if (Level % 10 == 0 && Level <= 20)
@@ -84,7 +84,6 @@ public class Worker : MonoBehaviour
             headphones.ChangeHeadphones((Level / 10)-1);
         }
     }
-
     public void ReduceTimer()
     {
         curWorkTime++;
@@ -104,7 +103,6 @@ public class Worker : MonoBehaviour
             }
         }
     }
-
     public float FutireSallary(int level)
     {
         return Mathf.Round((float)(tilent * sallaryBase * worldFactor * (Mathf.Pow(1.1f, level*Num))));

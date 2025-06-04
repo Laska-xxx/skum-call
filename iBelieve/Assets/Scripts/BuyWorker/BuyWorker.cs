@@ -20,7 +20,6 @@ public class BuyWorker : MonoBehaviour
     private GameUIController gameUIController;
     private BuyUpgradeController upgradeController;
     private AchivController achivController;
-
     private AudioController audioController;
 
     void Start()
@@ -59,9 +58,7 @@ public class BuyWorker : MonoBehaviour
         costText.text = cost.ToString();
 
         audioController = FindObjectOfType<AudioController>();
-        gameObject.SetActive(false);
     }
-
     void FixedUpdate()
     {
         if (coins.coins >= cost)
@@ -69,7 +66,6 @@ public class BuyWorker : MonoBehaviour
             spriteRenderer.color = Color.white;
         }
     }
-
     private void OnMouseDown()
     {
         if (coins.coins >= cost && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && !choouseWorkerObj.activeInHierarchy) 
@@ -88,7 +84,6 @@ public class BuyWorker : MonoBehaviour
     {
         choouseWorkerObj.SetActive(false);
     }
-    
     public void Buy(WorkerData worker)
     {
         audioController.PlayBuy();

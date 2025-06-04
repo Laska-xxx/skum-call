@@ -24,7 +24,6 @@ public class AudioController : MonoBehaviour
         sirenAudio = GameObject.Find("SirenSource").GetComponent<AudioSource>();
         achivAudio = GameObject.Find("AchivSource").GetComponent<AudioSource>();
     }
-
     public void PlayClickUI()
     {
         clickUIAudio.Play();

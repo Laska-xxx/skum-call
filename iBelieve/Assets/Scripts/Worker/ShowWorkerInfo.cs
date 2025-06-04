@@ -23,7 +23,6 @@ public class ShowWorkerInfo : MonoBehaviour
         infoPanel.SetActive(false);
         labelText.text = $"{worker.PersName}";
     }
-
     private void OnMouseOver()
     {
         if (!menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.SettingsOpen) 
@@ -32,7 +31,6 @@ public class ShowWorkerInfo : MonoBehaviour
             infoPanel.SetActive(true);
         }
     }
-
     private void OnMouseExit()
     {
         infoPanel.SetActive(false);

@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\u0414\u043E\u0431\u0430\u0432\u0438\u043B\u0438 \u043B\u043E\u0444\u0442\u0430"
   Description: "\u0425\u043E\u0442\u044C \u0443\u044E\u0442\u043D\u043E \u0441\u0442\u0430\u043B\u043E"
-  OpenImage: {fileID: 21300000, guid: 879a6e688ea7e554a8035bd71bc03b0b, type: 3}
-  CloseImage: {fileID: 21300000, guid: 0e2dc129e5898d44d96ecd08339fbee1, type: 3}
+  OpenImage: {fileID: 21300000, guid: 286eddb5fc7dba742a3eb90a449ae02a, type: 3}
+  CloseImage: {fileID: 21300000, guid: 85e02f2f7a0830149ae10b4682a64a29, type: 3}
   Reward: 3
   Type: 4
   Level: 3
   Condition: 15
-  IsGet: 0

@@ -6,16 +6,10 @@ public class ShowUpgradeMenu : MonoBehaviour
 {
     [SerializeField] private GameObject menuBg;
     private BuyUpgradeController upgradeController;
-    public bool UpgradeMenuOpen { get; private set; }
     private AudioController audioController;
     private BuyWorker curBuyWorker;
-    /*void Start()
-    {
-        UpgradeMenuOpen = false;
-        menuBg.SetActive(false);
-        upgradeController = FindObjectOfType<BuyUpgradeController>();
-        audioController = FindObjectOfType<AudioController>();
-    }*/
+    public bool UpgradeMenuOpen { get; private set; }
+
     public void StartWork(BuyUpgradeController upgradeController, AudioController audioController)
     {
         UpgradeMenuOpen = false;
@@ -23,7 +17,6 @@ public class ShowUpgradeMenu : MonoBehaviour
         this.upgradeController = upgradeController;
         this.audioController = audioController;
     }
-
     private void OnMouseDown()
     {
         audioController.PlayOpenPanel();
@@ -47,9 +40,9 @@ public class ShowUpgradeMenu : MonoBehaviour
             }
         }
     }
-
     public void GetBuyWorker(BuyWorker buyWorker)
     {
         curBuyWorker = buyWorker;
+        curBuyWorker.gameObject.SetActive(UpgradeMenuOpen);
     }
 }
