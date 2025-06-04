@@ -16,6 +16,8 @@ public class Achievement : MonoBehaviour
     private AchivController achivController;
     private GameUIController gameUIController;
     private Coins coins;
+    public bool CanGet = false;
+    public bool IsGet = false;
 
     private AudioController audioController;
 
@@ -34,6 +36,11 @@ public class Achievement : MonoBehaviour
         this.coins = coins;
         getAchivButton.onClick.AddListener(GetAchiv);
         this.audioController = audioController;
+        nameText.text = achievementData.Name;
+        descriptionText.text = achievementData.Description;
+        rewardText.text = achievementData.Reward.ToString();
+        icone.sprite = achievementData.CloseImage;
+        getAchivButton.interactable = false;
     }
 
     public void DrowAchiv()
@@ -47,12 +54,7 @@ public class Achievement : MonoBehaviour
 
     public void CanGetAchiv()
     {
-        if (gameUIController == null)
-        {
-            gameUIController = FindObjectOfType<GameUIController>(true);
-            audioController = FindObjectOfType<AudioController>();
-        }
-        achievementData.CanGet = true;
+        CanGet = true;
         gameUIController.HaveAchiv();
         getAchivButton.interactable = true;
         icone.sprite = achievementData.OpenImage;
@@ -62,12 +64,13 @@ public class Achievement : MonoBehaviour
 
     private void GetAchiv()
     {
-        achievementData.IsGet = true;
+        IsGet = true;
         Destroy(getAchivButton.gameObject);
         coins.AddSpecialCoins(achievementData.Reward);
     }
     public void AchivHasBeenGet()
     {
+        IsGet = true;
         icone.sprite = achievementData.OpenImage;
         Destroy(getAchivButton.gameObject);
     }

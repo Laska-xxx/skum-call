@@ -57,8 +57,8 @@ public class SaveManager : MonoBehaviour
         {
             saveAchivs.Add(new SaveAchiv()
             {
-                IsGet = achiv.achievementData.IsGet,
-                CanGet = achiv.achievementData.CanGet
+                IsGet = achiv.IsGet,
+                CanGet = achiv.CanGet
             });
         }
         var gameData = new SaveGame()
@@ -93,7 +93,6 @@ public class SaveManager : MonoBehaviour
             }
             else
             {
-                print("Lol");
                 createBuyWorker.CreateNewBuyWorker();
             }
             coins.LoadCoinsValue(gameData.CoinsValue, gameData.SpecialCoinsValue);
@@ -101,14 +100,13 @@ public class SaveManager : MonoBehaviour
             {
                 for (int i = 0; i < achivController.achievements.Count; i++)
                 {
-                    achivController.InitializeAchivList();
-                    achivController.achievements[i].achievementData.IsGet = gameData.SaveAchivs[i].IsGet;
-                    achivController.achievements[i].achievementData.CanGet = gameData.SaveAchivs[i].CanGet;
-                    if (achivController.achievements[i].achievementData.IsGet)
+                    achivController.achievements[i].IsGet = gameData.SaveAchivs[i].IsGet;
+                    achivController.achievements[i].CanGet = gameData.SaveAchivs[i].CanGet;
+                    if (achivController.achievements[i].IsGet)
                     {
                         achivController.achievements[i].AchivHasBeenGet();
                     }
-                    if (achivController.achievements[i].achievementData.CanGet && !achivController.achievements[i].achievementData.IsGet)
+                    else if (achivController.achievements[i].CanGet)
                     {
                         achivController.achievements[i].CanGetAchiv();
                     }

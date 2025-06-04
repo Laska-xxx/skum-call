@@ -26,8 +26,7 @@ public class AchivController : MonoBehaviour
     {
         foreach (var achievement in achievements)
         {
-            achievement.DrowAchiv();
-            if (!achievement.achievementData.CanGet)
+            if (!achievement.CanGet)
             {
                 switch (achievement.achievementData.Type)
                 {
@@ -176,13 +175,5 @@ public class AchivController : MonoBehaviour
             deskLvlAchiv[0].CanGetAchiv();
             deskLvlAchiv.RemoveAt(0);
         }
-    }
-    public void InitializeAchivList()
-    {
-        allAchiv = allAchiv.OrderBy(achievement => achievement.Level).ToList();
-        for (int i = 0; i < achievements.Count; i++)
-        {
-            achievements[i].achievementData = allAchiv[i];
-        }
-    }
+    } 
 }

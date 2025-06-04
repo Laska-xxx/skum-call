@@ -13,8 +13,6 @@ public class AchievementsData : ScriptableObject
     public AchivType Type;
     public int Level = 1;
     public int Condition;
-    public bool IsGet = false;
-    public bool CanGet = false;
 }
 
 public enum AchivType

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9adc315630f01764e8101507e01004d1
+guid: 3318a38e2c973334eabab6bca77c9ffb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -134,7 +134,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: IMG_6944_0
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 263
+        width: 422
+        height: 414
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e13788b74bd7f3c4d959d741d17d3a3b
+      internalID: 1354368182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IMG_6944_1
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 421
+        width: 424
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d44daddba9649f4d807be39a7eaaaed
+      internalID: -1210613112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IMG_6944_2
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 87
+        width: 424
+        height: 289
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39c26efcda817ca479a91aff696cb509
+      internalID: 1432819031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +208,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      IMG_6944_0: 1354368182
+      IMG_6944_1: -1210613112
+      IMG_6944_2: 1432819031
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
