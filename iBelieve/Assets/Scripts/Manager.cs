@@ -5,6 +5,7 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {
     [SerializeField] private ShowUpgradeMenu showUpgradeMenu;
+    [SerializeField] private TutorialController tutorialController;
     private Coins coins;
     private AllWorkersData allWorkers;
     private ReductionCoins reductionCoins = new ReductionCoins();
@@ -50,6 +51,7 @@ public class Manager : MonoBehaviour
         }
         saveManager.Load();
         achivController.DistributionAchiv();
+        tutorialController.StartWork(showUpgradeMenu, gameUIController);
     }
 
     

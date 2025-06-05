@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class AnimatedText : MonoBehaviour
 {
-    [SerializeField] private float speedText = 0.06f;
+    [SerializeField] private float speedText = 0.05f;
     private TextMeshProUGUI text;
     private string story;
 
@@ -18,7 +18,6 @@ public class AnimatedText : MonoBehaviour
         text.text = "";
         StartCoroutine("PlayText"); ;
     }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
@@ -27,10 +26,6 @@ public class AnimatedText : MonoBehaviour
             text.text = story;
         }
     }
-
-
-
-
     IEnumerator PlayText()
     {
         foreach (char c in story)

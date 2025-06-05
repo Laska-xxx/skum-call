@@ -21,6 +21,7 @@ public class BuyWorker : MonoBehaviour
     private BuyUpgradeController upgradeController;
     private AchivController achivController;
     private AudioController audioController;
+    private bool turnOffForTutorial = false;
 
     void Start()
     {
@@ -68,6 +69,10 @@ public class BuyWorker : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        if (turnOffForTutorial)
+        {
+            return;
+        }
         if (coins.coins >= cost && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && !choouseWorkerObj.activeInHierarchy) 
         {
             audioController.PlayOpenPanel();
@@ -97,5 +102,9 @@ public class BuyWorker : MonoBehaviour
             achivController.GetCharacterAchiv();
         }
         Destroy(gameObject);
+    }
+    public void Tutorial(bool isTutorial)
+    {
+        turnOffForTutorial = isTutorial;
     }
 }

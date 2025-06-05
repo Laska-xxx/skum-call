@@ -9,6 +9,7 @@ public class ShowUpgradeMenu : MonoBehaviour
     private AudioController audioController;
     private BuyWorker curBuyWorker;
     public bool UpgradeMenuOpen { get; private set; }
+    private bool turnOffForTutorial = false;
 
     public void StartWork(BuyUpgradeController upgradeController, AudioController audioController)
     {
@@ -19,6 +20,10 @@ public class ShowUpgradeMenu : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        if (turnOffForTutorial)
+        {
+            return;
+        }
         audioController.PlayOpenPanel();
         if (UpgradeMenuOpen)
         {
@@ -44,5 +49,9 @@ public class ShowUpgradeMenu : MonoBehaviour
     {
         curBuyWorker = buyWorker;
         curBuyWorker.gameObject.SetActive(UpgradeMenuOpen);
+    }
+    public void TurnOff(bool isTutorial)
+    {
+        turnOffForTutorial = isTutorial;
     }
 }
