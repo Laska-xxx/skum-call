@@ -46,7 +46,6 @@ public class BuyUpgradeDesk : MonoBehaviour
             DrowInfo();
             upgradePanel.SetActive(true);
             IsOpen = true;
-            audioController.PlayClickUI();
         }
         else if (menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.AchievementOpen && !gameUIController.SettingsOpen && upgradePanel.activeInHierarchy)
         {

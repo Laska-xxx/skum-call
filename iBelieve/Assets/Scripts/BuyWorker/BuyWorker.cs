@@ -10,6 +10,7 @@ public class BuyWorker : MonoBehaviour
     [SerializeField] private float cost;
     [SerializeField] private TextMeshProUGUI costText;
     [SerializeField] private GameObject choouseWorkerObj;
+    [SerializeField] private GameObject square;
     [HideInInspector] public int Num;
     private CreateBuyWorker createWorker;
     private GameObject spawnPos;
@@ -21,7 +22,6 @@ public class BuyWorker : MonoBehaviour
     private BuyUpgradeController upgradeController;
     private AchivController achivController;
     private AudioController audioController;
-    private bool turnOffForTutorial = false;
 
     void Start()
     {
@@ -69,25 +69,24 @@ public class BuyWorker : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (turnOffForTutorial)
-        {
-            return;
-        }
         if (coins.coins >= cost && !gameUIController.ShopOpen && !gameUIController.SettingsOpen && !choouseWorkerObj.activeInHierarchy) 
         {
             audioController.PlayOpenPanel();
             upgradeController.CloseAllPanels();
             choouseWorkerObj.SetActive(true);
+            square.SetActive(true);
         }
         else if (!gameUIController.ShopOpen && !gameUIController.SettingsOpen && choouseWorkerObj.activeInHierarchy)
         {
             audioController.PlayOpenPanel();
-            CloseChouseWorker();    
+            CloseChouseWorker();
+            
         }
     }
     public void CloseChouseWorker()
     {
         choouseWorkerObj.SetActive(false);
+        square.SetActive(false);
     }
     public void Buy(WorkerData worker)
     {
@@ -102,9 +101,5 @@ public class BuyWorker : MonoBehaviour
             achivController.GetCharacterAchiv();
         }
         Destroy(gameObject);
-    }
-    public void Tutorial(bool isTutorial)
-    {
-        turnOffForTutorial = isTutorial;
     }
 }

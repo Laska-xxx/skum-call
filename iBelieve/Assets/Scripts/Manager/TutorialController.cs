@@ -133,6 +133,7 @@ public class TutorialController : MonoBehaviour
     }
     private void EndTutorial()
     {
+        audioController.PlayComplete();
         PlayerPrefs.SetInt("ShowTutorial", 1);
         if (curWorker != null)
         {

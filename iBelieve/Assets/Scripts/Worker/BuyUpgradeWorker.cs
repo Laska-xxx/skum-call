@@ -78,7 +78,6 @@ public class BuyUpgradeWorker : MonoBehaviour
         }
         if (worker.Level == 20)
         {
-            print(worker);
             chekWorkersLvl.ChekWorkerLvl(worker);
         }
         if (worker.Level == worker.MaxLevel)

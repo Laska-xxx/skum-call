@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ChekLvl : MonoBehaviour
 {
-    private List <Worker> workers = new List<Worker>();
+    public List<Worker> workers { get; private set; } = new List<Worker>();
     private List <Desk> desks = new List<Desk>();
     private EndController endController;
     private AchivController achivController;

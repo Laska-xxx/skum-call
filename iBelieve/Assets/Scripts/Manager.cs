@@ -55,12 +55,12 @@ public class Manager : MonoBehaviour
         }
         saveManager.Load();
         achivController.DistributionAchiv();
-        endController.StartWork(allWorkers,saveManager, audioController);
         chekLvl.StartWork(endController, achivController);
         if (File.Exists(Application.persistentDataPath + "/save.fun"))
         {
             StartCoroutine(chekLvl.ChekGeneralWorkerLevel());
         }
+        endController.StartWork(allWorkers, saveManager, audioController, showUpgradeMenu, buyUpgradeController, chekLvl);
         if (tutorialController != null)
         {
             tutorialController.StartWork(showUpgradeMenu, gameUIController, audioController);
