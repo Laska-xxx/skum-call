@@ -79,7 +79,7 @@ public class BuyUpgradeDesk : MonoBehaviour
         }
         if (desk.Level == 20)
         {
-            chekLvl.ChekDeskLvl();
+            chekLvl.ChekDeskLvl(desk);
             Destroy(buyButton.gameObject);
         }
     }

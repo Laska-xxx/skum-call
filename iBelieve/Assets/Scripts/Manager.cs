@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class Manager : MonoBehaviour
 {
     [SerializeField] private ShowUpgradeMenu showUpgradeMenu;
     [SerializeField] private TutorialController tutorialController;
+    [SerializeField] private EndController endController;
     private Coins coins;
     private AllWorkersData allWorkers;
     private ReductionCoins reductionCoins = new ReductionCoins();
@@ -18,11 +20,13 @@ public class Manager : MonoBehaviour
     private ReduceTime reduceTime;
     private BuyUpgradeController buyUpgradeController;
     private Cheats cheats;
+    private ChekLvl chekLvl;
     private List<Achievement> achievementList;
 
     private AudioController audioController;
     void Awake()
     {
+        Time.timeScale = 1;
         coins = GetComponent<Coins>();
         allWorkers = GetComponent<AllWorkersData>();
         saveManager = GetComponent<SaveManager>();
@@ -34,9 +38,9 @@ public class Manager : MonoBehaviour
         reduceTime = GetComponent<ReduceTime>();
         buyUpgradeController = GetComponent<BuyUpgradeController>();
         cheats = GetComponent<Cheats>();
+        chekLvl = GetComponent<ChekLvl>();
         achievementList = achivController.achievements;
         audioController = FindObjectOfType<AudioController>();
-
 
         gameUIController.StartWork(coins, allWorkers, reductionCoins, saveManager, audioController);
         shop.StartWork(coins);
@@ -51,7 +55,16 @@ public class Manager : MonoBehaviour
         }
         saveManager.Load();
         achivController.DistributionAchiv();
-        tutorialController.StartWork(showUpgradeMenu, gameUIController);
+        endController.StartWork(allWorkers,saveManager, audioController);
+        chekLvl.StartWork(endController, achivController);
+        if (File.Exists(Application.persistentDataPath + "/save.fun"))
+        {
+            StartCoroutine(chekLvl.ChekGeneralWorkerLevel());
+        }
+        if (tutorialController != null)
+        {
+            tutorialController.StartWork(showUpgradeMenu, gameUIController, audioController);
+        }
     }
 
     

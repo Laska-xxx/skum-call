@@ -6,7 +6,11 @@ public class ReductionCoins
 {
     public string Reduction(double value)
     {
-        if (value >= 1000000000000000)
+        if (value >= 1000000000000000000)
+        {
+            return (value / 1000000000000000000).ToString("#.#") + "Qu";
+        }
+        else if (value >= 1000000000000000)
         {
             return (value / 1000000000000000).ToString("#.#") + "Q";
         }

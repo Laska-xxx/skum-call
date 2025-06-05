@@ -5,20 +5,16 @@ using UnityEngine;
 
 public class TutorialCheckClick : MonoBehaviour
 {
-    private int curClick = 0;
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            curClick++;
-        }
-        if (curClick >= 5)
-        {
-            ClicksComplete();
-        }
-    }
+    [SerializeField] private TextMeshProUGUI triggerText;
+    private int curClick = 6;
+    
     public bool ClicksComplete()
     {
-        return true;
+        return curClick <= 0;
+    }
+    private void OnMouseDown()
+    {
+        curClick--;
+        triggerText.text = $"{curClick} клик..";
     }
 }

@@ -51,43 +51,7 @@ public class AchivController : MonoBehaviour
         }
         StartCoroutine(CurTime());
     }
-    /*private void Start()
-    {
-        allAchiv = allAchiv.OrderBy(achievement => achievement.Level).ToList();
-        for (int i = 0; i < achievements.Count; i++)
-        {
-            achievements[i].achievementData = allAchiv[i];
-        }
-        foreach (var achievement in achievements)
-        {
-            achievement.DrowAchiv();
-            if (!achievement.achievementData.CanGet)
-            {
-                switch (achievement.achievementData.Type)
-                {
-                    case AchivType.Money:
-                        moneyAchiv.Add(achievement);
-                        break;
-                    case AchivType.Time:
-                        timeAchiv.Add(achievement);
-                        break;
-                    case AchivType.Character:
-                        caracterAchiv.Add(achievement);
-                        break;
-                    case AchivType.WorkerLevel:
-                        workerLvlAchiv.Add(achievement);
-                        break;
-                    case AchivType.DeskLevel:
-                        deskLvlAchiv.Add(achievement);
-                        break;
-                }
-            }
-            
-        }
-        StartCoroutine(CurTime());
-    }*/
-
-    IEnumerator CurTime()
+    private IEnumerator CurTime()
     {
         int curTime = 0;
         while (timeAchiv.Count != 0)

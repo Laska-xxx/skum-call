@@ -108,8 +108,22 @@ public class GameUIController : MonoBehaviour
     }
     private void ShowChooseSave()
     {
-        audioController.PlayClickUI();
-        ChooseSaveGamePanel.SetActive(true);
+        if (PlayerPrefs.GetInt("ShowTutorial") == 1)
+        {
+            audioController.PlayClickUI();
+            ChooseSaveGamePanel.SetActive(true);
+        }
+        else
+        {
+            audioController.PlayClickUI();
+            foreach (WorkerData worker in allWorkers)
+            {
+                worker.IsBuy = false;
+            }
+            saveManager.DelSave();
+            PlayerPrefs.SetInt("GameLevel", 0);
+            SceneManager.LoadScene("MainMenu");
+        }
     }
     private void CloseShop()
     {

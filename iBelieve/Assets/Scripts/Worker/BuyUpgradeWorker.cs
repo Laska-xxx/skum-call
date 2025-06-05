@@ -78,12 +78,12 @@ public class BuyUpgradeWorker : MonoBehaviour
         }
         if (worker.Level == 20)
         {
-            chekWorkersLvl.ChekWorkerLvl();
+            print(worker);
+            chekWorkersLvl.ChekWorkerLvl(worker);
         }
         if (worker.Level == worker.MaxLevel)
         {
             Destroy(buyButton.gameObject);
-            chekWorkersLvl.ChekWorkerLvl();
         }
     }
 

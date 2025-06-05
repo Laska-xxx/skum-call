@@ -3,51 +3,69 @@ using System.IO;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
+using TMPro;
 
 public class EndController : MonoBehaviour
 {
-    [SerializeField] private Button quinButtom;
-    [SerializeField] private GameObject end;
-    private List<WorkerData> allWorkers;
-    private SaveManager saveManager;
+    [SerializeField] private GameObject endPanel;
+    [SerializeField] private GameObject secondEndPanel;
+    [SerializeField] private TextMeshProUGUI endText;
+    private int endTimer;
     private AudioController audioController;
+    private SaveManager saveManager;
+    private AllWorkersData allWorkersData;
 
-    void Start()
+    public void StartWork(AllWorkersData allWorkers, SaveManager save, AudioController audio)
     {
-        allWorkers = FindObjectOfType<AllWorkersData>().listWorkers;
-        audioController = FindObjectOfType<AudioController>();
-        saveManager = FindObjectOfType<SaveManager>();
-        quinButtom.onClick.AddListener(GoMainMenu);
-        end.SetActive(false);
+        allWorkersData = allWorkers;
+        saveManager = save;
+        audioController = audio;
+        endTimer = 20;
     }
     public void StartEnd()
     {
-        end.SetActive(true);
-    }
-    private void GoNextLvel()
-    {
-        PlayerPrefs.SetInt("GameLevel", 1);
-        saveManager.DelSave();
-        foreach (WorkerData worker in allWorkers)
+        endPanel.SetActive(true);
+        Time.timeScale = 0;
+        if (PlayerPrefs.GetInt("GameLevel") == 1)
         {
-            worker.IsBuy = false;
+            endText.text = $"Вы прошли игру! \nСпасибо за уделенное нашему проекту время!";
         }
-        SceneManager.LoadScene("SecondLevel");
     }
-    private void GoMainMenu()
+    public void GoNextLvel()
+    {
+        endPanel.SetActive(false);
+        StartCoroutine(StartWorldLevelApp());
+    }
+    public void GoMainMenu()
     {
         audioController.PlayClickUI();
         PlayerPrefs.SetInt("ShowTutorial", 0);
+        PlayerPrefs.SetInt("GameLevel", 0);
         saveManager.DelSave();
         SceneManager.LoadScene("MainMenu");
-    }
-    public void SirenSound()
-    {
-        audioController.PlaySiren();
-        Invoke("GoNextLvel", 0.1f);
     }
     public void ClickUISound()
     {
         audioController.PlayClickUI();
+    }
+    private IEnumerator StartWorldLevelApp()
+    {
+        Time.timeScale = 1;
+        PlayerPrefs.SetInt("GameLevel", 1);
+        while (endTimer > 0)
+        {
+            endTimer--;
+            yield return new WaitForSeconds(1);
+        }
+        secondEndPanel.SetActive(true);
+        audioController.PlaySiren();
+        yield return new WaitForSeconds(0.2f);
+        saveManager.DelSave();
+        foreach (WorkerData worker in allWorkersData.listWorkers)
+        {
+            worker.IsBuy = false;
+        }
+        SceneManager.LoadScene("SecondLevel");
     }
 }
