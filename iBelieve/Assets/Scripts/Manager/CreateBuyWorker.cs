@@ -45,10 +45,10 @@ public class CreateBuyWorker : MonoBehaviour
                 workerPrefab.GetComponent<Worker>().Num = workerNum + 1;
                 workerPrefab.GetComponent<Worker>().Level = workerData.Level;
                 workerPrefab.GetComponent<Desk>().Level = 1;
+                reduceTime.GetWorker(workerPrefab.GetComponent<Worker>());
                 Instantiate(workerPrefab, spawns[i].gameObject.transform);
             }
         }
-        reduceTime.FindWorkers();
         workerNum++;
     }
     public void LoadWorkers(int num, int level, int dataID, int deskLevel)
@@ -65,12 +65,13 @@ public class CreateBuyWorker : MonoBehaviour
         workerPrefab.GetComponent<Worker>().Num = num;
         workerPrefab.GetComponent<Worker>().Level = level;
         workerPrefab.GetComponent<Desk>().Level = deskLevel;
+        reduceTime.GetWorker(workerPrefab.GetComponent<Worker>());
         Instantiate(workerPrefab, spawns[num-1].gameObject.transform);
         if (reduceTime == null)
         {
             reduceTime = FindObjectOfType<ReduceTime>();
         }
-        reduceTime.FindWorkers();
+        
         workerNum ++;
         buyWorkerNum ++;
     }

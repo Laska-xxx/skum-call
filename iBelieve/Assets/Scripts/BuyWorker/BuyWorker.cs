@@ -93,7 +93,6 @@ public class BuyWorker : MonoBehaviour
         audioController.PlayBuy();
         coins.TakeCoins(cost);
         createWorker.CreateNewWorker(worker);
-        reduceTime.FindWorkers();
         createWorker.CreateNewBuyWorker();
         achivController.GetCharacterAchiv(worker);
         if (Num == 4)

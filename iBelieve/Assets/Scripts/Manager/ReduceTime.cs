@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ReduceTime : MonoBehaviour
 {
-    public Worker[] workers;
+    [SerializeField] private GameObject clickParticlObj;
+    public List <Worker> workers {  get; private set; } = new List <Worker>();
     private BossController bossAnim;
     private ShowUpgradeMenu menu;
     private GameUIController gameUIController;
@@ -22,6 +23,7 @@ public class ReduceTime : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && !menu.UpgradeMenuOpen && !gameUIController.ShopOpen && !gameUIController.AchievementOpen && !gameUIController.SettingsOpen)
         {
             audioController.PlayClick();
+            ClickEffect(Camera.main.ScreenToWorldPoint(Input.mousePosition));
             foreach (Worker worker in workers)
             {
                 worker.ReduceTimer();
@@ -30,8 +32,13 @@ public class ReduceTime : MonoBehaviour
             bossAnim.ClickAnim();
         }
     }
-    public void FindWorkers()
+    public void GetWorker(Worker curWorker)
     {
-        workers = FindObjectsOfType<Worker>();
+        workers.Add(curWorker);
+    }
+    private void ClickEffect(Vector2 position)
+    {
+        clickParticlObj.transform.position = position;
+        clickParticlObj.GetComponent<ParticleSystem>().Play();
     }
 }
