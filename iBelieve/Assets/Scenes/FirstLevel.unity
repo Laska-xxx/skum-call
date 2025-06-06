@@ -16750,12 +16750,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4863985122239459091, guid: a6bea079442314d439b056cc539d914d, type: 3}
+      propertyPath: lengthInSec
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863985122239459091, guid: a6bea079442314d439b056cc539d914d, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863985122239459091, guid: a6bea079442314d439b056cc539d914d, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863985122239459091, guid: a6bea079442314d439b056cc539d914d, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863985122239459091, guid: a6bea079442314d439b056cc539d914d, type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5200208557377493256, guid: a6bea079442314d439b056cc539d914d, type: 3}
       propertyPath: m_Name
       value: ClickParticl
+      objectReference: {fileID: 0}
+    - target: {fileID: 5200208557377493256, guid: a6bea079442314d439b056cc539d914d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

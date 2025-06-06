@@ -16,10 +16,9 @@ MonoBehaviour:
   Description: "5 \u043C\u0438\u043D\u0443\u0442 \u0432 \u0438\u0433\u0440\u0435
     - \u043F\u0435\u0440\u0432\u044B\u0435 \u0448\u0430\u0433\u0438 \u0432 \u043C\u0438\u0440
     \u0441\u043A\u0430\u043C\u0430!"
-  OpenImage: {fileID: -304885277, guid: a785a533590999b40accfc316bc05250, type: 3}
-  CloseImage: {fileID: -304885277, guid: a785a533590999b40accfc316bc05250, type: 3}
+  OpenImage: {fileID: 1450831086, guid: 578f28fda0cc30843a7e992c36c4f6f6, type: 3}
+  CloseImage: {fileID: -383380851, guid: 6472417a35532ce40a9138ea0edd4a81, type: 3}
   Reward: 1
   Type: 1
   Level: 1
   Condition: 300
-  IsGet: 0

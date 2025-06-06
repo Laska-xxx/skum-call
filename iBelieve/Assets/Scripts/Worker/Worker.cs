@@ -8,6 +8,7 @@ public class Worker : MonoBehaviour
 {
     [SerializeField] private Slider timeSlider;
     [SerializeField] private int sallaryBase = 20;
+    [SerializeField] private ParticleSystem dobleSallaryParticle;
     [HideInInspector] public int Num = 0;
     public float Sallary { get; private set; }
     public string PersName { get; private set; }
@@ -94,7 +95,16 @@ public class Worker : MonoBehaviour
         curWorkTime += Time.deltaTime;
         if (curWorkTime >= desk.Cooldown)
         {
-            coins.AddCoins(Sallary * (shop.IsDobleSallary ? 2 : 1));
+            if (shop.IsDobleSallary)
+            {
+                dobleSallaryParticle.Play();
+                coins.AddCoins(Sallary * 2);
+            }
+            else
+            {
+                coins.AddCoins(Sallary);
+            }
+            /*coins.AddCoins(Sallary * (shop.IsDobleSallary ? 2 : 1));*/
             curWorkTime = 0;
             timeSlider.value = 0;
             if (Random.Range(1, 4) == 1)
