@@ -6,7 +6,7 @@ using UnityEngine;
 public class TutorialCheckClick : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI triggerText;
-    private int curClick = 6;
+    private int curClick = 5;
     
     public bool ClicksComplete()
     {

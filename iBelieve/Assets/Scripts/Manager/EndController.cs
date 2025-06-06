@@ -72,10 +72,11 @@ public class EndController : MonoBehaviour
         }
         while (endTimer > 0)
         {
-            PlayerPrefs.SetInt("GameLevel", 1);
+            
             endTimer--;
             yield return new WaitForSeconds(1);
         }
+        PlayerPrefs.SetInt("GameLevel", 1);
         secondEndPanel.SetActive(true);
         audioController.PlaySiren();
         yield return new WaitForSeconds(0.2f);
